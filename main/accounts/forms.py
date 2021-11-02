@@ -27,7 +27,7 @@ class loginForm(forms.ModelForm):
 class UpdateAccountForm(forms.ModelForm):
     class Meta:
         model = UserAccount
-        fields = ('email','username','password')
+        fields = ('email','username')
 
     def clean_email(self):
         if self.is_valid():

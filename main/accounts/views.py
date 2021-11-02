@@ -3,10 +3,10 @@ from django.contrib.auth import login,authenticate,logout
 from accounts.forms import registerForm,loginForm,UpdateAccountForm
 
 def home(request):
-    return render(request,'main.html')
+    return render(request,'home.html')
 # logout view for any user to logout of their account 
 def logoutUser(request):
-    logout(request)
+    logout(request) 
     return render(request,'main.html')
     
 # login page for users 
@@ -14,25 +14,30 @@ def loginUser(request):
     variables = {}
     # user varaible reference
     user = request.user
-    if user.is_authenticated and user.is_coach:
-        return render(request,'accounts/coachportal.html')
+    if user.is_authenticated:
+        return render(request,'main.html')
+
     if request.POST:
         form = loginForm(request.POST)
         if form.is_valid():
             email = request.POST['email']
             password = request.POST['password']
-            account = authenticate(email=email, password=password)
+            user = authenticate(email=email, password=password)
         if user:
-            login(request,account)
-            return render(request,'main.html')
-            #return redirect('home')
-    # if the user sumbits no fields  
+            login(request,user)
+            # render user to the specified page 
+            if request.user.is_coach:
+                return render(request,'coachPortal.html')
+            if request.user.is_client:
+                return render(request,'clientPortal.html')
+            if request.user.is_newClient:
+                return render(request,'questionnaire.html')
+            else:
+                return render(request,'home.html')
     else:
         form = loginForm()
         variables['login_form'] = form
         return render(request, 'accounts/login.html',variables)
-
-
 
 # register page for clients 
 def registerClient(request):

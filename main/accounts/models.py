@@ -31,7 +31,7 @@ class UserAccountManager(BaseUserManager):
         return user
 
 # custom user model for clients 
-class UserAccounts(AbstractBaseUser):
+class UserAccount(AbstractBaseUser):
     # email for clients of coaches 
     email = models.EmailField(verbose_name =('email'),max_length=60,unique=True)
     # user name used for clients company name 
@@ -48,6 +48,13 @@ class UserAccounts(AbstractBaseUser):
 
     # setting a coach permission for view controls 
     is_coach = models.BooleanField(default=False)
+
+    # existing clients that have already completed questionaire 
+    is_client = models.BooleanField(default=False)
+
+    # new clients have been approved to view questionnaire 
+    is_newClient = models.BooleanField(default=False) 
+
 
     # overriding the user name field as the login default to an email value  
     USERNAME_FIELD = 'email'

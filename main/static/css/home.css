@@ -1,0 +1,14 @@
+body{
+    background-color: beige;
+}
+div{
+    text-align: right;
+}
+/* unvisited link */
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: grey;
+}

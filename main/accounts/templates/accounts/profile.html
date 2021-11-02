@@ -6,12 +6,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static '/css/register.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/css/forms.css' %}" type="text/css">
     <title>Profile</title>
+    <p> <a href="{% url 'password_change'%}"> Change Password </a> </p>
 </head>
 <body>
     <h1>Profile</h1>
-<form class = "reg-from" method="post">
+<form method="post">
     {% csrf_token %}
     {% for field in profile %}
     <p>
@@ -31,5 +32,4 @@
     {% endfor %}
     <button class="save-button" type="submit" >Save Changes</button>
 </form>
-</body>
-</html>
+</body></html>

@@ -1,28 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>  
-
+    <link rel="stylesheet" href="{% static '/css/home.css' %}" type="text/css">
+<h1>
     {% if request.user.is_authenticated %}
     {% if request.user.is_coach%}
-        <p> Hello Coach, {{request.user.username}} | <a href="{% url 'home' %}"> OUTFRNT Home </a> | <a href="{% url 'profile' %}"> Account </a> | <a href="{% url 'logout' %}"> Signout </a></p>
+        <p> Hello Coach , {{request.user.username}}  <a href="{% url 'home' %}"> Home </a>  <a href="{% url 'profile' %}"> Account </a>  <a href="{% url 'logout' %}"> Signout </a></p>
     {% endif %}
-    {% if not request.user.is_coach %}
-        <p> Hello Client, {{request.user.username}} | <a href="{% url 'home' %}"> OUTFRNT Home </a> | <a href="{% url 'profile' %}"> Account </a> | <a href="{% url 'logout' %}"> Signout </a></p> 
+    {% if request.user.is_admin %}
+        <p> Hello Admin, {{request.user.username}}  <a href="{% url 'home' %}"> Home </a>  <a href="{% url 'profile' %}"> Account </a>  <a href="{% url 'logout' %}"> Signout </a></p> 
+    {% endif %}
+    {% if not request.user.is_admin and not request.user.is_coach%}
+        <p> Hello Client, {{request.user.username}}  <a href="{% url 'home' %}"> Home </a>  <a href="{% url 'profile' %}"> Account </a>  <a href="{% url 'logout' %}"> Signout </a></p> 
     {% endif %}
     {% else %}
-        <p>
-            <a href="{% url 'register'%}"> Sign up </a> | <a href="{% url 'login'%}"> Sign in </a>
-        </p>
+    <p>
+        <a href="{% url 'register'%}"> Sign up </a>  <a href="{% url 'login'%}"> Sign in </a>
+    </p>
     {% endif %}
+</h1>
 </head>
 <body>
-    {% block content %}
-     
-    {% endblock content %}
+   {% block content %}
+   
+   {% endblock %}
 </body>
 
 </html>
