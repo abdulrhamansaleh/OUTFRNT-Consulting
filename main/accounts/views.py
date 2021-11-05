@@ -23,21 +23,21 @@ def loginUser(request):
             email = request.POST['email']
             password = request.POST['password']
             user = authenticate(email=email, password=password)
-        if user:
-            login(request,user)
-            # render user to the specified page 
-            if request.user.is_coach:
-                return render(request,'coachPortal.html')
-            if request.user.is_client:
-                return render(request,'clientPortal.html')
-            if request.user.is_newClient:
-                return render(request,'questionnaire.html')
+            if user:
+                login(request,user)
+                # render user to the specified page 
+                if request.user.is_coach:
+                    return render(request,'coachPortal.html')
+                if request.user.is_client:
+                    return render(request,'clientPortal.html')
+                if request.user.is_newClient:
+                    return render(request,'questionnaire.html')
             else:
                 return render(request,'home.html')
     else:
         form = loginForm()
-        variables['login_form'] = form
-        return render(request, 'accounts/login.html',variables)
+    variables['login_form'] = form
+    return render(request, 'accounts/login.html',variables)
 
 # register page for clients 
 def registerClient(request):
