@@ -1,8 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
+from django.contrib.auth.models import (
+    AbstractBaseUser, BaseUserManager, PermissionsMixin
+)
+from django.utils.translation import gettext_lazy as _
 
-# managing Users model
-class UserAccountManager(BaseUserManager):
+
+class UserManager(BaseUserManager):
     def create_user(self,email,username,password=None):
         if not email:
             raise ValueError("Email Required")
@@ -13,6 +16,10 @@ class UserAccountManager(BaseUserManager):
             email=self.normalize_email(email),
             username=username, 
             )
+        user.is_coach = False
+        user.is_client = False
+        user.is_newClient = False 
+
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -30,8 +37,8 @@ class UserAccountManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-# custom user model for clients 
-class UserAccount(AbstractBaseUser):
+
+class User(AbstractBaseUser, PermissionsMixin):
     # email for clients of coaches 
     email = models.EmailField(verbose_name =('email'),max_length=60,unique=True)
     # user name used for clients company name 
@@ -55,23 +62,17 @@ class UserAccount(AbstractBaseUser):
     # new clients have been approved to view questionnaire 
     is_newClient = models.BooleanField(default=False) 
 
+    objects = UserManager()
 
-    # overriding the user name field as the login default to an email value  
     USERNAME_FIELD = 'email'
-    # ensuring that the email is a required field 
-    # these fields are added to create_user method header 
     REQUIRED_FIELDS = ['username']
-
-    objects = UserAccountManager()
 
     # display user information 
     def __str__(self):
-        return "Username:" + self.username
+        return "Username:" + self.username 
 
     def has_perm(self,perm,obj = None):
         return self.is_admin
     
     def has_module_perms(self,app_label):
         return True
-
-

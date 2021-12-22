@@ -1,13 +1,15 @@
 from django.urls import path
-from . import views 
+
+from . import views
+
+app_name = 'accounts'
+
 
 urlpatterns = [
-    # main outfrntlanding page 
     path('',views.home,name='home'),
-    # paths for client views 
-    path('register/', views.registerClient,name='register'),
     path('profile/',views.profileView,name = 'profile'),
-    # universal view for account models 
-    path('logout/',views.logoutUser,name='logout'),
-    path('login/',views.loginUser,name='login'),
+    path('signup/', views.SignUpView.as_view(), name='signup'),
+    path('signin/', views.SignInView.as_view(), name='signin'),
+    path('signout/', views.signout, name='signout'),
+    path('coachPortal/', views.coachView, name='coach'),
 ]

@@ -1,9 +1,6 @@
 from django.contrib import admin
-from accounts.models import UserAccount
+from accounts.models import User
 from django.contrib.auth.admin import UserAdmin
-
-# Register your models here.
-
 
 class AccountAdmin(UserAdmin):
     list_display = ('email','username','date_joined','last_login','is_admin','is_staff','is_coach','is_client','is_newClient')
@@ -14,4 +11,4 @@ class AccountAdmin(UserAdmin):
     list_filter = ()
     fieldsets = ()
 
-admin.site.register(UserAccount,AccountAdmin)
+admin.site.register(User,AccountAdmin)

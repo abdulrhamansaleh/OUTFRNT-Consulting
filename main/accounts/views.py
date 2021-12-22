@@ -1,78 +1,22 @@
-from django.shortcuts import render,redirect
-from django.contrib.auth import login,authenticate,logout
-from accounts.forms import registerForm,loginForm,UpdateAccountForm
+
+from django.views.generic import View
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login,logout
+from accounts.forms import SignInForm,SignUpForm,UpdateAccountForm
+from calendarapp.models import Event
+from accounts.models import User 
 
 def home(request):
-    return render(request,'home.html')
-# logout view for any user to logout of their account 
-def logoutUser(request):
-    logout(request) 
     return render(request,'main.html')
-    
-# login page for users 
-def loginUser(request):
-    variables = {}
-    # user varaible reference
-    user = request.user
-    if user.is_authenticated:
-        return render(request,'main.html')
 
-    if request.POST:
-        form = loginForm(request.POST)
-        if form.is_valid():
-            email = request.POST['email']
-            password = request.POST['password']
-            user = authenticate(email=email, password=password)
-            if user:
-                login(request,user)
-                # render user to the specified page 
-                if request.user.is_coach:
-                    return render(request,'coachPortal.html')
-                if request.user.is_client:
-                    return render(request,'clientPortal.html')
-                if request.user.is_newClient:
-                    return render(request,'questionnaire.html')
-            else:
-                return render(request,'home.html')
-    else:
-        form = loginForm()
-    variables['login_form'] = form
-    return render(request, 'accounts/login.html',variables)
+def signout(request):
+    logout(request)
+    return redirect('accounts:home')
 
-# register page for clients 
-def registerClient(request):
-    client = request.user
-    if client.is_authenticated:
-        return render(request,'main.html')
-    else:
-        # registeration form from django library
-        variables = {}
-        if request.POST:
-            # pass in form data
-            form = registerForm(request.POST)
-            # check if form is valid (no form issues)
-            if form.is_valid():
-                form.save();
-                email = form.cleaned_data.get('email')
-                raw_password = form.cleaned_data.get('password1')
-                # authenticate user
-                clientAccount = authenticate(email= email,password = raw_password)
-                login(request, clientAccount)
-                # return them to the calender view 
-                return render(request,'main.html')
-            else:
-                variables['form'] = form
-        # any variables for data that the registration page needs to render
-        else: # get request
-            form = registerForm() 
-            variables['form'] = form
-        return render(request,'accounts/register.html',variables)
-
-# account view to edit information 
 def profileView(request):
     # make sure profile can only be visited by authenticated and logged users 
     if not request.user.is_authenticated:
-        return redirect('login')
+        return redirect('accounts:signin')
 
     variables = {}
 
@@ -80,8 +24,9 @@ def profileView(request):
         form = UpdateAccountForm(request.POST,instance=request.user)
         if form.is_valid():
             form.save()
-            # return them to the calender view 
-        return render(request,'main.html')
+            if request.user.is_coach:
+                return render(request,'calendarapp/coachPortal.html')
+        return render(request,'calendarapp/calendar.html')
     else:
         form = UpdateAccountForm(
             initial={
@@ -89,7 +34,63 @@ def profileView(request):
                 "username": request.user.username,
             }
         )
-
+        
     variables['profile'] = form
     return render (request,'accounts/profile.html',variables)
 
+class SignInView(View):
+    def get(self, request, *args, **kwargs):
+        forms = SignInForm
+        variables = {
+            'form': forms
+        }
+        return render(request,'accounts/signin.html', variables)
+
+    def post(self, request, *args, **kwargs):
+        forms = SignInForm(request.POST)
+        if forms.is_valid():
+            email = forms.cleaned_data['email']
+            password = forms.cleaned_data['password']
+            user = authenticate(email=email, password=password)
+            if user:
+                login(request, user)
+                if request.user.is_coach:
+                    return redirect('accounts:coach')
+                else:
+                    return render(request,'calendarapp/calendar.html')
+        variables = {
+            'form': forms
+        }
+        return render(request, 'accounts/signin.html', variables)
+
+
+class SignUpView(View):
+    form_class = SignUpForm
+
+    def get(self, request, *args, **kwargs):
+        forms = self.form_class()
+        context = {
+            'form': forms
+        }
+        return render(request,'accounts/signup.html', context)
+
+    def post(self, request, *args, **kwargs):
+        forms = self.form_class(request.POST)
+        if forms.is_valid():
+            forms.save()
+            return redirect('accounts:signin')
+        context = {
+            'form': forms
+        }
+        return render(request,'accounts/signup.html', context)
+
+def coachView(request):
+    clients = User.objects.all()
+    tasks = Event.objects.all()
+    variables = {
+        'users':clients,
+        'tasks':tasks,
+    }
+    return render(request,'calendarapp/coachPortal.html',variables)
+
+   

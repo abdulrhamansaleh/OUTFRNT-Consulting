@@ -1,0 +1,22 @@
+{% extends 'coachPortalNav.html'%}
+{% block content %}
+<h1> OUTFRNT Clients <h1> 
+<!-- Make this a drop down menu where each client's tasks are displayed then view the client calendar -->
+{% for user in users%}
+    {% if user.is_client %} 
+        <li><a href="">{{user.username}}</a></li>
+        {% for task in tasks %}
+            {% if task.user.username == user.username %}
+            <p> title: {{task.title}} </p>
+            <p> description: {{task.description}} </p>
+            <p> due date: {{task.end_time}} </p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %} 
+
+
+
+{%endblock%}
+
+
