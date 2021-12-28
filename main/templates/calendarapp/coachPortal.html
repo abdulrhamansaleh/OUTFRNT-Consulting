@@ -1,22 +1,41 @@
 {% extends 'coachPortalNav.html'%}
 {% block content %}
-<h1> OUTFRNT Clients <h1> 
+<title> Coach View</title>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>       
 <!-- Make this a drop down menu where each client's tasks are displayed then view the client calendar -->
-{% for user in users%}
-    {% if user.is_client %} 
-        <li><a href="">{{user.username}}</a></li>
+<div class="card">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">
+        {% for user in users %}
+        {% if user.is_client %}
+        <h2>{{user.username}}</h2>
         {% for task in tasks %}
-            {% if task.user.username == user.username %}
-            <p> title: {{task.title}} </p>
-            <p> description: {{task.description}} </p>
-            <p> due date: {{task.end_time}} </p>
-            {% endif %}
-        {% endfor %}
+        {% if not task.is_due %}
+        {% if task.user.username == user.username %}
+        <p>
+        <div class="dropdown">
+            <button style="background: #187bcd" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{task.title}} 
+            </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#"><b>Description:</b> {{task.description}}</a>
+                    <a class="dropdown-item" href="#"><b>Due date:</b> <i>{{task.end_time}}</i></a>
+                </div>
+                </div>
+            </p>
     {% endif %}
-{% endfor %} 
-
-
-
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+    </h5>
+    </div>
+  </div>
+</div>
 {%endblock%}
 
 

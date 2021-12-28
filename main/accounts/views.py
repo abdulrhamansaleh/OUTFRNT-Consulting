@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login,logout
 from accounts.forms import SignInForm,SignUpForm,UpdateAccountForm
 from calendarapp.models import Event
 from accounts.models import User 
+from datetime import date,datetime
 
 def home(request):
     return render(request,'main.html')

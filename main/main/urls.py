@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
     path('', include('calendarapp.urls')),
+    path('', include('questionnaire.urls')),
     
     
     #password urls 

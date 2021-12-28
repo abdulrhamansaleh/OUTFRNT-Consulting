@@ -1,11 +1,8 @@
-from datetime import datetime
+from datetime import datetime,date
 from django.db import models
 from django.urls import reverse
 from accounts.models import User
-
 from django.db import models
-
-
 class EventAbstract(models.Model):
 
     is_active = models.BooleanField(default=True)
@@ -51,3 +48,6 @@ class Event(EventAbstract):
     def get_html_url(self):
         url = reverse('calendarapp:event-detail', args=(self.id,))
         return f'<a href="{url}"> {self.title} </a>'
+    @property
+    def is_due(self):
+        return datetime.now() > self.end_time
