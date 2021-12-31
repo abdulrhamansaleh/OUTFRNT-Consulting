@@ -50,7 +50,6 @@ def next_month(d):
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
 
-
 class CalendarView(LoginRequiredMixin, generic.ListView):
     login_url = 'accounts:signin'
     model = Event
@@ -116,5 +115,3 @@ class CalendarViewNew(generic.View):
             'form': forms
         }
         return render(request, 'calendarapp/calendar.html', variables)
-
-    

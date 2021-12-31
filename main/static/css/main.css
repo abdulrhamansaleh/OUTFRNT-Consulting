@@ -15312,7 +15312,7 @@ be a descendant of the grid when it is being dragged.
 .treeview-item.active, .treeview-item:hover, .treeview-item:focus {
   background: #187bcd;
   text-decoration: none;
-  color: #fff;
+  color: #187bcd;
 }
 
 .treeview-item .icon {
@@ -15379,7 +15379,7 @@ be a descendant of the grid when it is being dragged.
   }
   .sidebar-mini.sidenav-toggled .treeview:hover .app-menu__item {
     overflow: visible;
-    background:#666699;
+    background:#187bcd;
     border-left-color: #fff;
     color: #fff;
   }

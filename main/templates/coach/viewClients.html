@@ -1,4 +1,4 @@
-{% extends 'coachPortalNav.html'%}
+{% extends 'coachBase.html'%}
 {% block content %}
 <title> Coach View</title>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -12,13 +12,13 @@
       <h5 class="card-title">
         {% for user in users %}
         {% if user.is_client %}
-        <h2>{{user.username}}</h2>
+        <div>{{user.username}}</div>
         {% for task in tasks %}
         {% if not task.is_due %}
         {% if task.user.username == user.username %}
         <p>
         <div class="dropdown">
-            <button style="background: #187bcd" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button style="background:#187bcd" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{task.title}} 
             </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -36,6 +36,4 @@
     </div>
   </div>
 </div>
-{%endblock%}
-
-
+{% endblock %}

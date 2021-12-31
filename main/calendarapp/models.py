@@ -36,6 +36,7 @@ class Event(EventAbstract):
     description = models.TextField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
+    outfrnt_task = models.BooleanField(default=False)
     objects = EventManager()
 
     def __str__(self):
@@ -48,6 +49,7 @@ class Event(EventAbstract):
     def get_html_url(self):
         url = reverse('calendarapp:event-detail', args=(self.id,))
         return f'<a href="{url}"> {self.title} </a>'
+        
     @property
     def is_due(self):
         return datetime.now() > self.end_time

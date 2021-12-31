@@ -59,7 +59,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     # existing clients that have already completed questionaire 
     is_client = models.BooleanField(default=False)
 
-    # new clients have been approved to view questionnaire 
+    # new clients have been approved to complete a questionnaire 
     is_newClient = models.BooleanField(default=False) 
 
     objects = UserManager()

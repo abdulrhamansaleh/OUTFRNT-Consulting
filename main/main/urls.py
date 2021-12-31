@@ -21,7 +21,7 @@ from .views import DashboardView
 
 urlpatterns = [
     path('dashboard/', DashboardView.as_view(), name='dashboard'),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('', include('accounts.urls')),
     path('', include('calendarapp.urls')),
     path('', include('questionnaire.urls')),

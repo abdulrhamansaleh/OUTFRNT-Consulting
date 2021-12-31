@@ -32,6 +32,7 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('email','username','password1','password2')
 
+# to update account if needed through the backend 
 class UpdateAccountForm(forms.ModelForm):
     email = forms.EmailField(max_length=60,help_text="Required",widget=forms.EmailInput(attrs={
         'class': 'form-control'

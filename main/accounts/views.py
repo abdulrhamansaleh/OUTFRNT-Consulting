@@ -5,7 +5,6 @@ from django.contrib.auth import authenticate, login,logout
 from accounts.forms import SignInForm,SignUpForm,UpdateAccountForm
 from calendarapp.models import Event
 from accounts.models import User 
-from datetime import date,datetime
 
 def home(request):
     return render(request,'main.html')
@@ -56,14 +55,13 @@ class SignInView(View):
             if user:
                 login(request, user)
                 if request.user.is_coach:
-                    return redirect('accounts:coach')
+                    return render(request,'coach/coachPortal.html',)
                 else:
                     return render(request,'calendarapp/calendar.html')
         variables = {
             'form': forms
         }
         return render(request, 'accounts/signin.html', variables)
-
 
 class SignUpView(View):
     form_class = SignUpForm
@@ -92,6 +90,6 @@ def coachView(request):
         'users':clients,
         'tasks':tasks,
     }
-    return render(request,'calendarapp/coachPortal.html',variables)
+    return render(request,'coach/viewClients.html',variables)
 
    
