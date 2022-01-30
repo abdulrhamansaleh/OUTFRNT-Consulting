@@ -4,47 +4,56 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 {% load static %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>       
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="{% static 'css/coachNav.css'%}">
 <div class="sidebar-container">
   <div class="sidebar-logo">
-  | Welcome {{request.user.username}} |
+    <i class="fa fa-id-card" aria-hidden="true"></i>
   </div>
   <ul class="sidebar-navigation">
-    <li class="header"> Client Navigation </li>
+    <li class="header"> OUTFRNT </li>
     <li>
-      <a href="">
-        <i class="fa fa-info-circle" aria-hidden="true"></i> OUTFRNT Tasks
+      <a href="{% url 'calendarapp:outfrnt_task'%}">
+        Tasks
       </a>
     </li>
     <li>
-      <a href="{% url 'accounts:coach'%}">
-        <i class="fa fa-home" aria-hidden="true"></i> Client Tasks
+      <a href="{% url 'questionnaire:questions'%}">
+        Questions
       </a>
     </li>
     <li>
-      <a href="">
-        <i class="fa fa-tachometer" aria-hidden="true"></i> Questionnaires
+  </ul>
+  <ul class="sidebar-navigation">
+    <li class="header"> Clients </li>
+    <li>
+      <a href="{% url 'accounts:clients-view'%}">
+       Tasks
       </a>
     </li>
-    <li class="header"> Coach Navigation </li>
+    <li class="header"> Management </li>
+    <li>
+      <a href="{% url 'accounts:manage' %}">
+       Manage Clients
+      </a>
+    </li>
+    <li class="header"> Account </li>
     <li>
       <a href="{% url 'accounts:home'%}">
-        <i class="fa fa-cog" aria-hidden="true"></i> Outfrnt Home
-      </a>
-    </li>
-    <li>
-      <a href="{}">
-        <i class="fa fa-info-circle" aria-hidden="true"></i> Admin Panel
+       Home
       </a>
     </li>
     <li>
       <a href="{% url 'password_change'%}">
-        <i class="fa fa-info-circle" aria-hidden="true"></i> Change Password
+       Change Password
       </a>
     </li>
     <li>
       <a href="{% url 'accounts:signout'%}">
-        <i class="fa fa-users" aria-hidden="true"></i> Sign Out
+       Sign Out
       </a>
     </li>
   </ul>

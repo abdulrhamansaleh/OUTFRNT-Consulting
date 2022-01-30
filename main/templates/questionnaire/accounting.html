@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'questionnaire/questions.css' %}">
+<title> Questions </title>
+<div class = "box">
+  <div class="box1-content content">
+    <h1> Accounting and Finances </h1>
+    <p>
+        <form method="post" action = "{% url 'questionnaire:accounting' question.id %}" >
+        {% csrf_token %}
+            <div>
+              <h3> Q) {{ question.question_text }} </h3> 
+              <div class = "answer-box">
+                <p> {{ form.answer }} </p>
+                <div class = "button" >
+                  <button type="submit" style="background:#56a3ba" class="btn btn-info right"> Continue </a></button>
+                </div>  
+              </div>
+            </div>
+    </p>
+  </div>
+</div>
+</form>

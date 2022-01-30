@@ -8,7 +8,7 @@
 
 {% block breadcrumb %}
   <div>
-      <h1 style="color:#187bcd"><i class="fa fa-calendar"></i> Welcome, {{request.user.username}} </h1>
+      <h1 style="color:#56a3ba"><i class="fa fa-calendar"></i> Welcome, {{request.user.username}} </h1>
   </div>
 {% endblock breadcrumb %}
 
@@ -18,21 +18,25 @@
         <div class="tile row">
             <div class="col-md-3">
                 <div id="external-events">
-                    <h4 style="color:#3d3d3d" class="mb-4">Current Tasks/Takeaways</h4>
+                    <h4 style="color:#3d3d3d" class="mb-4"> OUTFRNT Tasks</h4>
                     {% for event in events_month %}
-                      <div style="background:#187bcd" class="fc-event">
-                          <h2>{{event.title}}</h2>
-                          <p>From: {{event.start_time}}</p>
-                          <p>Due: {{event.end_time}}</p>
-                      </div>
+                    {% if event.outfrnt_task %}
+                    <div style="background:#56a3ba" class="fc-event">
+                      <h2>{{event.title}}</h2>
+                      <p>From: {{event.start_time}}</p>
+                      <p>Due: {{event.end_time}}</p>
+                    </div>
+                    {% endif %}
                     {% empty %}
-                      <p> Nothing Due </p>
+                    <p> No Tasks For You </p>
                     {% endfor %}
                 </div>
             </div>
             <div class="col-md-9">
+              <!-- Container for the Calendar-->
                 <div id="calendar"></div>
             </div>
+            <!-- Form To Trigger a task addition -->
             <div class="modal fade show" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
                 <div class="modal-dialog modal-dialog-centered" role="document" >
                     <div class="modal-content" >
@@ -65,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button style="background:#187bcd" type="submit" class="btn btn-primary"> Save</button>
+                                <button style="background:#56a3ba" type="submit" class="btn btn-primary"> Save</button>
                             </div>
                         </form>
                     </div>
@@ -77,14 +81,15 @@
 {% endblock content %}
 
 {% block extrascripts %}
-<!-- FullCalendar.io-->
+<!-- FullCalendar.io script implementation -->
   <script src="{% static 'calendar/main.js' %}"></script>
   <script>
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var today = new Date();
-
+        // calendar object to be rendered 
         var calendar = new FullCalendar.Calendar(calendarEl, {
+          // the following property: etc.. are part of the event object 
           headerToolbar: {
             left: 'prev,next today',
             center: 'title',
@@ -94,19 +99,22 @@
           navLinks: true, 
           selectable: true,
           selectMirror: true,
+          // adding client task 
           select: function(arg) {
             var modal = document.getElementById('eventModal')
             modal.style.display = 'block'
             calendar.unselect()
           },
-          eventClick: function(arg) { 
-            if (confirm('Are you sure you want to delete this event?')) {
-              arg.event.remove();
-            }
-          },
+          // removing a task 
+          //eventClick: function(arg) { 
+            //if (confirm('Confirm the removal of this Task')) {
+              //arg.event.remove()
+            //}
+          //},
           editable: true,
           dayMaxEvents: true, 
           events: {{ events|safe }},
+          eventColor:'#56a3ba'
         });
         calendar.render();
       });

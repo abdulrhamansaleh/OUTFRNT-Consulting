@@ -17,10 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as authViews
 
-from .views import DashboardView
+from . import views
 
 urlpatterns = [
-    path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    path('dashboard/', views.DashBoardView , name='dashboard'),
     path('admin/', admin.site.urls, name='admin'),
     path('', include('accounts.urls')),
     path('', include('calendarapp.urls')),

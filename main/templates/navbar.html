@@ -16,10 +16,19 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-    
+          {% if request.user.is_authenticated %}
+            {% if request.user.is_coach %}
+            <a class="nav-link" href="{% url 'accounts:clients-view'%}"> Coach Portal </a></li>
+            {% elif request.user.is_client%}
+            <a class="nav-link" href="{% url 'calendarapp:calendar'%}"> Client Portal </a></li>
+            {% elif request.user.is_newclient and not request.user.categories_answered == 6%}
+            <a class="nav-link" href="{% url 'questionnaire:main'%}"> Enroll With OUTFRNT </a></li>
+            <a class="nav-link" href="{% url 'accounts:signout'%}"> Log Out </a></li>
+            {% endif %}
+          {% else %}
           <a class="nav-link" href="{% url 'accounts:signup'%}">Become a Client</a></li>
           <a class="nav-link" href="{% url 'accounts:signin'%}">Login</a></li>
-          
+          {% endif %}
       </ul>
     </div>
   </div>

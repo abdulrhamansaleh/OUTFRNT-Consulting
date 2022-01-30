@@ -1,0 +1,149 @@
+{% extends 'coachBase.html'%}
+{% block content %}
+<title> Manage </title>
+<!-- OUTFRNT PROSPECTS -->
+<div class = "card">
+    <h5 class="card-header" > Prospects </h5>
+  </div>
+<div style = "margin-bottom:8px"></div>
+<div>
+    <div class = "card">
+        <h5 class = "card-header" style = "background:#56a3ba" ></h5>
+        <div class = "card-body" >
+        <p class = "card-text" >
+            <table class = "table table-hover">
+            <thead>
+                {% if not prospects%}
+                <td class = "content" style="background:56a3ba"> No Current Registered Prospects </td>
+                {% else %}
+                <tr>
+                    <th class = "row-header" scope="col">Company</th>
+                    <th class = "row-header" scope="col">Contact Info.</th>
+                    <th class = "row-header" scope="col">Date Joined</th>
+                    <th class = "row-header" scope="col">Last Login</th>
+                    <th class = "row-header" scope="col">Update Status</th>
+                </tr>
+            </thead>
+                <tbody>
+                {% for prospect in prospects %}
+                <tr class = "content">
+                    <td class = "content"> {{prospect}} </td>
+                    <td class = "content"> {{prospect.email}} </td>
+                    <td class = "content"> {{prospect.date_joined}} </td>
+                    <td class = "content"> {{prospect.last_login}} </td>
+                    <td class = "content">
+                    <div class = "status">
+                        <a style = "float:center" class = "button-link" href = "{% url 'accounts:change-to-new-client' prospect.username %}"> Accept </a>
+                        <a style = "float:center" class = "button-link" href = "{% url 'accounts:remove-user' prospect.username %}"> Remove </a> 
+                    <div>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </p>
+    </div>
+</div>
+
+<!-- CREATE SPACE BETWEEN DIVS -->
+<div class="space"></div>
+
+<div class = "card">
+    <h5 class="card-header" > New Clients </h5>
+  </div>
+<div style = "margin-bottom:8px"></div>
+<!-- NEW CLIENTS PANEL -->
+<div>
+    <div class = "card">
+        <h5 class = "card-header" style = "background:#56a3ba"></h5>
+        <div class = "card-body">
+        <p class = "card-text">
+            <table class = "table table-hover">
+            <thead>
+                {% if not newclients %}
+                    <td class = "content" style = "background:56a3ba"> No Clients Awaiting Questionnaires </td>
+                {% else %}
+                <tr>
+                    <th class = "row-header" scope = "col" > Company       </th>
+                    <th class = "row-header" scope = "col" > Contact Info. </th>
+                    <th class = "row-header" scope = "col" > Questionnaire </th>
+                    <th class = "row-header" scope = "col" > Update Status </th>
+                </tr>
+            </thead>
+                <tbody>
+                {% for client in newclients %}
+                <tr>
+                    <td class = "content" > {{client}} </td>
+                    <td class = "content" > {{client.email}} </td>
+                    <td class = "content" > 
+                        <a class = "content" href = "{% url 'questionnaire:view-response' client.id %}">
+                            <i style = "color:#56a3ba" class = "fa fa-envelope-open" aria-hidden = "true">
+                            </i></i>
+                        <a>
+                    </td>
+                    <td class = "content" >
+                    <div class = "status">    
+                        <a class = "button-link" href = "{% url 'accounts:change-to-client' client.username %}"> Client </a>
+                        <a class = "button-link" href = "{% url 'accounts:change-to-propsect' client.username %}"> Revoke </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </p>
+    </div>
+</div>
+
+<!-- SPACE BETWEEN DIVS -->
+<div class = "space"></div>
+
+<div class = "card">
+    <h5 class="card-header" >  Clients  </h5>
+  </div>
+<div style = "margin-bottom:8px"></div>
+<!-- CLIENTS PANEL -->
+<div>
+    <div class = "card">
+        <h5 class = "card-header" style = "background:#56a3ba"></h5>
+        <div class = "card-body">
+        <p class = "card-text">
+            <table class = "table table-hover">
+            <thead>
+                <tr>
+                    <th class = "row-header" scope = "col" > Company       </th>
+                    <th class = "row-header" scope = "col" > Contact Info. </th>
+                    <th class = "row-header" scope = "col" > Questionnaire </th>
+                    <th class = "row-header" scope = "col" > Last Login    </th>
+                    <th class = "row-header" scope = "col" > Update Status </th>
+                </tr>
+            </thead>
+                <tbody>
+                {% for client in clients %}
+                {% if client.is_client %}
+                <tr>
+                    <td class = "content" > {{client}}            </td>
+                    <td class = "content" > {{client.email}}      </td>
+                    <td class = "content" >
+                        <a class = "content" href = "{% url 'questionnaire:view-response' client.id %}">
+                            <i style = "color:#56a3ba" class = "fa fa-envelope-open" aria-hidden = "true">
+                            </i></i>
+                        <a>
+                    </td>
+                    <td class = "content" > {{client.last_login}} </td>
+                    <td class = "content" >
+                    <div class = "status">
+                        <a class = "button-link" href="{% url 'accounts:change-to-new-client' client.username %}"> Revoke </a>
+                    </div>
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </p>
+    </div>
+</div>
+
+{% endblock %}

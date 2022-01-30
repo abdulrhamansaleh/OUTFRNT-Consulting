@@ -53,3 +53,16 @@ class Event(EventAbstract):
     @property
     def is_due(self):
         return datetime.now() > self.end_time
+    
+class Archived(EventAbstract):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE
+    )
+    title = models.CharField(max_length=200, unique=True)
+    description = models.TextField()
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    objects = EventManager()
+    
+    def __str__ (self):
+        return self.title 

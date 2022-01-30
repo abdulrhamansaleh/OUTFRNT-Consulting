@@ -51,7 +51,8 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff; }
+  background-color: white; 
+}
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -2068,24 +2069,24 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff; }
+  background-color: #56a3ba;
+  border-color: #56a3ba; }
   .btn-primary:hover {
     color: #fff;
-    background-color: #0069d9;
-    border-color: #0062cc; }
+    background-color: #56a3ba;
+    border-color: #56a3ba; }
   .btn-primary:focus, .btn-primary.focus {
     -webkit-box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
     box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5); }
   .btn-primary.disabled, .btn-primary:disabled {
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff; }
+    background-color: #56a3ba;
+    border-color: #56a3ba; }
   .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
   .show > .btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #0062cc;
-    border-color: #005cbf; }
+    background-color:#56a3ba;
+    border-color: #56a3ba; }
     .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
     .show > .btn-primary.dropdown-toggle:focus {
       -webkit-box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
@@ -8158,7 +8159,9 @@ h1, h2, h3, h4, h5,
   background: #6807f9 !important; }
 
 .ftco-section {
-  padding: 7em 0; }
+  background-color:hite;
+  padding: 7em 0; 
+}
 
 .ftco-no-pt {
   padding-top: 0; }
@@ -8193,7 +8196,7 @@ h1, h2, h3, h4, h5,
   position: relative;
   z-index: 0; }
   .text-wrap:after {
-    background: #6807f9;
+    background: #56a3ba;
     position: absolute;
     top: 0;
     left: 0;
@@ -8384,8 +8387,8 @@ textarea.form-control {
   .btn:hover, .btn:active, .btn:focus {
     outline: none; }
   .btn.btn-primary {
-    background: #6807f9 !important;
-    border: 1px solid #6807f9 !important;
+    background: #56a3ba !important;
+    border: 1px solid #56a3ba !important;
     color: #fff !important;
     -webkit-box-shadow: 0px 10px 19px -16px rgba(0, 0, 0, 0.29) !important;
     -moz-box-shadow: 0px 10px 19px -16px rgba(0, 0, 0, 0.29) !important;
