@@ -13,7 +13,9 @@ from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter 
 
 
-@login_required(login_url = 'accounts/signin.html')
+
+# add questions to the database for new clients to answer 
+@login_required(login_url = '/signin/')
 def questions(request):
     user = request.user
     if user.is_coach:
@@ -38,8 +40,8 @@ def questions(request):
         return home(request)
 
 
-# allow a generation of client  responses via pdf 
-@login_required(login_url = 'accounts/signin.html')     
+# allow a generation of client responses into a pdf file 
+@login_required(login_url = '/signin/')
 def questionnaire_responses(request, client_id ):
     client = User.objects.get(id = client_id)
     # check if user can access coach questionnaire and if questionnaire is complete for display 
@@ -66,42 +68,36 @@ def questionnaire_responses(request, client_id ):
         # populate the pdf content with all quesitonnaire categories and responses 
         for question in client_sales_responses:
             pdf_content.append("Sales Response")
-            pdf_content.append(question.responder)
             pdf_content.append(question)
             pdf_content.append(question.question_answer)
             pdf_content.append("------------------------------------------------------")
             
         for question in client_people_responses:
             pdf_content.append("People Response")
-            pdf_content.append(question.responder)
             pdf_content.append(question)
             pdf_content.append(question.question_answer)
             pdf_content.append("------------------------------------------------------")
         
         for question in client_accounting_responses:
             pdf_content.append("Accounting Response")
-            pdf_content.append(question.responder)
             pdf_content.append(question)
             pdf_content.append(question.question_answer)
             pdf_content.append("------------------------------------------------------")
         
         for question in client_business_responses:
             pdf_content.append("Business Response")
-            pdf_content.append(question.responder)
             pdf_content.append(question)
             pdf_content.append(question.question_answer)
             pdf_content.append("------------------------------------------------------")
         
         for question in client_legal_responses:
             pdf_content.append("Legal Response")
-            pdf_content.append(question.responder)
             pdf_content.append(question)
             pdf_content.append(question.question_answer)
             pdf_content.append("------------------------------------------------------")
         
         for question in client_tech_responses:
             pdf_content.append("Technology Response")
-            pdf_content.append(question.responder)
             pdf_content.append(question)
             pdf_content.append(question.question_answer)
             pdf_content.append("------------------------------------------------------")
@@ -124,8 +120,7 @@ def questionnaire_responses(request, client_id ):
     else:
         return home(request)
     
-
-@login_required(login_url = 'accounts/signin.html')
+@login_required(login_url = '/signin/')
 def questionnaire_view(request):
     if request.user.is_newclient and (not (request.user.categories_answered == 6)):
         question = Question.objects.all().first()
@@ -140,7 +135,7 @@ def questionnaire_view(request):
     else:
         return home(request)
 
-@login_required(login_url = 'accounts/signin.html')
+@login_required(login_url = '/signin/')
 def sales_and_management(request, question_id):
     # check if user is allowed a quesitonnaire and if they have completed the category
     if request.user.is_newclient and (not request.user.completed_P1):
@@ -197,7 +192,7 @@ def sales_and_management(request, question_id):
     else:
         return home(request)
 
-@login_required(login_url = 'accounts/signin.html')         
+@login_required(login_url = '/signin/')
 def people_and_culture(request,question_id):
     # check if user is allowed a quesitonnaire and if they have completed the category
     if request.user.is_newclient and (not request.user.completed_P2):
@@ -256,8 +251,7 @@ def people_and_culture(request,question_id):
     else:
         return home(request)
 
-
-@login_required(login_url = 'accounts/signin.html')
+@login_required(login_url = '/signin/')
 def accounting_and_finance(request,question_id):
     # check if user is allowed a quesitonnaire and if they have completed the category
     if request.user.is_newclient and (not request.user.completed_P3):
@@ -316,8 +310,7 @@ def accounting_and_finance(request,question_id):
     else:
         return home(request)
                 
-
-@login_required(login_url = 'accounts/signin.html')
+@login_required(login_url = '/signin/')
 def buisness_and_operations(request,question_id):
     # check if user is allowed a quesitonnaire and if they have completed the category
     if request.user.is_newclient and (not request.user.completed_P4):
@@ -376,8 +369,7 @@ def buisness_and_operations(request,question_id):
     else:
         return home(request)
     
-
-@login_required(login_url = 'accounts/signin.html')
+@login_required(login_url = '/signin/')
 def legal_and_governance(request,question_id):
     # check if user is allowed a quesitonnaire and if they have completed the category
     if request.user.is_newclient and (not request.user.completed_P5):
@@ -436,7 +428,7 @@ def legal_and_governance(request,question_id):
     else:
         return home(request)
 
-@login_required(login_url = 'accounts/signin.html') 
+@login_required(login_url = '/signin/')
 def technology(request,question_id):
     # check if user is allowed a quesitonnaire and if they have completed the category
     if request.user.is_newclient and (not request.user.completed_P6):
@@ -462,7 +454,7 @@ def technology(request,question_id):
                     question_answer = answer,
                     answered = True
             ) 
-            for question in current_questions :
+            for queston in current_questions :
                 if len(Question.objects.filter(responder = form_responder, category = current_category, answered = True,)) == (len(current_questions)) :
                     # set category to complete and answered 
                     form_responder.completed_P6 = True

@@ -6,10 +6,12 @@ class AnswerForm(ModelForm):
     class Meta: 
         model = Response 
         fields = ['answer']  
-    widgets = {
+        widgets = {
         'answer': forms.Textarea(attrs={
                 'class': 'form-control',
-                'style':'resize:none;',
+                'placeholder': 'Response to question',
+                'rows':10,
+                'style':'resize:none;'
             }),
     }
 

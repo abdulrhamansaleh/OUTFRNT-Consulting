@@ -15,7 +15,10 @@ class EventForm(ModelForm):
             }),
             'description': forms.Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'Enter task/takeaway description'
+                'placeholder': 'Enter task/takeaway description',
+                'rows':6,
+                'col':22,
+                'style':'resize:none'
             }),
             'start_time': DateInput(
                 attrs={'type': 'datetime-local', 'class': 'form-control'},
@@ -46,7 +49,8 @@ class outfrntEventForm(ModelForm):
             }),
             'description': forms.Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'Enter task/takeaway description'
+                'placeholder': 'Enter task/takeaway description',
+                'style':'resize:none'
             }),
             'start_time': DateInput(
                 attrs={'type': 'datetime-local', 'class': 'form-control'},

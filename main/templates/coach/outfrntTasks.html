@@ -67,7 +67,11 @@
                   <tr>
                       <td class = "content" > {{ task.user }} </td>
                       <td class = "content" > {{ task.user.email }} </td>
-                      <td class = "content" > {{ task.description }} </td>
+                      <td class = "content" > 
+                        <div class = "status">
+                          <a class = "button-link" href = "{% url 'calendarapp:task-details' task.id %}"> View </td>
+                        </div>
+                      </td>
                       <td class = "content" > {{ task.end_time }} </td>
                       <td class = "content" > 
                         <a class = "button-link" href="{% url 'calendarapp:delete' task.id %}"><span> Delete </span></a>

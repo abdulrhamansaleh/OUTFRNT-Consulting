@@ -26,6 +26,7 @@
                                         <tr role="row">
                                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 417.312px;">OUTFRNT Task</th>
                                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Task/Takeaway</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Description</th>
                                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">End Time</th>
                                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;"></th>
                                         </tr>
@@ -45,14 +46,21 @@
                                                     {% endif %}
                                                 </td>
                                                 <td style="color:black">{{ event.title }}</td>
+                                                <td style="color:black">
+                                                {% if not event.outfrnt_task %}
+                                                    <div class = "status">
+                                                        <a class = "fcc-btn" href = "{% url 'calendarapp:task-details' event.id %}"> View </td>
+                                                    </div>
+                                                </td>
+                                                {% endif %}
                                                 <td style="color:black">{{ event.end_time }}</td>
                                                 <td>
-                                                    {% if not event.outfrnt_task %}
+                                                {% if not event.outfrnt_task %}
                                                     <form method="post">
                                                     {% csrf_token %}
                                                     <div><a href="{% url 'calendarapp:delete_task' event.id%}" class="fcc-btn"> Delete </button>
                                                     </form>
-                                                    {% endif %}
+                                                {% endif %}
                                                 </td>
                                             </tr>
                                         {% endif %}

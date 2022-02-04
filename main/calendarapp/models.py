@@ -21,6 +21,7 @@ class EventManager(models.Manager):
         return events
 
     def get_running_events(self, user):
+        # return events with gte to get end times less than or equal to the date (this filters current events)
         running_events = Event.objects.filter(
             user=user, is_active=True, is_deleted=False,
             end_time__gte=datetime.now().date()
@@ -32,7 +33,8 @@ class Event(EventAbstract):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='events'
     )
-    title = models.CharField(max_length=200, unique=True)
+    
+    title = models.CharField(max_length=200)
     description = models.TextField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
@@ -58,6 +60,7 @@ class Archived(EventAbstract):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE
     )
+
     title = models.CharField(max_length=200, unique=True)
     description = models.TextField()
     start_time = models.DateTimeField()

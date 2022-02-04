@@ -2,11 +2,11 @@ from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+from django.shortcuts import redirect
 
 from calendarapp.models import Event
 
-@login_required(login_url = 'accounts/signin.html')
+@login_required(login_url = '/signin/')
 def DashBoardView(request):
     user = request.user 
     # check if user is allowed to view the site

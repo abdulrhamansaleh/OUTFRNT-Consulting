@@ -1,35 +1,62 @@
+{% extends 'navbar.html' %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'questionnaire/enroll_style.css' %}">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title> Welcome </title>
-        <link rel="stylesheet" href="">
-    </head>
-    <div class = "background">
-        <div class = "container">
-            <div class = "overlay">
-                <div> 
-                    <h1> Welcome to OUTFRNT </h1>
-                <div>
-                <div class = "sub-text">
-                    <p> 
-                    you are one step away from being one step ahead,    
-                    let us know more about your company and goals by answering some business oriented questions
-                    </p>
-                </div>
-                <div class = "button">
-                    <p>
-                        <button class = "proceed-button" type="submit">
-                        <a href ="{% url 'questionnaire:sales' id %}"> Proceed </a>
-                        </button> 
-                    <p>
-                </div>
-            </div> 
+{% block childcss %}
+<link rel="stylesheet" href="{% static 'questionnaire/enroll_style.css' %}">
+{% endblock %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'questionnaire/landing.css' %}" />
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+<body>
+<div class="header">
+    <h1>Please Complete The Following Categories of Questions</h1>
+</div>  
+<div class="row1-container">
+        <div class="box color" style="text-decoration:none">
+        <a class = "link" href = "{% url 'questionnaire:sales' id %}">
+            <h2>Sales & Marketing</h2>
+            <p>Answer a collection of questions catered to analyze your sales and marketing techniques</p>
+            <span class="iconify" data-icon="icon-park-outline:sales-report" data-width = "50%" data-height = "50%"></span>
+        </a>
         </div>
+        <div class="box color" style="text-decoration:none">      
+            <a class = "link" href = "{% url 'questionnaire:people' id %}">
+            <h2>People & Culture</h2>
+            <p>Answer a collection of questions catered to analyze your culture and company values</p>
+            <span class="iconify" data-icon="akar-icons:people-group" data-width = "50%" data-height = "50%"></span>
+        </div>
+        <div class="box color" style="text-decoration:none">     
+        <a class = "link" href = "{% url 'questionnaire:accounting' id %}">
+            <h2>Accounting & Finance</h2>
+            <p>Answer a collection of questions catered to analyze your monitary performance and revenue streams</p>
+            <span class="iconify"  data-icon="mdi:finance" data-width = "50%" data-height = "50%"></span>
+        </div>
+   </div>
+   <div class="row2-container" style="text-decoration:none">
+    <div class="box color">     
+        <a class = "link" href = "{% url 'questionnaire:buisness' id %}">
+            <h2>Business & Operations</h2>
+            <p>Answer a collection of questions catered to analyze your flow of business operations</p>
+            <span class="iconify" data-icon="dashicons:businessperson" data-width = "50%" data-height = "50%"></span>
+        </a>
     </div>
-</html>
+    <div class="box color" style="text-decoration:none">     
+        <a class = "link" href = "{% url 'questionnaire:legal' id %}">
+            <h2>Legal & Governance</h2>
+            <p>Answer a collection of questions catered to analyze your governance levels</p>
+            <span class="iconify" data-icon="octicon:law-24" data-width = "50%" data-height = "50%"></span>
+        </a>
+    </div>
+    <div class="box color" style="text-decoration:none">     
+        <a class = "link" href = "{% url 'questionnaire:technology' id %}">
+            <h2>Technology & Tools</h2>
+            <p>Answer a collection of questions catered to analyze the technologies you use</p>
+            <span class="iconify" data-icon="grommet-icons:technology" data-width = "50%" data-height = "50%"></span>
+        </a>
+    </div>
+  </div>
+</body>
+{% endblock %}
 

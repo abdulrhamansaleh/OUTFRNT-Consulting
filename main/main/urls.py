@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as authViews
-
 from . import views
 
 urlpatterns = [
@@ -25,7 +24,6 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('', include('calendarapp.urls')),
     path('', include('questionnaire.urls')),
-    
     
     #password urls 
     path('password_change/done/'
