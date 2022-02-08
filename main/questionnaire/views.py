@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from questionnaire.models import Question,Response
+from questionnaire.models import Question,Response,Questionnaire
 from questionnaire.forms import AnswerForm,AddQuestions
 from accounts.models import User
 from django.contrib.auth.decorators import login_required
@@ -19,7 +19,7 @@ from reportlab.lib.pagesizes import letter
 def questions(request):
     user = request.user
     if user.is_coach:
-        questions = Question.objects.filter(answered = False)
+        questions = Question.objects.all()
         form = AddQuestions(request.POST)
         variables = {
             "questions":questions,
@@ -135,340 +135,81 @@ def questionnaire_view(request):
     else:
         return home(request)
 
-@login_required(login_url = '/signin/')
-def sales_and_management(request, question_id):
-    # check if user is allowed a quesitonnaire and if they have completed the category
-    if request.user.is_newclient and (not request.user.completed_P1):
-        # category variables
-        current_category = "sales"
-        next_category = "people"
-        
-        current_questions = Question.objects.filter(category = current_category, responder = None , question_answer = None)
-        
-        question_obj = Question.objects.get(id = question_id)
-        
-        form = AnswerForm(request.POST or None) 
-                
-        if request.POST and form.is_valid():
-            form_responder = request.user
-            form_answer = form.cleaned_data['answer']
-            answer = Response.objects.create(
-                responder = form_responder,
-                answer = form_answer
-            )
-            Question.objects.get_or_create(
-                    category = current_category,
-                    question_text = question_obj.question_text,
-                    responder = form_responder,
-                    question_answer = answer,
-                    answered = True
-            ) 
-            # check if all category questions have been answered 
-            for question in current_questions :
-                if len(Question.objects.filter(responder = form_responder, category = current_category, answered = True,)) == (len(current_questions)):
-                    # set the new question set to the next category of questions 
-                    next_question_obj = Question.objects.filter(category = next_category , answered = False).first()
-                    variables = {
-                        "question":next_question_obj,
-                        "form":form
-                    }
-                    # set category to complete and answered 
-                    form_responder.completed_P1 = True
-                    form_responder.categories_answered += 1
-                    form_responder.save()
-                    # render the new category of questions 
-                    return render (request,"questionnaire/people.html", variables)
-                # if there remains questions increment to the next question in the same category 
-                else:
-                    question_obj = Question.objects.get(id = question_id + 1 , category = current_category , answered = False)         
-                    variables = {
-                        "question":question_obj,
-                        "form":form, 
-                    } 
-                    # rerender with question
-                    return render(request,"questionnaire/sales.html", variables)
-        # render the original view 
-        return render(request,"questionnaire/sales.html", { "form":form, "question":question_obj } )
-    else:
-        return home(request)
+def answer_question(request, category):
+    client = request.user
+    if client.is_client:
+        # query category of questions 
+        questions = Question.objects.filter(category=category)
 
-@login_required(login_url = '/signin/')
-def people_and_culture(request,question_id):
-    # check if user is allowed a quesitonnaire and if they have completed the category
-    if request.user.is_newclient and (not request.user.completed_P2):
-        # category variables
-        current_category = "people"
-        next_category = "accounting"
-        
-        current_questions = Question.objects.filter(category = current_category, responder = None , question_answer = None)
-        
-        question_obj = Question.objects.get(id = question_id)
-        
-        form = AnswerForm(request.POST or None) 
-        
-        # store client answer as a new question object         
-        if request.POST and form.is_valid():
-            form_responder = request.user
-            form_answer = form.cleaned_data['answer']
-            answer = Response.objects.create(
-                responder = form_responder,
-                answer = form_answer
+        # populate questionnaire 
+        for index in range(questions.count()):
+            Questionnaire.objects.get_or_create(
+                provided_for = client, 
+                question = questions[index],
             )
-            Question.objects.get_or_create(
-                    category = current_category,
-                    question_text = question_obj.question_text,
-                    responder = form_responder,
-                    question_answer = answer,
-                    answered = True
-            ) 
-            
-            # check if all category questions have been answered 
-            for question in current_questions :
-                if len(Question.objects.filter(responder = form_responder, category = current_category, answered = True,)) == (len(current_questions)):
-                    # set the new question set to the next category of questions 
-                    next_question_obj = Question.objects.filter(category = next_category , answered = False).first()
-                    variables = {
-                        "question":next_question_obj,
-                        "form":form
-                    }
-                    # set category to complete and answered 
-                    form_responder.completed_P2 = True
-                    form_responder.categories_answered += 1
-                    form_responder.save()
-                    # render the new category of questions 
-                    return render (request,"questionnaire/accounting.html", variables)
-                # if there remains questions increment to the next question in the same category 
-                else:
-                    question_obj = Question.objects.get(id = question_id + 1 , category = current_category , answered = False)         
-                    variables = {
-                        "question":question_obj,
-                        "form":form, 
-                    } 
-                    # rerender with current category template
-                    return render(request,"questionnaire/people.html", variables)
-        # initial render of current category 
-        return render(request,"questionnaire/people.html", { "form":form, "question":question_obj } )
-    else:
-        return home(request)
+        
+        # query questionnaire for user 
+        questions_to_answer = Questionnaire.objects.filter( provided_for = client , answered = False)
 
-@login_required(login_url = '/signin/')
-def accounting_and_finance(request,question_id):
-    # check if user is allowed a quesitonnaire and if they have completed the category
-    if request.user.is_newclient and (not request.user.completed_P3):
-        # category variables
-        current_category = "accounting"
-        next_category = "business"
-        
-        current_questions = Question.objects.filter(category = current_category, responder = None , question_answer = None)
-        
-        question_obj = Question.objects.get(id = question_id)
-        
-        form = AnswerForm(request.POST or None) 
-        
-        # store client answer as a new question object         
-        if request.POST and form.is_valid():
-            form_responder = request.user
-            form_answer = form.cleaned_data['answer']
-            answer = Response.objects.create(
-                responder = form_responder,
-                answer = form_answer
-            )
-            Question.objects.get_or_create(
-                    category = current_category,
-                    question_text = question_obj.question_text,
-                    responder = form_responder,
-                    question_answer = answer,
-                    answered = True
-            ) 
-            
-            # check if all category questions have been answered 
-            for question in current_questions :
-                if len(Question.objects.filter(responder = form_responder, category = current_category, answered = True,)) == (len(current_questions)):
-                    # set the new question set to the next category of questions 
-                    next_question_obj = Question.objects.filter(category = next_category , answered = False).first()
-                    variables = {
-                        "question":next_question_obj,
-                        "form":form
-                    }
-                    # set category to complete and answered 
-                    form_responder.completed_P3 = True
-                    form_responder.categories_answered += 1
-                    form_responder.save()
-                    # render the new category of questions 
-                    return render (request,"questionnaire/business.html", variables)
-                # if there remains questions increment to the next question in the same category 
-                else:
-                    question_obj = Question.objects.get(id = question_id + 1 , category = current_category , answered = False)         
-                    variables = {
-                        "question":question_obj,
-                        "form":form, 
-                    } 
-                    # rerender with current category template
-                    return render(request,"questionnaire/accounting.html", variables)
-        # initial render of current category 
-        return render(request,"questionnaire/accounting.html", { "form":form, "question":question_obj } )
-    else:
-        return home(request)
-                
-@login_required(login_url = '/signin/')
-def buisness_and_operations(request,question_id):
-    # check if user is allowed a quesitonnaire and if they have completed the category
-    if request.user.is_newclient and (not request.user.completed_P4):
-        # category variables
-        current_category = "business"
-        next_category = "legal"
-        
-        current_questions = Question.objects.filter(category = current_category, responder = None , question_answer = None)
-        
-        question_obj = Question.objects.get(id = question_id)
-        
-        form = AnswerForm(request.POST or None) 
-        
-        # store client answer as a new question object         
-        if request.POST and form.is_valid():
-            form_responder = request.user
-            form_answer = form.cleaned_data['answer']
-            answer = Response.objects.create(
-                responder = form_responder,
-                answer = form_answer
-            )
-            Question.objects.get_or_create(
-                    category = current_category,
-                    question_text = question_obj.question_text,
-                    responder = form_responder,
-                    question_answer = answer,
-                    answered = True
-            ) 
-            
-            # check if all category questions have been answered 
-            for question in current_questions :
-                if len(Question.objects.filter(responder = form_responder, category = current_category, answered = True,)) == (len(current_questions)):
-                    # set the new question set to the next category of questions 
-                    next_question_obj = Question.objects.filter(category = next_category , answered = False).first()
-                    variables = {
-                        "question":next_question_obj,
-                        "form":form
-                    }
-                    # set category to complete and answered 
-                    form_responder.completed_P4 = True
-                    form_responder.categories_answered += 1
-                    form_responder.save()
-                    # render the new category of questions 
-                    return render (request,"questionnaire/legal.html", variables)
-                # if there remains questions increment to the next question in the same category 
-                else:
-                    question_obj = Question.objects.get(id = question_id + 1 , category = current_category , answered = False)         
-                    variables = {
-                        "question":question_obj,
-                        "form":form, 
-                    } 
-                    # rerender with current category template
-                    return render(request,"questionnaire/business.html", variables)
-        # initial render of current category 
-        return render(request,"questionnaire/business.html", { "form":form, "question":question_obj } )
-    else:
-        return home(request)
-    
-@login_required(login_url = '/signin/')
-def legal_and_governance(request,question_id):
-    # check if user is allowed a quesitonnaire and if they have completed the category
-    if request.user.is_newclient and (not request.user.completed_P5):
-        # category variables
-        current_category = "legal"
-        next_category = "tech"
-        
-        current_questions = Question.objects.filter(category = current_category, responder = None , question_answer = None)
-        
-        question_obj = Question.objects.get(id = question_id)
-        
-        form = AnswerForm(request.POST or None) 
-        
-        # store client answer as a new question object         
-        if request.POST and form.is_valid():
-            form_responder = request.user
-            form_answer = form.cleaned_data['answer']
-            answer = Response.objects.create(
-                responder = form_responder,
-                answer = form_answer
-            )
-            Question.objects.get_or_create(
-                    category = current_category,
-                    question_text = question_obj.question_text,
-                    responder = form_responder,
-                    question_answer = answer,
-                    answered = True
-            ) 
-            
-            # check if all category questions have been answered 
-            for question in current_questions :
-                if len(Question.objects.filter(responder = form_responder, category = current_category, answered = True,)) == (len(current_questions)):
-                    # set the new question set to the next category of questions 
-                    next_question_obj = Question.objects.filter(category = next_category , answered = False).first()
-                    variables = {
-                        "question":next_question_obj,
-                        "form":form
-                    }
-                    # set category to complete and answered 
-                    form_responder.completed_P5 = True
-                    form_responder.categories_answered += 1
-                    form_responder.save()
-                    # render the new category of questions 
-                    return render (request,"questionnaire/technology.html", variables)
-                # if there remains questions increment to the next question in the same category 
-                else:
-                    question_obj = Question.objects.get(id = question_id + 1 , category = current_category , answered = False)         
-                    variables = {
-                        "question":question_obj,
-                        "form":form, 
-                    } 
-                    # rerender with current category template
-                    return render(request,"questionnaire/legal.html", variables)
-        # initial render of current category 
-        return render(request,"questionnaire/legal.html", { "form":form, "question":question_obj } )
-    else:
-        return home(request)
+        # query question to respond to 
+        question = questions_to_answer.first()
 
-@login_required(login_url = '/signin/')
-def technology(request,question_id):
-    # check if user is allowed a quesitonnaire and if they have completed the category
-    if request.user.is_newclient and (not request.user.completed_P6):
-        current_category = "tech"
-        
-        current_questions = Question.objects.filter(category = current_category, responder = None , question_answer = None)
-        num_of_questions = len(current_questions)
-        question_obj = Question.objects.get(id = question_id)
-    
+        # provide form for answering 
         form = AnswerForm(request.POST or None)
-        
-        if request.POST and form.is_valid():
-            form_responder = request.user
-            form_answer = form.cleaned_data['answer']
-            answer = Response.objects.create(
-                responder = form_responder,
-                answer = form_answer
-            )
-            Question.objects.get_or_create(
-                    category = current_category,
-                    question_text = question_obj.question_text,
-                    responder = form_responder,
-                    question_answer = answer,
-                    answered = True
-            ) 
-            for queston in current_questions :
-                if len(Question.objects.filter(responder = form_responder, category = current_category, answered = True,)) == (len(current_questions)) :
-                    # set category to complete and answered 
-                    form_responder.completed_P6 = True
-                    form_responder.categories_answered += 1
-                    form_responder.save()
-                    return render (request,"questionnaire/finished.html")
-                else:
-                    question_obj = Question.objects.get(id = question_id + 1)         
-                    variables = {
-                        "form":form,
-                        "question":question_obj,      
-                    } 
-                    return render(request,"questionnaire/technology.html", variables)
-        return render(request,"questionnaire/technology.html", { "form":form, "question":question_obj } )
+
+        # if no quesitons to answer 
+        if not question:
+            # check the category that was full answered 
+            if category == 'sales':
+                client.completed_P1 = True
+                client.save()
+            if category == 'people':
+                client.completed_P2 = True
+                client.save()
+            if category == 'accounting':
+                client.completed_P3 = True
+                client.save()
+            if category == 'business':
+                client.completed_P4 = True
+                client.save()
+            if category == 'legal':
+                client.completed_P5 = True
+                client.save()
+            if category == 'tech':
+                client.completed_P6 = True
+                client.save()
+            return redirect("questionnaire:main")
+
+        variables = {
+            "form":form,
+            "question":question.question
+        }
+
+        # if there is a question to answer 
+        if question:
+            if request.POST and form.is_valid():
+                if 'continue' in request.POST:
+                    answer = form.cleaned_data['answer']
+                    Response.objects.create(
+                        responder = client, 
+                        answer = answer,
+                        question = question.question
+                    )
+                    question.answered = True
+                    question.save()
+                    return redirect("questionnaire:answer", category = category)
+                if 'save' in request.POST:
+                    answer = form.cleaned_data['answer']
+                    Response.objects.create(
+                        responder = client, 
+                        answer = answer,
+                        question = question.question
+                    )
+                    question.answered = True
+                    question.save()
+                    return redirect("questionnaire:main")
+        # inial render
+        return render(request , f'questionnaire/{category}.html' , variables )
     else:
         return home(request)
 

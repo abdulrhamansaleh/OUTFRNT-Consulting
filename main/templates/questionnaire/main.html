@@ -15,20 +15,20 @@
 </div>  
 <div class="row1-container">
         <div class="box color" style="text-decoration:none">
-        <a class = "link" href = "{% url 'questionnaire:sales' id %}">
+        <a class = "link" href = "{% url 'questionnaire:answer' 'sales' %}">
             <h2>Sales & Marketing</h2>
             <p>Answer a collection of questions catered to analyze your sales and marketing techniques</p>
             <span class="iconify" data-icon="icon-park-outline:sales-report" data-width = "50%" data-height = "50%"></span>
         </a>
         </div>
         <div class="box color" style="text-decoration:none">      
-            <a class = "link" href = "{% url 'questionnaire:people' id %}">
+            <a class = "link" href = "{% url 'questionnaire:answer' 'people' %}">
             <h2>People & Culture</h2>
             <p>Answer a collection of questions catered to analyze your culture and company values</p>
             <span class="iconify" data-icon="akar-icons:people-group" data-width = "50%" data-height = "50%"></span>
         </div>
         <div class="box color" style="text-decoration:none">     
-        <a class = "link" href = "{% url 'questionnaire:accounting' id %}">
+        <a class = "link" href = "{% url 'questionnaire:answer' 'accounting' %}">
             <h2>Accounting & Finance</h2>
             <p>Answer a collection of questions catered to analyze your monitary performance and revenue streams</p>
             <span class="iconify"  data-icon="mdi:finance" data-width = "50%" data-height = "50%"></span>
@@ -36,21 +36,21 @@
    </div>
    <div class="row2-container" style="text-decoration:none">
     <div class="box color">     
-        <a class = "link" href = "{% url 'questionnaire:buisness' id %}">
+        <a class = "link" href = "{% url 'questionnaire:answer' 'business' %}">
             <h2>Business & Operations</h2>
             <p>Answer a collection of questions catered to analyze your flow of business operations</p>
             <span class="iconify" data-icon="dashicons:businessperson" data-width = "50%" data-height = "50%"></span>
         </a>
     </div>
     <div class="box color" style="text-decoration:none">     
-        <a class = "link" href = "{% url 'questionnaire:legal' id %}">
+        <a class = "link" href = "{% url 'questionnaire:answer' 'legal' %}">
             <h2>Legal & Governance</h2>
             <p>Answer a collection of questions catered to analyze your governance levels</p>
             <span class="iconify" data-icon="octicon:law-24" data-width = "50%" data-height = "50%"></span>
         </a>
     </div>
     <div class="box color" style="text-decoration:none">     
-        <a class = "link" href = "{% url 'questionnaire:technology' id %}">
+        <a class = "link" href = "{% url 'questionnaire:answer' 'tech' %}">
             <h2>Technology & Tools</h2>
             <p>Answer a collection of questions catered to analyze the technologies you use</p>
             <span class="iconify" data-icon="grommet-icons:technology" data-width = "50%" data-height = "50%"></span>

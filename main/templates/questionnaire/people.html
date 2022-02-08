@@ -5,14 +5,15 @@
   <div class="box1-content content">
     <h1> People and Culture </h1>
     <p>
-        <form method="post" action = "{% url 'questionnaire:people' question.id %}" >
+        <form method="post" action = "{% url 'questionnaire:answer' 'people' %}" >
         {% csrf_token %}
             <div>
               <h3> Q) {{ question.question_text }} </h3> 
               <div class = "answer-box">
                 <p> {{ form.answer }} </p>
                 <div class = "button" >
-                  <button type="submit" style="background:#56a3ba" class="btn btn-info right"> Continue </a></button>
+                  <button type="submit" name = "continue" style="background:#56a3ba" class="btn btn-info right"> Continue </a></button>
+                  <button type="submit" name = "save" style="background:#56a3ba" class="btn btn-info right"> Save & Exit </a></button>
                 </div>  
               </div>
             </div>

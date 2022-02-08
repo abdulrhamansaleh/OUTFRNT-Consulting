@@ -1,13 +1,6 @@
 from django.db import models
 from accounts.models import User
 
-class Response(models.Model):
-    responder = models.ForeignKey(User, on_delete = models.CASCADE)
-    answer = models.TextField()
-    
-    def __str__(self):
-        return self.answer
-
 class Question(models.Model):
     category_choices = [
         ('sales', 'Sales & Marketing'),
@@ -19,8 +12,6 @@ class Question(models.Model):
     ]
     
     question_text = models.CharField(max_length = 255)
-    question_answer = models.ForeignKey(Response, on_delete = models.CASCADE,null=True , blank = True) 
-    responder = models.ForeignKey(User, on_delete = models.CASCADE, null=True ,blank = True)
     
     category = models.CharField(
         max_length = 60, 
@@ -34,6 +25,16 @@ class Question(models.Model):
     
     def __str__(self):
         return self.question_text
+class Response(models.Model):
+    responder = models.ForeignKey(User, on_delete = models.CASCADE)
+    answer = models.TextField()
+    question = models.ForeignKey(Question, on_delete = models.CASCADE, null = True , blank = True)
+    def __str__(self):
+        return self.answer
+class Questionnaire(models.Model):
+    question = models.ForeignKey(Question, on_delete = models.CASCADE, null = True , blank = True)
+    provided_for = models.ForeignKey(User, on_delete = models.CASCADE)
+    answered = models.BooleanField(default = False)
 
 
     

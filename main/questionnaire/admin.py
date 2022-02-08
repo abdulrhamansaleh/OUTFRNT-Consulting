@@ -6,10 +6,7 @@ class questionnaireAdmin(admin.ModelAdmin):
     model = models.Question
     list_display = [
         'id',
-        'answered',
         'question_text',
-        'question_answer',
-        'responder',
         'category',
     ]
 
@@ -19,4 +16,13 @@ class reponseAdmin (admin.ModelAdmin):
     list_display = [
         'responder', 
         'answer'
+    ]
+
+@admin.register(models.Questionnaire)
+class questionnaireAdmin (admin.ModelAdmin):
+    model = models.Questionnaire
+    list_display = [
+        'question',
+        'provided_for',
+        'answered'
     ]
