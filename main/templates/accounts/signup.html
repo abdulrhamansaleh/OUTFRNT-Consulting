@@ -2,7 +2,7 @@
 <html lang="en">
 	{% load static %}
     <head>
-        <title>Sign Up | OUTFRNT Client </title>
+        <title>Sign Up</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -18,6 +18,9 @@
                 <div class="row justify-content-center">
                     <div class="col-md-12">
                         <div class="wrap d-md-flex">
+                            <!-- IMAGE TO DISPLAY NEXT TO FORM -->
+                            <div class="text-wrap p-4 p-lg-5 d-flex img" style="background-image: url({% static 'images/bg.jpeg' %});">
+                            </div>
                             <div class="login-wrap p-4 p-md-5">
                                 <div class="row justify-content-center py-md-5">
                                     <div class="col-lg-9">
@@ -60,7 +63,7 @@
                                             </div>
                                         </form>
                                         <div class="w-100">
-                                            <p class="mt-4">Already a Client ? <a style="color: #187bcd" href="{% url 'accounts:signin' %}"> Sign In</a></p>
+                                            <p style = "color:black" class="mt-4">Already a Client ? <a style="color: #187bcd" href="{% url 'accounts:signin' %}"> Sign In</a></p>
                                         </div>
                                     </div>
                                 </div>

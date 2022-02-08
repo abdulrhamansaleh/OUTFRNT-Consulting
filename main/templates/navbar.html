@@ -4,6 +4,8 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}" />
+{% block childcss %}
+{% endblock %}
 <script src="{% static 'js/navbar.js' %}"></script>
 <title> Outfrnt </title>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
@@ -16,11 +18,22 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-    
+          {% if request.user.is_authenticated %}
+            {% if request.user.is_coach %}
+            <a class="nav-link" href="{% url 'accounts:clients-view'%}"> Coach Portal </a></li>
+            {% elif request.user.is_client%}
+            <a class="nav-link" href="{% url 'calendarapp:calendar'%}"> Client Portal </a></li>
+            {% elif request.user.is_newclient and not request.user.categories_answered == 6%}            
+            <a class="nav-link" href="{% url 'questionnaire:main'%}"> Enroll With OUTFRNT </a></li>
+            <a class="nav-link" href="{% url 'accounts:signout'%}"> Log Out </a></li>
+            {% endif %}
+          {% else %}
           <a class="nav-link" href="{% url 'accounts:signup'%}">Become a Client</a></li>
           <a class="nav-link" href="{% url 'accounts:signin'%}">Login</a></li>
-          
+          {% endif %}
       </ul>
     </div>
   </div>
 </nav>
+{% block content %}
+{% endblock %}

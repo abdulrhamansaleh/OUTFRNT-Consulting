@@ -5,11 +5,14 @@
 
 {% block breadcrumb %}
     <div>
-        <h1 style="color:#187bcd"><i class="fa fa-dashboard"></i> Dashboard</h1>
+        <h1 style="color:#56a3ba"><i class="fa fa-dashboard"></i> Dashboard</h1>
     </div>
 {% endblock breadcrumb %}
 
 {% block content %}
+<!-- Font-icon css-->
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css'%}">
 <div class="row">
     <div class="col-md-12">
         <div class="tile">
@@ -21,21 +24,46 @@
                                 <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
                                     <thead>
                                         <tr role="row">
-                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 417.312px;">Priority</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 417.312px;">OUTFRNT Task</th>
                                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Task/Takeaway</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 189.281px;">Description</th>
                                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">End Time</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {% for event in latest_events %}
-                                        {% if event.is_deleted == true %}
+                                        {% if event.is_deleted %}
 
                                         {%endif%}
+                                        {% if not event.is_due %}
                                             <tr role="row" class="odd">
-                                                <td class="sorting_1">{{ forloop.counter }}</td>
-                                                <td>{{ event.title }}</td>
-                                                <td>{{ event.end_time }}</td>
+                                                <td>
+                                                    {% if event.outfrnt_task %}
+                                                    <i style="color:#56a3ba" class="fa fa-check" aria-hidden="true"></i>
+                                                    {% else %}
+                                                    <i style="color:#56a3ba" class="fa fa-times" aria-hidden="true"></i>
+                                                    {% endif %}
+                                                </td>
+                                                <td style="color:black">{{ event.title }}</td>
+                                                <td style="color:black">
+                                                {% if not event.outfrnt_task %}
+                                                    <div class = "status">
+                                                        <a class = "fcc-btn" href = "{% url 'calendarapp:task-details' event.id %}"> View </td>
+                                                    </div>
+                                                </td>
+                                                {% endif %}
+                                                <td style="color:black">{{ event.end_time }}</td>
+                                                <td>
+                                                {% if not event.outfrnt_task %}
+                                                    <form method="post">
+                                                    {% csrf_token %}
+                                                    <div><a href="{% url 'calendarapp:delete_task' event.id%}" class="fcc-btn"> Delete </button>
+                                                    </form>
+                                                {% endif %}
+                                                </td>
                                             </tr>
+                                        {% endif %}
                                         {% endfor %}
                                     </tbody>
                                 </table>
@@ -46,7 +74,6 @@
             </div>
         </div>
     </div>
-    
 </div>
 {% endblock content %}
 

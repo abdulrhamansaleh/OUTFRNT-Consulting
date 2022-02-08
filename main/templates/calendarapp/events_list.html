@@ -1,12 +1,11 @@
 {% extends 'main/base.html' %}
 {% load static %}
 
-{% block title %}Event List{% endblock title %}
+{% block title %}Tasks{% endblock title %}
 
 {% block breadcrumb %}
     <div>
-        <h1 style = "color:#187bcd"><i class="fa fa-dashboard"></i> Dashboard</h1>
-        <p>Event List</p>
+        <h1 style = "color:#56a3ba"><i class="fa fa-dashboard"></i> Dashboard</h1>
     </div>
     <ul class="app-breadcrumb breadcrumb">
     </ul>
@@ -24,17 +23,23 @@
                                 <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
                                     <thead>
                                         <tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 261.641px;">Priority</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 261.641px;">OUTFRNT Task</th>
                                             <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 417.312px;">Task/Takeaway</th>
-                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Due Time</th>
+                                            <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 102.141px;">Due Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for event in object_list %}
+                                        {% for event in events %}
                                             <tr role="row" class="odd">
-                                                <td class="sorting_1">{{ forloop.counter }}</td>
-                                                <td>{{ event.title }}</td>
-                                                <td>{{ event.end_time }}</td>
+                                                <td>
+                                                    {% if event.outfrnt_task %}
+                                                    <i style="color:#56a3ba" class="fa fa-check" aria-hidden="true"></i>
+                                                    {% else %}
+                                                    <i style="color:#56a3ba" class="fa fa-times" aria-hidden="true"></i>
+                                                    {% endif %}
+                                                </td>
+                                                <td style="color:black">{{ event.title }}</td>
+                                                <td style="color:black">{{ event.end_time }}</td>
                                             </tr>
                                         {% endfor %}
                                     </tbody>

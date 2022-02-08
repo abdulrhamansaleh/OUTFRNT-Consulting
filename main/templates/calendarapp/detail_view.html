@@ -1,0 +1,17 @@
+{% extends 'coachBase.html'%}
+{% load static %}
+{% block content %}
+<div class = "card">
+  <h5 class="card-header" > Task Details </h5>
+</div>
+<div style = "margin-bottom:8px"></div>
+<div class = "card text-center">
+    <div class = "card-body">
+      <h5 class = "card-title" style = "float:left"> {{task.description}} </h5>
+    </div>
+    <div class = "card-footer text-muted">
+      Due: {{task.end_time}}
+    </div>
+    <a style = "background:#56a3ba; border:none;" href = "{% url 'accounts:clients-view' %}" class="btn btn-primary"> Back to Tasks </a>
+</div>
+{% endblock %}

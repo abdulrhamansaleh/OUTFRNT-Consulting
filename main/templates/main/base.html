@@ -7,7 +7,7 @@
             {% if user.is_coach%}
             Coach Portal
             {% else %}
-            Client portabl
+            Client Portal 
             {% endif %}
             {% endblock title%}
         </title>
@@ -23,14 +23,12 @@
     </head>
     <body class="app sidebar-mini" >
         <!-- Navbar-->
-        <header class="app-header" style="background:#3d3d3d">
-            <!-- Sidebar toggle button-->
-            <a style="color:#187bcd" class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+        <header class="app-header" style="background:black">
             <!-- Navbar Right Menu-->
             <ul class="app-nav">
                 <!-- User Menu -->
-                <li class="dropdown">
-                    <a style="color:#187bcd" class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+                <li class="dropdown" style="background:black">
+                    <a style="color:#56a3ba" class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
                     <ul class="dropdown-menu settings-menu dropdown-menu-right">
                         <li>
                            <a class="dropdown-item" href="{% url 'accounts:home' %}"><i class="fa fa-home"></i> Home </a>
@@ -45,37 +43,37 @@
                 </li>
             </ul>
         </header>
-        <!-- Sidebar menu-->
-        <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-        <aside class="app-sidebar" style="background:#3d3d3d">
+        <!-- Sidebar menu -->
+        <div class="app-sidebar__overlay"></div>
+        <aside class="app-sidebar" style="background:black">
             {% if user.is_coach %}
             <ul class="app-menu">
                 <li>
-                    <a class="app-menu__item active" href=""><i style="color:#187bcd" class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Clients</span></a>
+                    <a class="app-menu__item active" href=""><i style="color:#56a3ba" class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Clients</span></a>
                 </li>
                 <li>
-                    <a class="app-menu__item" href=""><i style="color:#187bcd" class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Questionnaires</span></a>
+                    <a class="app-menu__item" href=""><i style="color:#56a3ba" class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Questionnaires</span></a>
                 </li>
             </ul>
             {% else %}
             <ul class="app-menu">
                 <li>
-                    <a class="app-menu__item active" href="{% url 'dashboard' %}"><i style="color:#187bcd" class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a>
+                    <a class="app-menu__item active" href="{% url 'dashboard' %}"><i style="color:#56a3ba" class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a>
                 </li>
                 <li>
-                    <a class="app-menu__item" href="{% url 'calendarapp:calendar' %}"><i style="color:#187bcd" class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Calendar</span></a>
+                    <a class="app-menu__item" href="{% url 'calendarapp:calendar' %}"><i style="color:#56a3ba" class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Calendar</span></a>
                 </li>
                 <li class="treeview">
-                    <a class="app-menu__item" href="#" data-toggle="treeview"><i style="color:#187bcd" class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Events</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                    <a class="app-menu__item" href="#" data-toggle="treeview"><i style="color:#56a3ba" class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Events</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                     <ul class="treeview-menu">
                         <li>
-                            <a class="treeview-item" href="{% url 'calendarapp:running_events' %}"><i style="color:#187bcd" class="icon fa fa-circle-o"></i> Running</a>
+                            <a class="treeview-item" href="{% url 'calendarapp:running_events' %}"><i style="color:#56a3ba" class="icon fa fa-circle-o"></i> Running</a>
                         </li>
                         <li>
-                            <a class="treeview-item" href="{% url 'calendarapp:running_events' %}"><i style="color:#187bcd" class="icon fa fa-circle-o"></i> Upcoming</a>
+                            <a class="treeview-item" href="{% url 'calendarapp:running_events' %}"><i style="color:#56a3ba" class="icon fa fa-circle-o"></i> Upcoming</a>
                         </li>
                         <li>
-                            <a class="treeview-item" href="{% url 'calendarapp:all_events' %}"><i style="color:#187bcd" class="icon fa fa-circle-o"></i> All</a>
+                            <a class="treeview-item" href="{% url 'calendarapp:all_events' %}"><i style="color:#56a3ba" class="icon fa fa-circle-o"></i> All</a>
                         </li>
                     </ul>
                 </li>
