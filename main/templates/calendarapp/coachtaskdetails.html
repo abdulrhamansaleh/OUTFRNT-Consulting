@@ -1,4 +1,4 @@
-{% extends 'coachBase.html'%}
+{% extends 'coachsidebar.html'%}
 {% load static %}
 {% block content %}
 <div class = "card">
@@ -12,6 +12,6 @@
     <div class = "card-footer text-muted">
       Due: {{task.end_time}}
     </div>
-    <a style = "background:#56a3ba; border:none;" href = "{% url 'accounts:clients-view' %}" class="btn btn-primary"> Back to Tasks </a>
+    <a style = "background:#56a3ba; border:none;" href = "{% url 'calendarapp:view-tasks' %}" class="btn btn-primary"> Back to Tasks </a>
 </div>
 {% endblock %}

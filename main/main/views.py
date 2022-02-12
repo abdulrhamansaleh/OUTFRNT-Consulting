@@ -1,15 +1,16 @@
-from django.views.generic import View
-from django.contrib.auth.mixins import LoginRequiredMixin
+# django imports
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 
+# authenticate imports
+from django.contrib.auth.decorators import login_required
+
+# data-model imports
 from calendarapp.models import Event
 
 @login_required(login_url = '/signin/')
 def DashBoardView(request):
     user = request.user 
-    # check if user is allowed to view the site
     if user.is_client:
         events = Event.objects.get_all_events(user=request.user)
         running_events = Event.objects.get_running_events(user=request.user)
@@ -22,7 +23,5 @@ def DashBoardView(request):
                 'latest_events': latest_events
             }
         return render(request, 'calendarapp/dashboard.html', variables)
-    
-    # if user is not the right permission return them home
     else:
         return redirect('accounts:home')

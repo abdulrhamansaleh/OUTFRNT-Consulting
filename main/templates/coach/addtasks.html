@@ -1,4 +1,4 @@
-{% extends 'coachBase.html'%}
+{% extends 'coachsidebar.html'%}
 {% load static %}
 {% block content %}
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -74,7 +74,7 @@
                       </td>
                       <td class = "content" > {{ task.end_time }} </td>
                       <td class = "content" > 
-                        <a class = "button-link" href="{% url 'calendarapp:delete' task.id %}"><span> Delete </span></a>
+                        <a class = "button-link" href="{% url 'calendarapp:delete_task_outfrnt' task.id %}"><span> Delete </span></a>
                       </td>
                         
                   </tr>

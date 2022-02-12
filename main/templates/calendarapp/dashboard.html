@@ -58,7 +58,7 @@
                                                 {% if not event.outfrnt_task %}
                                                     <form method="post">
                                                     {% csrf_token %}
-                                                    <div><a href="{% url 'calendarapp:delete_task' event.id%}" class="fcc-btn"> Delete </button>
+                                                    <div><a href="{% url 'calendarapp:delete_task_client' event.id%}" class="fcc-btn"> Delete </button>
                                                     </form>
                                                 {% endif %}
                                                 </td>

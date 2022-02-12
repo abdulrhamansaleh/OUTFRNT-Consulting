@@ -136,10 +136,14 @@ EMAIL_USE_TLS = False
 
 # enable myaccount.google.com/lesssecureapps
 
+# gsuite is the center 
+
 # EMAIL_HOST = 'smpt.gmail.com'
 # EMAIL_PORT = '587'
-# EMAIL_HOST_USER = 'email that sends emails'
-# EMAIL_HOST_PASSWORD = 'password for that email [use an environemental variable for these (security wise)]'
+# EMAIL_HOST_USER = 'noreply@outfrnt.com'
+
+# EMAIL_HOST_PASSWORD = '3&J&ag3u' 'password for that email [use an environemental variable for these (security wise)]'
+# to enable protocol for email port 
 # EMAIL_USE_TLS = True 
 
 

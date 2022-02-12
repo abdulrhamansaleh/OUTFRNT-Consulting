@@ -1,33 +1,22 @@
-from django.views.generic import ListView
-from calendarapp.models import Event,Archived
-from calendarapp.utils import Calendar
-from calendarapp.forms import EventForm,outfrntEventForm
+
+# view imports 
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.views import generic
-from django.utils.safestring import mark_safe
+from django.urls import reverse
+# authentication imports
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+# python imports 
 from datetime import timedelta, datetime, date
 import calendar
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
-from django.contrib.auth.decorators import login_required
+# data-models imports
+from calendarapp.models import Event,Archived
+from calendarapp.forms import EventForm,outfrntEventForm
 from accounts.views import home
 from accounts.models import User
 
-@login_required(login_url = '/signin/')
-def all_events_view(request):
-    if request.user.is_client:
-        return render(request, 'calendarapp/events_list.html' , {"events": Event.objects.get_all_events(user = request.user)})
-    else:
-        return home(request)
-
-@login_required(login_url = '/signin/')
-def current_events_view(request):
-    if request.user.is_client:
-        return render(request, 'calendarapp/events_list.html' , {"events": Event.objects.get_running_events(user = request.user)})
-    else:
-        return home(request)
-
+# calendar formating functions 
 def get_date(req_day):
     if req_day:
         year, month = (int(x) for x in req_day.split('-'))
@@ -47,15 +36,28 @@ def next_month(d):
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
 
-# View for client calendars 
+
+# VIEW FUNCTIONS FOR CALENDAR APP 
+# THE FOLLOWING VIEWS ARE SPECIFIC TO CALENDAR APP MODELS 
+
+@login_required(login_url = '/signin/')
+def all_events_view(request):
+    if request.user.is_client:
+        return render(request, 'calendarapp/eventslist.html' , {"events": Event.objects.get_all_events(user = request.user)})
+    else:
+        return home(request)
+
+@login_required(login_url = '/signin/')
+def current_events_view(request):
+    if request.user.is_client:
+        return render(request, 'calendarapp/eventslist.html' , {"events": Event.objects.get_running_events(user = request.user)})
+    else:
+        return home(request)
 class CalendarViewNew(LoginRequiredMixin,generic.View):
-    # View variables 
     login_url = 'accounts:signin'
     template_name = 'calendar.html'
 
-    # retrieve calendar data to display for clients 
     def get(self, request):
-        # check if user logged is of client permissions 
         if request.user.is_client:
             forms = EventForm
             events = Event.objects.get_all_events(user = request.user)
@@ -73,13 +75,10 @@ class CalendarViewNew(LoginRequiredMixin,generic.View):
                 'events_month': events_month
             }
             return render(request,'calendarapp/calendar.html', variables)
-        # return unauthenticaed users to home page 
         else:
             return home(request)
 
-    # post the add task method form info 
     def post(self, request):
-        # check if user is authenticated for form post and client view 
         if request.user.is_client:
             forms = EventForm(request.POST)
             if forms.is_valid():
@@ -94,18 +93,34 @@ class CalendarViewNew(LoginRequiredMixin,generic.View):
         # return unauthenticated users to home page 
         else:
             return home(request)
-
-
-# built-in decorator to check if user is logged in  
-@login_required(login_url = '/signin/')
-# add outfrnt tasks for clients 
-def outfrnt_tasks(request):
-    # check if user logged is of coach permission
+        
+@login_required(login_url = '/signin/') 
+def view_client_tasks(request):
     if request.user.is_coach:
-        # needed queries 
+        clients = User.objects.all()
+        tasks = Event.objects.all()
+        
+        if 'search-key' in request.GET:
+            search = request.GET['search-key']
+            variables = {
+                'users': User.objects.filter(username = search),
+                'tasks':tasks
+            }
+            return render(request,'coach/viewclienttasks.html', variables)
+        else:
+            variables = {
+            'users': clients,
+            'tasks':tasks,
+            }
+        return render(request,'coach/viewclienttasks.html', variables)
+    else:
+        return home(request)
+    
+@login_required(login_url = '/signin/')
+def add_outfrnt_tasks(request):
+    if request.user.is_coach:
         task = Event.objects.filter(outfrnt_task = True)
         clients = User.objects.all()
-        # form to add task 
         form = outfrntEventForm(request.POST or None)
         if request.POST and form.is_valid():
             user = form.cleaned_data['user']
@@ -123,7 +138,6 @@ def outfrnt_tasks(request):
                 outfrnt_task = True  
             )
 
-            # clear form 
             form = outfrntEventForm
             variables = {
             'form':form,
@@ -140,9 +154,8 @@ def outfrnt_tasks(request):
                     'tasks':tasks ,
                     'form':form
             }
-            return render(request,'coach/outfrntTasks.html',variables)
-        return render(request,'coach/outfrntTasks.html',{'users':clients , 'tasks':task , 'form':form})
-    # return user to home page if not authenticated with permission to view  
+            return render(request,'coach/addtasks.html',variables)
+        return render(request,'coach/addtasks.html',{'users':clients , 'tasks':task , 'form':form})
     else:
         return home(request)
 
@@ -153,14 +166,10 @@ def delete_outfrnt_task(request,event_id):
         return HttpResponseRedirect(reverse('calendarapp:outfrnt_task'))
     else:
          return home(request)
-       
-       
-# built-in decorator to check if user is logged in  
+    
 @login_required(login_url = '/signin/')
-def delete_task(request,event_id):
-    # check if user logged is of client permissions 
+def delete_client_task(request,event_id):
     if request.user.is_client:
-        # query event to be deleted based on id
         event_to_archive = Event.objects.get(id = event_id)
         Archived.objects.get_or_create(
                 user = request.user,
@@ -169,34 +178,25 @@ def delete_task(request,event_id):
                 start_time = event_to_archive.start_time,
                 end_time = event_to_archive.end_time
         )
-        # remove event from all user views 
         event_to_archive.delete()
         return redirect('dashboard')
     else:
         return home(request)
 
-# render a detail task view for coaches and clients 
 @login_required(login_url = '/signin/')
 def detail_task_view(request,event_id):
     user = request.user
-    # query the task 
     task = Event.objects.get(id = event_id)
-    print (task.user)
-    print(user.is_client)
-    # check if coach is trying to access view 
     if user.is_coach :
-        # render the task through the context 
         variables = {
                 "task":task
         }
-        return render(request,'calendarapp/detail_view.html',variables)
-    # check if client is trying to access view 
+        return render(request,'calendarapp/coachtaskdetails.html',variables)
     if user.is_client and task.user == user:
-        # render the task through the context 
         variables = {
                 "task":task
         }
-        return render(request,'calendarapp/detail_view_client.html',variables) 
+        return render(request,'calendarapp/clienttaskdetails.html',variables) 
     else:
         return home(request)
 

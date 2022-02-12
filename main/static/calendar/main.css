@@ -181,9 +181,9 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
     opacity: 0.65;
   }
 .fc .fc-button-primary {
-    color: #fff;
+    color: white;
     color: var(--fc-button-text-color, #fff);
-    background-color: grey !important;
+    background-color: #56a3ba !important;
     background-color: var(--fc-button-bg-color, #fff);
     border-color: #fff;
     border-color: var(--fc-button-border-color, #fff);
@@ -266,6 +266,7 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
     align-items: center;
   }
 .fc .fc-toolbar.fc-header-toolbar {
+
     margin-bottom: 1.5em;
   }
 .fc .fc-toolbar.fc-footer-toolbar {
@@ -395,6 +396,7 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
     left: 0;
   }
 .fc .fc-col-header-cell-cushion {
+    border-width: 1vh;
     display: inline-block; /* x-browser for when sticky (when multi-tier header) */
     padding: 2px 4px;
   }
@@ -437,7 +439,7 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 /* ---------------------------------------------------------------------------------------------------- */
 a.fc-event,
 a.fc-event:hover {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 /* cursor */
 .fc-event[href],
@@ -647,7 +649,7 @@ A HORIZONTAL event
 
 
 :root {
-  --fc-daygrid-event-dot-width: 8px;
+  --fc-daygrid-event-dot-width: 10px;
 }
 .fc-daygrid-day-frame:before, .fc-daygrid-day-events:before, .fc-daygrid-event-harness:before {
   content: "";
@@ -657,12 +659,13 @@ A HORIZONTAL event
   content: "";
   clear: both;
   display: table; }
+
 .fc .fc-daygrid-body { /* a <div> that wraps the table */
     position: relative;
     z-index: 1; /* container inner z-index's because <tr>s can't do it */
   }
 .fc .fc-daygrid-day.fc-day-today {
-      background-color: rgba(255, 220, 40, 0.15);
+      background-color: whitesmoke !important;
       background-color: var(--fc-today-bg-color, rgba(255, 220, 40, 0.15));
     }
 .fc .fc-daygrid-day-frame {
@@ -677,6 +680,11 @@ A HORIZONTAL event
     opacity: 0.3;
   }
 .fc .fc-daygrid-day-number {
+    margin-right:5px;
+    border-top: 2px solid;
+    border-color:#56a3ba;
+    font-size: 15px;
+    color:black;
     position: relative;
     z-index: 4;
     padding: 4px;
@@ -721,7 +729,7 @@ A HORIZONTAL event
     z-index: 7;
   }
 .fc .fc-daygrid-day-bottom {
-    font-size: .85em;
+    font-size: .95em;
     padding: 2px 3px 0
   }
 .fc .fc-daygrid-day-bottom:before {
@@ -781,6 +789,7 @@ A HORIZONTAL event
   }
 .fc-daygrid-block-event .fc-event-time,
   .fc-daygrid-block-event .fc-event-title {
+    color:white !important;
     padding: 1px;
   }
 /* --- the dot style of event --- */
@@ -811,7 +820,7 @@ A HORIZONTAL event
   box-sizing: content-box;
   width: 0;
   height: 0;
-  border: 4px solid #3788d8;
+  border: 4px solid white !important ;
   border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color, #3788d8);
   border-radius: 4px;
   border-radius: calc(var(--fc-daygrid-event-dot-width, 8px) / 2);
@@ -1254,3 +1263,50 @@ A VERTICAL event
     color:grey; 
   }
 
+.fc-event-time{
+  font-size: 0 !important;
+}
+
+.fc-daygrid-day-events:hover{
+  cursor: pointer !important;
+}
+
+a.app-sidebar__toggle{
+  color:white !important;
+  size:0 !important;
+}
+
+.fc-today-button{
+  margin-left: 0 !important;
+  white-space: nowrap;
+
+}
+/* Repsonsive Brekapoints */ 
+@media (max-width: 1050px) {
+  #calendar .fc-toolbar-title{
+    font-size: 1.3em;
+    white-space: nowrap;
+  }
+  #calendar .fc-button-group{
+    white-space: nowrap;
+  }
+  #calendar .fc-button-primary{
+    font-size: 8px;
+    width:40px;
+    height:100%;
+  }
+
+}
+@media (max-width: 767){
+  #calender .fc-button-primary{
+    font-size: 14px;
+    width:60px;
+    height:30px;
+  }
+  .col-md-3{
+    background-color:red;
+  }
+  .row{
+    width:100%;
+  }
+}

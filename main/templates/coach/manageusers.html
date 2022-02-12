@@ -1,5 +1,7 @@
-{% extends 'coachBase.html'%}
+{% extends 'coachsidebar.html'%}
 {% block content %}
+<!-- Script for octicons-->
+<script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
 <title> Manage </title>
 <body>
 <!-- OUTFRNT PROSPECTS -->
@@ -22,7 +24,7 @@
                     <th class = "row-header" scope="col">Contact Info.</th>
                     <th class = "row-header" scope="col">Date Joined</th>
                     <th class = "row-header" scope="col">Last Login</th>
-                    <th class = "row-header" scope="col">Update Status</th>
+                    <th class = "row-header" scope="col">Status</th>
                 </tr>
             </thead>
                 <tbody>
@@ -69,7 +71,7 @@
                     <th class = "row-header" scope = "col" > Company       </th>
                     <th class = "row-header" scope = "col" > Contact Info. </th>
                     <th class = "row-header" scope = "col" > Questionnaire </th>
-                    <th class = "row-header" scope = "col" > Update Status </th>
+                    <th class = "row-header" scope = "col" > Status </th>
                 </tr>
             </thead>
                 <tbody>
@@ -79,8 +81,7 @@
                     <td class = "content" > {{client.email}} </td>
                     <td class = "content" > 
                         <a class = "content" href = "{% url 'questionnaire:view-response' client.id %}">
-                            <i style = "color:#56a3ba" class = "fa fa-envelope-open" aria-hidden = "true">
-                            </i></i>
+                            Download <span class="iconify" data-icon="icomoon-free:file-pdf"></span>
                         <a>
                     </td>
                     <td class = "content" >
@@ -117,7 +118,7 @@
                     <th class = "row-header" scope = "col" > Contact Info. </th>
                     <th class = "row-header" scope = "col" > Questionnaire </th>
                     <th class = "row-header" scope = "col" > Last Login    </th>
-                    <th class = "row-header" scope = "col" > Update Status </th>
+                    <th class = "row-header" scope = "col" > Status </th>
                 </tr>
             </thead>
                 <tbody>
@@ -128,8 +129,8 @@
                     <td class = "content" > {{client.email}}      </td>
                     <td class = "content" >
                         <a class = "content" href = "{% url 'questionnaire:view-response' client.id %}">
-                            <i style = "color:#56a3ba" class = "fa fa-envelope-open" aria-hidden = "true">
-                            </i></i>
+                            Download <span class="iconify" data-icon="icomoon-free:file-pdf"></span>
+
                         <a>
                     </td>
                     <td class = "content" > {{client.last_login}} </td>

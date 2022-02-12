@@ -8,51 +8,53 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>       
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<!-- Script for octicons-->
+<script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
 <link rel="stylesheet" href="{% static 'css/coachNav.css'%}">
 <div class="sidebar-container">
   <div class="sidebar-logo">
-    <i class="fa fa-id-card" aria-hidden="true"></i>
+    add outfrnt logo here
   </div>
   <ul class="sidebar-navigation">
-    <li class="header"> OUTFRNT </li>
+    <li class="header"> Coach Access </li>
     <li>
-      <a href="{% url 'calendarapp:outfrnt_task'%}">
+      <a class = "side-titles" href="{% url 'calendarapp:outfrnt_task'%}">
         Tasks
       </a>
     </li>
     <li>
-      <a href="{% url 'questionnaire:questions'%}">
+      <a class = "side-titles" href="{% url 'questionnaire:add-questions'%}">
         Questions
       </a>
     </li>
     <li>
   </ul>
   <ul class="sidebar-navigation">
-    <li class="header"> Clients </li>
+    <li class="header"> Client Info </li>
     <li>
-      <a href="{% url 'accounts:clients-view'%}">
+      <a class = "side-titles" href="{% url 'calendarapp:view-tasks'%}">
        Tasks
       </a>
     </li>
-    <li class="header"> Management </li>
+    <li class="header"> Admin Access </span> </li>
     <li>
-      <a href="{% url 'accounts:manage' %}">
+      <a class = "side-titles" href="{% url 'accounts:manage' %}">
        Manage Clients
       </a>
     </li>
     <li class="header"> Account </li>
     <li>
-      <a href="{% url 'accounts:home'%}">
+      <a class = "side-titles" href="{% url 'accounts:home'%}">
        Home
       </a>
     </li>
     <li>
-      <a href="{% url 'password_change'%}">
+      <a class = "side-titles" href="{% url 'password_change'%}">
        Change Password
       </a>
     </li>
     <li>
-      <a href="{% url 'accounts:signout'%}">
+      <a class = "side-titles" href="{% url 'accounts:signout'%}">
        Sign Out
       </a>
     </li>

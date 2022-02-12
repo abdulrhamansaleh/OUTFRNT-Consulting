@@ -61,7 +61,7 @@ class Archived(EventAbstract):
         User, on_delete=models.CASCADE
     )
 
-    title = models.CharField(max_length=200, unique=True)
+    title = models.CharField(max_length=200)
     description = models.TextField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
