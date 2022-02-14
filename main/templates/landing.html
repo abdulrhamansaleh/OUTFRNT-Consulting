@@ -5,6 +5,7 @@
 {% endblock %}
 {% block content %}
 <body>
+    <!-- Background -->
     <div id = "background" style = "background-image: url({% static 'images/landscape.jpeg' %});" >
        <div id = "inner-content"> 
             <h1 style = "color:white"> personal guidance </h1>
@@ -15,24 +16,206 @@
             </div>
         </div>
     </div>
+    <!-- Story-->
     <div class = "story">
         <div class="row">
           <div class="col-sm round-img-1">
-            josh image
+            <img src = "{% static 'images/portraight.jpg' %}">
           </div>
           <div class="col-sm round-img-2">
-           andy image
+            <img src = "{% static 'images/portraight.jpg' %}">
           </div>
           <div class="col-sm story-sec">
               <div class = "story-content">
-                <h1> our story </h1>
-                <p> 
-                    Established in Whitehorse Yukon in January 2020, 
-                    OUTFRNT was built through resilience,trust and collaboration as we worked with businessess to navigate the uncertainty and adverse impact of the pandemic.
-                    we pride ourselves with bringing a comprehensive and human approach to how we work with our clients. 
-                    Connect with us and see how we can help.
-                </p>
+                <div style = "position:absolute;">
+                  <h1> our story </h1>
+                  <p> 
+                      Established in Whitehorse Yukon in January 2020, 
+                      OUTFRNT was built through resilience,trust and collaboration as we worked with businessess to navigate the uncertainty and adverse impact of the pandemic.
+                      we pride ourselves with bringing a comprehensive and human approach to how we work with our clients. 
+                      Connect with us and see how we can help.
+                  </p>
+                </div>
               </div>
+          </div>
+        </div>
+      </div>
+      <!-- Personalized -->
+      <div class = "info">
+        <div class="row">
+          <div class="col info-header">
+            <p class = "side-header">
+              personalized
+              business
+              solutions
+            </p>
+          </div>
+          <div class="col right-content">
+            <div class = "row-1">
+              <div class = "row-content">
+                <div class = "row-1-img"><img  src = "{% static 'images/outfrnt_logo_icon.png' %}"></div>
+                <h1>grant writing, business funding, and financing</h1>
+                <p> Whether you're looking to hire,train, or grow your 
+                    business through market expansion, grants are a great resource that is often
+                    overlooked.Let our experienced team help you develop your funding strategy,prepare for investors,and get ready to 
+                    engage with the banks.
+                </p>
+                <button class = "modal-pop">Learn More</button>
+              </div>
+            </div>
+            <div class = "row-2">
+              <div class = "row-content">
+                <div class = "row-2-img"><img  src = "{% static 'images/outfrnt_logo_icon.png' %}"></div>
+                <h1>entrepreneurial business support programming</h1>
+                <p>
+                  Looking at starting an incubator,accelerator, maybe something in between? We provide expertise in entrepreneurial program design for organizations
+                  such as Governments and post secondary institutions
+                </p>
+                <button class = "modal-pop">Learn More</button>
+              </div>
+            </div>
+            <div class = "row-3">
+              <div class = "row-content">
+                <div class = "row-3-img"><img  src = "{% static 'images/outfrnt_logo_icon.png' %}"></div>
+                <h1>business advisory and coaching</h1>
+                <p>
+                  Navigating the business world is complicated and sometimes all you need is some guidance 
+                  with simplifying your business challenges. Our team supports founders, senior leaders, and 
+                  other key personnel in your company through the unknowns and the ups and downs with help of our 
+                  extensive network of subject matter experts.
+                </p>
+                <button class = "modal-pop">Learn More</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- client reviews -->
+      <div class = "quotes">
+        <div class = "quotes-header"> See What Our Clients Have To Say </div>
+        <div class = "quotes-container">
+          <div class="row rows-cols-4 rows-cols-4 ">
+            <div class="col">
+              <div class = "link-align">
+                <a class = "company-link" href = "https://www.yukonu.ca/">Yukon University</a>
+              </div>
+              <div>
+                <img class = "company-image" src = "{% static 'images/yukonuni.jpg'%}">
+              </div>
+            </div>
+            <div class="col">
+              <div class = "link-align">
+                <a class = "company-link" href = "https://www.yukonu.ca/">Free Pour Jenny's</a>
+              </div>
+              <div>
+                <img class = "company-image" src = "{% static 'images/freepour.png'%}">
+              </div>
+            </div>
+            <div class="col">
+              <div class = "link-align">
+                <a class = "company-link" href = "https://www.yukonu.ca/">Yukon Built</a>
+              </div>
+              <div>
+                <img class = "company-image" src = "{% static 'images/yukonbuilt.png'%}">
+              </div>
+            </div>
+            <div class="col">
+              <div class = "link-align">
+                <a class = "company-link" href = "https://www.yukonu.ca/">Klondlike Travel & Yukon Tours</a>
+              </div>
+              <div>
+                <img class = "company-image" src = "{% static 'images/travel.png'%}">
+              </div>
+            </div>
+          </div>
+          <div class="row rows-cols-4 rows-cols-4 bottom">
+            <div class="col">
+              <div class = "link-align">
+                <a class = "company-link" href = "https://www.yukonu.ca/">Solvest</a>
+              </div>
+              <div>
+                <img class = "company-image" src = "{% static 'images/solvest.png'%}">
+              </div>
+            </div>
+            <div class="col">
+              <div class = "link-align">
+                <a class = "company-link" href = "https://www.yukonu.ca/">Neighbourly North</a>
+              </div>
+              <div>
+                <img class = "company-image" src = "{% static 'images/neighbour.png'%}">
+              </div>
+            </div>
+            <div class="col">
+              <div class = "link-align">
+                <a class = "company-link" href = "https://www.yukonu.ca/">Firebean Coffe Roasters</a>
+              </div>
+              <div>
+                <img class = "company-image" src = "{% static 'images/firebean.png'%}">
+              </div>
+            </div>
+            <div class="col">
+              <div class = "link-align">
+                <a class = "company-link" href = "https://www.yukonu.ca/">Lumel Studios</a>
+              </div>
+              <div>
+                <img class = "company-image" src = "{% static 'images/lumel.png'%}">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- connect -->
+      <div class = "connect">
+        <div class = "inner-div">
+          <div class="row row-cols-2">
+            <div class="col side-col">
+              <p class = "side-block">
+                Let's Connect !
+              </p>
+              <div class = "para-top"> 
+                <p>Dont see what you are looking for ?</p>
+                <p>Have questions ?</p>
+                <p>Looking to connect ?</p>
+              </div>
+              <div class = "para-bottom"> 
+                <p> Drop us a line! </p>
+                <p> We'd love to head from you </p>
+              </div>
+            </div>
+            <div class="col connect-form">
+              <form method ="post" class = "form-container" >
+                {% csrf_token %}
+                <!-- first row -->
+                <div class="row row-cols-2 names">
+                  <div class="col">
+                    {{ form.first_name}}
+                  </div>
+                  <div class="col">  
+                    {{ form.last_name}}
+                  </div>
+                </div>
+                <!-- second row -->
+                <div class="row row-cols-2 contact">
+                  <div class="col"> 
+                    {{ form.email }}
+                  </div>
+                  <div class="col">
+                    {{ form.phone_num }}
+                  </div>
+                </div>
+                 <!-- thrid row -->
+                <div class = "text-body"> 
+                    {{ form.help_body }}
+                </div>
+                 <!-- fourth row -->
+                <div class = "btn-container">
+                  <button name = "join" type = "sumbit" class = "join-button">Join Us</button>
+                </div>
+              </form>
+            </div>
+            </div>
           </div>
         </div>
       </div>

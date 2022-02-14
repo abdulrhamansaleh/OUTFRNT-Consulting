@@ -8,12 +8,36 @@ from django.core.mail import send_mail
 # python imports 
 import datetime 
 # app imports 
-from accounts.forms import SignInForm,SignUpForm
+from accounts.forms import SignInForm,SignUpForm,JoinUs
 from accounts.models import User
 from questionnaire.models import Question
 
+# landing page with connection form 
 def home(request):
-    return render(request,'landing.html')
+    form = JoinUs(request.POST or None)
+    variables = {
+        "form":form
+    }
+    if 'join' in request.POST:
+        print("posting data")
+        if form.is_valid():
+            print("form is valid")
+            first = form.cleaned_data["first_name"]
+            last = form.cleaned_data["last_name"]
+            email = form.cleaned_data["email"]
+            phone = form.cleaned_data["phone_num"]
+            help_body = form.cleaned_data["help_body"]
+            variables = {
+                "first":first,
+                "last":last,
+                "email":email,
+                "phone":phone,
+                "body":help_body,
+            }
+            return redirect('accounts:home')
+    form = JoinUs
+    return render(request,'landing.html',variables)
+    
 class SignInView(View):
     def get(self, request, *args, **kwargs):
         variables = {

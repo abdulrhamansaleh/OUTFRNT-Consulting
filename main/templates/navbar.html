@@ -18,6 +18,7 @@
     <input id="nav-toggle" type="checkbox">
     <a class = "logo" href="#"><img src = "{% static 'images/outfrnt_logo.png' %}"></a>
     <ul class="links">
+        <li><a href="#services">Our Story</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#clients">Clients</a></li>
         <li><a href="#contact">Contact Us</a></li>
@@ -31,8 +32,10 @@
     </label>
   </nav>
 </header>
+<body>
 {% block content %}
 {% endblock %}
+</body>
 <!-- footer -->
 <footer>
   <div class="container">
@@ -46,7 +49,9 @@
       </div>
       <div class="col-sm">
       </div>
-      <div class="col-sm">
+      <div class="col-sm socials">
+        <span class="iconify" data-icon="lucide:instagram" data-width = "50px" data-height = "50px"></span>
+        <span class="iconify" data-icon="icomoon-free:linkedin"  data-width = "50px" data-height = "50px"></span>
       </div>
     </div>
   </div> 

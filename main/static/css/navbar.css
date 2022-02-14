@@ -129,6 +129,9 @@ nav .icon-burger .line {
 /* footer */
 
 footer{
+	position: fixed;
+    left: 0;
+    bottom: 0;
 	position:relative;
 	bottom:0;
 	left:0;
@@ -152,12 +155,16 @@ footer p{
 	color:#56a3ba;
 }
 .left{
+	margin-left:10%;
 	font-weight: bold;
 	margin-top: 50px;
 	float:left;
 }
 
 .footer-bottom{
+	position: fixed;
+    left: 0;
+    bottom: 0;
 	position:absolute;
 	bottom:0;
 	left:0;
@@ -166,4 +173,9 @@ footer p{
 	text-align: center;
 	color:#56a3ba;
 	background-color:black;
+}
+
+.socials{
+	margin-top:3%;
+	padding-top:1%;
 }

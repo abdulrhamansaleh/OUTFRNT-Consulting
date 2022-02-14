@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'calendarapp.apps.CalendarappConfig',
     'accounts.apps.AccountsConfig',
     'questionnaire.apps.QuestionnaireConfig',
+    'phonenumber_field'
 ]
 
 MIDDLEWARE = [
