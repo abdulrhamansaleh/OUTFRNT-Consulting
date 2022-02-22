@@ -1,9 +1,19 @@
 {% load static %}
-<link rel="stylesheet" href="{% static 'questionnaire/questions.css' %}">
+{% block extracss %}
+<head>  
+  <link rel="stylesheet" href="{% static 'questionnaire/questions.css' %}">
+  <!-- Script for octicons-->
+  <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+</head>
+{% endblock%}
+{% block content%}
 <title> Questions </title>
-<div class = "box">
-  <div class="box1-content content">
-    <h1> Sales and Marketing </h1>
+<div class = "header-top">
+  <span class="iconify" data-icon="icon-park-outline:sales-report"></span>
+  <h1> Sales and Marketing </h1>
+</div>
+<div class = "survey">
+  <div class = "survey-content">
     <p>
       <form method="post" action = "{% url 'questionnaire:answer' 'sales' %}" >
         {% csrf_token %}
@@ -21,3 +31,4 @@
   </div>
 </div>
 </form>
+{% endblock %}

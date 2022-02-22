@@ -1,53 +1,52 @@
 {% extends 'navbar.html'%}
 {% load static %}
 {% block extracss%}
+<title>
+  Home | OUTFRNT
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="{% static 'css/landingpage/landing.css' %}">
 {% endblock %}
 {% block content %}
 <body>
     <!-- Background -->
-    <div id = "background" style = "background-image: url({% static 'images/landscape.jpeg' %});" >
+    <div id = "background" style = "background-image: url({% static 'images/YukonRiver.png' %});" >
        <div id = "inner-content"> 
             <h1 style = "color:white"> personal guidance </h1>
             <h1 style = "color:white"> forward together. </h1>
-            <p style = "color:white"> we believe in a collaborative and intuitive approach to business expertise.Experience a more human side to business with us</p>
-            <div>
-                <a style = "color:white" class = "button-link" href = "{% url 'accounts:signup'%}">discover the possibilities</a>
+            <p style = "color:white"> We believe in a collaborative and intuitive approach to business expertise. Experience a more human side to business with us</p>
+            <div class = "start-button">
+                <a style = "color:white" class = "button-link" href = "{% url 'accounts:signup'%}">Get Started</a>
             </div>
         </div>
-    </div>
+    </div> 
     <!-- Story-->
-    <div class = "story">
-        <div class="row">
-          <div class="col-sm round-img-1">
-            <img src = "{% static 'images/portraight.jpg' %}">
+    <div id = "story" class = "back-splash">
+      <div class = "row story">
+          <div class = "col-sm-8 story-content">
+            <h1> Meet Outfrnt </h1>
+            <p> 
+                Established in Whitehorse Yukon in January 2020, 
+                OUTFRNT was built through resilience,trust and collaboration as we worked with businessess to navigate the uncertainty and adverse impact of the pandemic.
+                we pride ourselves with bringing a comprehensive and human approach to how we work with our clients. 
+                Connect with us and see how we can help.
+            </p>
           </div>
-          <div class="col-sm round-img-2">
-            <img src = "{% static 'images/portraight.jpg' %}">
+          <div class = "col-sm-4 image-content">
+            <div class="col round-img-1">
+              <img src = "{% static 'images/Josh.jpg' %}">
+            </div>
+            <div class="col-sm round-img-2">
+              <img src = "{% static 'images/Andy.jpg' %}">
+            </div>
           </div>
-          <div class="col-sm story-sec">
-              <div class = "story-content">
-                <div style = "position:absolute;">
-                  <h1> our story </h1>
-                  <p> 
-                      Established in Whitehorse Yukon in January 2020, 
-                      OUTFRNT was built through resilience,trust and collaboration as we worked with businessess to navigate the uncertainty and adverse impact of the pandemic.
-                      we pride ourselves with bringing a comprehensive and human approach to how we work with our clients. 
-                      Connect with us and see how we can help.
-                  </p>
-                </div>
-              </div>
-          </div>
-        </div>
       </div>
-      <!-- Personalized -->
-      <div class = "info">
-        <div class="row">
+    </div>
+    <!-- Personalized -->
+    <div id = "services" class="row info">
           <div class="col info-header">
             <p class = "side-header">
-              personalized
-              business
-              solutions
+              personalized business solutions
             </p>
           </div>
           <div class="col right-content">
@@ -89,77 +88,132 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- client reviews -->
-      <div class = "quotes">
+    </div>
+    <!-- client reviews -->
+      <div id = "clients" class = "quotes">
         <div class = "quotes-header"> See What Our Clients Have To Say </div>
         <div class = "quotes-container">
-          <div class="row rows-cols-4 rows-cols-4 ">
-            <div class="col">
+          <div class="row rows-cols-4 rows-cols-4 top">
+            <div class="col company-container">
               <div class = "link-align">
                 <a class = "company-link" href = "https://www.yukonu.ca/">Yukon University</a>
               </div>
-              <div>
-                <img class = "company-image" src = "{% static 'images/yukonuni.jpg'%}">
+              <div class = "main-quote">
+                <div class = "overlay-quote">
+                  <img class = "company-image" src = "{% static 'images/yukonuni.jpg'%}">
+                </div>
+                <div class = "company-quote">
+                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                  <p class = "quote-content">people-centered cultivated and innovative approach</p>
+                  <p class = "quote-author">-Lauren Manekin Beille, Dept.Head, Yukon University</p>
+                </div>
               </div>
             </div>
-            <div class="col">
+            <div class="col company-container">
               <div class = "link-align">
-                <a class = "company-link" href = "https://www.yukonu.ca/">Free Pour Jenny's</a>
+                <a class = "company-link" href = "https://freepourjennys.com/">Free Pour Jenny's</a>
               </div>
-              <div>
-                <img class = "company-image" src = "{% static 'images/freepour.png'%}">
+              <div class = "main-quote">
+                <div class = "overlay-quote">
+                  <img class = "company-image" src = "{% static 'images/jenny.png'%}">
+                </div>
+                <div class = "company-quote">
+                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                  <p class = "quote-content">...knowledgeable and approachable, and have provided my small business with invaluable insight and advice."</p>
+                  <p class = "quote-author">-Jennifer Tyldesley, Owner & Operator</p>
+                </div>
               </div>
             </div>
-            <div class="col">
+            <div class="col company-container">
               <div class = "link-align">
-                <a class = "company-link" href = "https://www.yukonu.ca/">Yukon Built</a>
+                <a class = "company-link" href = "https://www.yukonbuilt.com/">Yukon Built</a>
               </div>
-              <div>
-                <img class = "company-image" src = "{% static 'images/yukonbuilt.png'%}">
+              <div class = "main-quote">
+                <div class = "overlay-quote">
+                  <img class = "company-image" src = "{% static 'images/yukonbuilt.png'%}">
+                </div>
+                <div class = "company-quote">
+                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                  <p class = "quote-content">...the advice and solutions they're providing are truly catered to your unique business situation."</p>
+                  <p class = "quote-author">-Myles Hougen, Owner & Co-founder</p>
+                </div>
               </div>
             </div>
-            <div class="col">
+            <div class="col company-container">
               <div class = "link-align">
-                <a class = "company-link" href = "https://www.yukonu.ca/">Klondlike Travel & Yukon Tours</a>
+                <a class = "company-link" href = "https://www.klondiketravel.ca/">Klondik Travel & Yukon Tours</a>
               </div>
-              <div>
-                <img class = "company-image" src = "{% static 'images/travel.png'%}">
+              <div class = "main-quote">
+                <div class = "overlay-quote">
+                  <img class = "company-image" src = "{% static 'images/travel.png'%}">
+                </div>
+                <div class = "company-quote">
+                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                  <p class = "quote-content">I found Josh and Andy to be approachable,respectful, and honest."</p>
+                  <p class = "quote-author">-Carmen Magro, Owner & Operator</p>
+                </div>
               </div>
             </div>
           </div>
           <div class="row rows-cols-4 rows-cols-4 bottom">
-            <div class="col">
+            <div class="col company-container">
               <div class = "link-align">
-                <a class = "company-link" href = "https://www.yukonu.ca/">Solvest</a>
+                <a class = "company-link" href = "https://www.solvest.ca/">Solvest</a>
               </div>
-              <div>
-                <img class = "company-image" src = "{% static 'images/solvest.png'%}">
+              <div class = "main-quote">
+                <div class = "overlay-quote">
+                  <img class = "company-image" src = "{% static 'images/solvest.png'%}">
+                </div>
+                <div class = "company-quote">
+                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                  <p class = "quote-content">OUTFRNT'S professionalism and support were excellent and they were responsive throughout the entire process."</p>
+                  <p class = "quote-author">-Danny Guhl, Director of Sales & Marketing</p>
+                </div>
               </div>
             </div>
-            <div class="col">
+            <div class="col company-container">
               <div class = "link-align">
-                <a class = "company-link" href = "https://www.yukonu.ca/">Neighbourly North</a>
+                <a class = "company-link" href = "https://neighbourlynorth.com/">Neighbourly North</a>
               </div>
-              <div>
-                <img class = "company-image" src = "{% static 'images/neighbour.png'%}">
+              <div class = "main-quote">
+                <div class = "overlay-quote">
+                  <img class = "company-image" src = "{% static 'images/north.jpg'%}">
+                </div>
+                <div class = "company-quote">
+                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                  <p class = "quote-content">...they took the time to know and understand us, and gave us a result that fits our culture."</p>
+                  <p class = "quote-author">-Ben Pereira, President</p>
+                </div>
               </div>
             </div>
-            <div class="col">
+            <div class="col company-container">
               <div class = "link-align">
-                <a class = "company-link" href = "https://www.yukonu.ca/">Firebean Coffe Roasters</a>
+                <a class = "company-link" href = "https://www.firebeancoffee.ca/">Firebean Coffee Roasters</a>
               </div>
-              <div>
-                <img class = "company-image" src = "{% static 'images/firebean.png'%}">
+              <div class = "main-quote">
+                <div class = "overlay-quote">
+                  <img class = "company-image" src = "{% static 'images/firebean.png'%}">
+                </div>
+                <div class = "company-quote">
+                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                  <p class = "quote-content">They are flexible,insightful and I truly fee like I can bring anything to the table."</p>
+                  <p class = "quote-author">-Michael Russo, Owner</p>
+                </div>
               </div>
             </div>
-            <div class="col">
+            <div class="col company-container">
               <div class = "link-align">
-                <a class = "company-link" href = "https://www.yukonu.ca/">Lumel Studios</a>
+                <a class = "company-link" href = "https://www.lumelstudios.com/">Lumel Studios</a>
               </div>
-              <div>
-                <img class = "company-image" src = "{% static 'images/lumel.png'%}">
+              <div class = "main-quote">
+                <div class = "overlay-quote">
+                  <img class = "company-image" src = "{% static 'images/lumel.render.png'%}">
+                </div>
+                <div class = "company-quote">
+                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                  <p class = "quote-content">...they truly listen and workout solutions relative to the things they hear."</p>
+                  <p class = "quote-author">-Luann & Mel Johnson, Owners</p>
+                </div>
               </div>
             </div>
           </div>
@@ -167,7 +221,7 @@
       </div>
 
       <!-- connect -->
-      <div class = "connect">
+      <div id = "connect" class = "connect">
         <div class = "inner-div">
           <div class="row row-cols-2">
             <div class="col side-col">
@@ -175,13 +229,13 @@
                 Let's Connect !
               </p>
               <div class = "para-top"> 
-                <p>Dont see what you are looking for ?</p>
-                <p>Have questions ?</p>
-                <p>Looking to connect ?</p>
+                <p class = "para-1">Dont see what you are looking for ?</p>
+                <p class = "para-2">Have questions ?</p>
+                <p class = "para-3">Looking to connect ?</p>
               </div>
               <div class = "para-bottom"> 
-                <p> Drop us a line! </p>
-                <p> We'd love to head from you </p>
+                <p class = "para-4"> Drop us a line! </p>
+                <p class = "para-5"> We'd love to head from you </p>
               </div>
             </div>
             <div class="col connect-form">

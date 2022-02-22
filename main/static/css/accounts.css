@@ -8192,19 +8192,11 @@ h1, h2, h3, h4, h5,
   width: 100%; }
 
 .text-wrap {
+  margin-top:10%;
   width: 100%;
+  height: 100%;
   position: relative;
   z-index: 0; }
-  .text-wrap:after {
-    background: #56a3ba;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    content: '';
-    opacity: .4;
-    z-index: -1; }
   @media (min-width: 992px) {
     .text-wrap {
       width: 40%; } }
@@ -8405,3 +8397,16 @@ textarea.form-control {
         border: 1px solid transparent;
         background: #6807f9;
         color: #fff; }
+
+
+img{
+  margin-left:-10% !important;
+  width:120%;
+}
+
+@media screen and (max-width:763px){
+  img{
+    margin: 0 !important;
+    width:100%;
+  }
+}

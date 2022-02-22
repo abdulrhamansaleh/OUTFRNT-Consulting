@@ -10,7 +10,8 @@ class AnswerForm(ModelForm):
         'answer': forms.Textarea(attrs={
                 'class': 'form-control',
                 'placeholder': 'Response to question',
-                'rows':10,
+                'rows':5,
+                'cols':200,
                 'style':'resize:none;'
             }),
     }

@@ -10,11 +10,7 @@
 <body>
 
 <div class="header">
-    {% if request.user.categories_answered == 6%}
-        <h1> You have completed all questions for the time being</h1>
-    {% else %}
-        <h1>Please Complete The Following Categories of Questions</h1>
-    {% endif %}
+    <h1>Please Complete The Following Categories of Questions</h1>
 </div>  
 <div class="row1-container">
     <!-- Sales Questionnaire -->
@@ -70,13 +66,13 @@
     <div class="box color">     
         {% if request.user.completed_P4 %}
             <a  class = "link" href = "{% url 'questionnaire:answer' 'business' %}">         
-                <h2>Business & Operations</h2>
+                <h2>Business</h2>
                 <em><p>You have previously completed or just completed this section, we will notify you if more questions are needed to be answerd</p></em>
                 <span style = "color:green" class="iconify" data-icon="bi:bookmark-check-fill" data-width = "50%" data-height = "50%"></span>
             </a>
         {% else %}
             <a class = "link" href = "{% url 'questionnaire:answer' 'business' %}"> 
-                <h2>Business & Operations</h2>
+                <h2>Business</h2>
                 <p> Click to Proceed</p>
                 <span class="iconify" data-icon="dashicons:businessperson" data-width = "50%" data-height = "50%"></span>
             </a>

@@ -82,38 +82,34 @@ def answer_question(request, category):
     client = request.user
     if client.is_newclient:
         questions = Question.objects.filter(category = category)
+        print(questions)
         for index in range(questions.count()):
             Questionnaire.objects.get_or_create(
                 provided_for = client, 
                 question = questions[index],
+                category_of_questionnaire = category
             )
-        questions_to_answer = Questionnaire.objects.filter( provided_for = client , answered = False)
+        questions_to_answer = Questionnaire.objects.filter( provided_for = client , answered = False , category_of_questionnaire = category)
         question = questions_to_answer.first()
         form = AnswerForm(request.POST or None)
         if not question:
             if category == 'sales':
                 client.completed_P1 = True
-                client.categories_answered += 1
                 client.save()
             elif category == 'people':
                 client.completed_P2 = True
-                client.categories_answered += 1
                 client.save()
             elif category == 'accounting':
                 client.completed_P3 = True
-                client.categories_answered += 1
                 client.save()
             elif category == 'business':
                 client.completed_P4 = True
-                client.categories_answered += 1
                 client.save()
             elif category == 'legal':
                 client.completed_P5 = True
-                client.categories_answered += 1
                 client.save()
             elif category == 'tech':
                 client.completed_P6 = True
-                client.categories_answered += 1
                 client.save()
             return redirect("questionnaire:main")
         variables = {

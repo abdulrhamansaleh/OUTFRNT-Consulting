@@ -8,7 +8,7 @@
 <!-- Script for octicons-->
 <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
 <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}" />
-<!-- Extra Css -->
+<meta name="viewport" content="width=device-width" /><!-- Extra Css -->
 {% block extracss %}
 {% endblock%}
 </head>
@@ -16,14 +16,22 @@
   <!-- navbar for all users -->
   <nav>
     <input id="nav-toggle" type="checkbox">
-    <a class = "logo" href="#"><img src = "{% static 'images/outfrnt_logo.png' %}"></a>
+    <a class = "logo" href=""><img src = "{% static 'images/outfrnt_logo.png' %}"></a>
     <ul class="links">
-        <li><a href="#services">Our Story</a></li>
+        <li><a href="#story">Our Story</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#clients">Clients</a></li>
-        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#connect">Contact Us</a></li>
+        {% if request.user.is_coach %}
+        <li><a style = "float:right" class = "login-btn" href="{% url 'calendarapp:view-tasks' %}"> Coach Portal </a></li>
+        {% elif request.user.is_newclient or request.user.is_prospect%}
+        <li><a class = "login-btn" href="{% url 'accounts:signout' %}">Log Out</a></li>
+        {% elif request.user.is_client %}
+        <a class = "login-btn" href="{% url 'calendarapp:calendar' %}"> Client Portal </a>
+        {% else %}
         <li><a href="{% url 'accounts:signup' %}">Join Us</a></li>
         <li><a class = "login-btn" href="{% url 'accounts:signin' %}">Log In</a></li>
+        {% endif %}
     </ul>
     <label for="nav-toggle" class="icon-burger">
       <div class="line"></div>
@@ -40,7 +48,7 @@
 <footer>
   <div class="container">
     <div class="row">
-      <div class="col-sm">
+      <div class="col-sm main-footer">
         <div class = "left">
           <p>378-108 Elliot St.</p>
           <p style = "text-indent:5px;">Whitehorse, YT</p>

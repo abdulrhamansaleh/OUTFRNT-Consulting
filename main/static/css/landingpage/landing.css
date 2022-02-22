@@ -1,16 +1,17 @@
+
 html,body
 {
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden; 
-    background-color: white;
-    position: relative;
+  scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden; 
+  background-color: white;
+  position: relative;
 }
 
-/* background */
-
+/* Larger Screens */
 #background{
   image-rendering: crisp-edges;
   image-rendering: -moz-crisp-edges;          
@@ -29,9 +30,8 @@ html,body
   margin-left: 100px;
 }
 #inner-content{
-  padding-top:200px
+  padding-top:300px
 }
-
 #inner-content h1{
   font-weight: bold;
   font-size:40px;
@@ -42,89 +42,74 @@ html,body
   max-width: 35%;
   padding-bottom: 20px;
 }
-
 .button-link{
   border-radius: 5px;
   background-color:#56a3ba;
   padding: 20px 40px 20px 40px;
 }
-
 .button-link:hover{
   text-decoration:none;
 }
-
-/* story drop */
-
-.story{
-  position:relative;
-  height:80vh;
+.back-splash{
   width:100vw;
+  height:100vh;
 }
-
-.story-sec{
-  margin-top:100px;
-  margin-bottom: 150px;
+.story{
+  margin-top:14%;
+  background-color:#DBDEDF;
+  position:relative;
+  height:75vh;
+  width:110vw;
+}
+.round-img-1 ,.round-img-2{
+  width:400px;
+  height:400px;
+}
+.round-img-2{
   margin-left:-20%;
-  height:50vh;
-  max-height: 50vh !important;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  background-color: #F2F2F2;
 }
-
+.round-img-1{
+  margin-left:20%;
+  margin-right:30%;
+  margin-top:-20%;
+}
 .story-content{
-  padding:100px 0px 40px 50px;
+  margin-top:5%;
+  margin-left:5%;
+  max-width:45%;
+  padding: 10vh;
   color:#56a3ba;
-  max-height:55vh;
+  max-height:65vh;
 }
-
 .story-content h1{
-  border-top: 1px solid #56a3ba;
-  border-bottom: 1px solid #56a3ba;
-  padding-left: 33%;
+  padding-left: 0 !important;
+  font-size: 50px !important;
   padding-bottom: 10px;
 }
-
 .story-content p {
   word-wrap: break-word;
-  font-size: 20px;
+  font-size: 18px;
+  padding-right:0 !important;
   margin-left: 0 !important;
   padding:0 !important;
   color:black;
 }
-
-.round-img-1{
-  height:40vh;
-  margin-left:-4vw;
-  margin-top:15vh;
-}
-
-.round-img-2{
-  height:40vh;
-  margin-top:15vh;
-  margin-left:5vw;
-}
-
-
 .story img{
-  border: 10px solid #56a3ba;
-  height:400px;
-  width:400px;
+  border: 20px solid #56a3ba;
+  height:500px;
+  width:500px;
   border-radius: 70%;
 }
-
 .info{
-  height:95vh;
-  background-color:#F2F2F2;
+  height:100vh;
+  background-color:#DBDEDF;
 }
-
 .info-header{
   width:5vw;
   padding-left: 5vw;
   height:20vh;
   margin-top:33vh;
 }
-
 .row-1,
 .row-2,
 .row-3{
@@ -134,32 +119,25 @@ html,body
   background:white;
   margin-right: 4vw;
 }
-
 .row-1{
   margin-top:6vh;
   margin-bottom:2vh;
 }
-
 .row-2{
   margin-bottom:2vh;
 }
-
 .row-3{
   margin-bottom:6vh;
 }
-
 .info h1{
   font-size: 28px;
   color:#56a3ba;
 }
-
 .row-content p,h1{
   margin:0;
   padding-left:15%;
   padding-right:5px;
 }
-
-
 .modal-pop{
   border:none;
   border-radius: 5px;
@@ -168,13 +146,10 @@ html,body
   margin-top:10px;
   margin-left: 40%;
 }
-
-/* side logo*/
 img{
   width:40px;
   height:40px;
 }
-
 .row-1-img,
 .row-2-img,
 .row-3-img{
@@ -184,7 +159,6 @@ img{
   width:60px;
   height:60px;
 }
-
 .side-header{
   border-top:2px solid  #56a3ba;
   max-width: 30px;
@@ -193,72 +167,92 @@ img{
   font-size: 50px;
   color:#56a3ba;
 }
-
 .row-2 p ,.row-1 p , .row-3 p{
   max-width: 55vw;
 }
-
-
 .quotes{
   height:95vh;
 }
-
 .quotes-header{
   font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 3em;
   color:#56a3ba;
-  padding: 40px 0 50px 0;
+  padding: 40px 0 20px 0;
   text-align: center;
 }
-
-
 .company-image{
+  background-color: white;
+  z-index: 1;
   border-radius: 14px;
   width:230px;
   height:230px;
 }
-
+.company-quote{
+  border-radius: 14px;
+  width:230px;
+  height:230px;
+  background-color: whitesmoke;
+}
+.quote-content, .quote-author{
+  font-weight: bold;
+  font-size: 1em;
+  margin:0;
+  max-height:80%;
+  margin-left:10%;
+  max-width:85%;
+}
+.quote-content{
+  margin-top:-5%;
+}
+.quote-author{
+  padding-top:2%;
+  color:#56a3ba;
+}
+.overlay-quote{
+  box-shadow: 8px 10px whitesmoke;
+  position: absolute;
+  overflow: hidden;
+  border-radius: 14px;
+  width:230px;
+  height:230px;
+}
+.overlay-quote:hover{
+  cursor:pointer !important;
+  display: none;
+}
 .company-link{
   max-width: 200px;
   padding-bottom:1vh;
-  color:grey;
+  color:#8d8d8d;
   font-weight: bold;
   font-size: 18px;
 }
-
 a:hover{
   color:grey;
   text-decoration:none;
 }
-
 .rows-cols-4{
   margin-bottom:10px;
 }
-
 .quotes-container{
   height:95vh;
   padding-top:2vw;
   padding-left:10vw;
   background-color: white;
 }
-
 .bottom{
   margin-top:5vh;
 }
-
 .link-align{
   width:250px;
   padding-bottom:1vh;
   text-align:center;
   justify-content:center;
 }
-
-
 .connect{
   margin-top:5vh;
   height: 80vh;
 }
-
 .side-block{
   border-top:2px solid  #56a3ba;
   text-align: justify;
@@ -266,18 +260,15 @@ a:hover{
   font-size: 50px;
   color:#56a3ba;
 }
-
 .inner-div{
   height: 70vh;
-  background-color: #F2F2F2;
+  background-color: #DBDEDF;
 }
-
 .side-col{
   margin-bottom: 20vh;
   margin-top:20vh;
   max-width:30vw ;
 }
-
 .connect-form{
   border-radius: 20px;
   margin-top: -40px;
@@ -286,14 +277,12 @@ a:hover{
   max-width:40%;
   background-color:#56a3ba;
 }
-
 .form-container{
   padding-top:10vh;
   padding-right:2vw;
   padding-left: 2vw;
   height:20vh;
 }
-
 .join-button{
   border-color: #56a3ba;
   height:8vh;
@@ -304,39 +293,548 @@ a:hover{
   border-radius: 5px;
   background-color:white;
 }
-
 .btn-container{
-  margin-left:35%;
+  margin-left:33%;
   margin-top:10px;
-  max-width: 20vh;
+  max-width: 100vw !important;
   max-height: 30vh;
 }
-
 .text-body{
   padding-top:10px;
 }
-
 #text-body{
   resize:none;
 }
-
 .names, .contact{
   padding-bottom: 20px;
 }
-
 .para-top p{
   color:black;
   margin-bottom:0px;
   padding-top: 0px;
 }
-
 .para-bottom p{
   color: #56a3ba;
   margin-bottom:0px;
   padding-top: 0px;
 }
-
 .para-bottom{
   font-weight: bold;
   margin-top:20px;
 }
+
+/* 320 -- > 480 */ 
+@media (min-width: 320px) and (max-width: 480px) {
+  /* Top section background */
+  #background{
+    height:54vh;
+  }
+  #inner-content {
+		padding-top:110px;
+	}
+	#inner-content h1{
+		font-size:30px !important;
+		margin-left:25px ;
+	}
+	#inner-content p {
+    padding-bottom: 10px;
+		font-size: 13px ;
+		margin-left:25px ;
+		max-width:100% ;
+	}
+  .start-button{
+    height:auto !important;
+  }
+	.button-link{
+		padding: 5px 25px 5px 25px;
+    display:flex;
+    float:left;
+    margin-left:25px;
+	}
+
+  /* story section */
+  .back-splash{
+    height:60vh !important;
+    max-width: 100%;
+  }
+  .story{
+    height:50vh !important;
+    max-width:100%;
+    margin:0;
+    margin-top:25%;
+  }
+  .story-content{
+    max-width: 100% !important;
+    max-height:auto;
+    margin-top:0 !important;
+    margin-left:0 !important;
+    padding: 15% 15% 0 15%;
+  }
+  .story-content h1{
+    text-align: center;
+    max-width: 100%;
+    border:none;
+    font-weight: bold;
+    font-size: 24px !important;
+  }
+  .story-content p{
+    text-align:left;
+    max-width: 100%;
+    font-size: 13px;
+  }
+  .story img{
+    image-rendering:optimizeQuality !important;
+    border:6px solid #56a3ba !important;
+    max-height:160px !important;
+    max-width:160px !important;
+  }
+  .round-img-1, .round-img-2{
+    height:auto;
+    width: 50%;
+    float: left;
+    margin:0 !important;
+  }
+  .image-content{
+    margin: 0 !important;
+    margin-top:-110% !important;
+    padding:0 !important;
+    max-width:100%;
+    height:160px;
+  }
+
+  /* business info */
+  .info{
+    height:148vh;
+  }
+  .info-header{
+    margin-top:0;
+    height:0;
+    width:0;
+  }
+  .side-header{
+    margin-bottom: 0 !important;
+    margin-left:0 !important;
+    width:100% !important;
+  }
+  .right-content{
+    margin-right: 35%;
+    flex-direction: column;
+    margin-top:50%;
+  }
+  .row-1, .row-2 ,.row-3{
+    width: 100vw !important;
+    height:35vh !important;
+  }
+  .row-content h1{
+    font-size: 18px;
+    margin-top:-10% !important;
+  }
+  .row-content p{
+    font-size: 13px;
+    padding-top:4px;
+    max-width: 98vw;
+  }
+  .row-1-img , .row-2-img , .row-3-img {
+    margin-left:0;
+  }
+  .modal-pop{
+    width:30%;
+    margin-left:35%;
+  }
+
+  /* client quotes */
+  .quotes{
+    height:430%;
+  }
+  .link-align{
+    width: 70% !important;
+  }
+  .company-container{
+    padding-top:3%;
+  }
+  .quotes-container .col{
+    margin-top:10%;
+    margin-left:10%;
+  }
+  /* Connect form */
+  .side-col{
+    justify-content:center !important;
+    margin-left:0;
+    margin-bottom:0 !important;
+    margin-top: 0 !important;
+    height:20% !important;
+    width:100vw !important;
+  }
+  .side-block {
+    border: none !important;
+    width: 500%;
+    font-size: 30px !important;
+    margin-left:100% !important;
+  }
+  .para-top ,.para-bottom{
+    margin-left:-30% !important;
+    width: 500%;
+    font-size: 15px;
+  }
+  .para-2{
+    text-indent: 18%;
+  }
+  .para-3{
+    text-indent: 13%;
+  }
+  .para-4{
+    text-indent: 18%;
+  }
+  .para-5{
+    text-indent: 5%;
+  }
+
+  /* connection form */ 
+  .connect-form{
+    margin-left:-25%;
+    max-width: 95%;
+    margin-top:50%;
+  }
+  .connect{
+    height:115vh;
+  }
+  .join-button{
+    width:30vw;
+  }
+  /* Excess modifications */
+  .socials{
+    margin-top:-20%;
+    padding-left:50%;
+    height:20px;
+  }
+  footer{
+    height:220px;
+  }
+  /* minor changes */
+  
+  @media screen and (max-width:376px){
+    .image-content{
+      margin-top:-130% !important;
+    }
+    .connect-form{
+      margin-top: 60%;
+    }
+    .side-col{
+      padding-left: 5% !important;
+    }
+    .side-block{
+      margin-left: 118% !important;
+    }
+    .quotes-container .col {
+      margin-left: 10% !important;
+    }
+
+  }
+
+  @media screen and (max-width:425px) {
+    #inner-content p{
+      font-size: 1em;
+    }
+    .quotes{
+      height:350%;
+    }
+    .quotes-container .col{
+      margin-left: 15%;
+    }
+    .logo{
+      padding-left:15% !important;
+    }
+    .side-col{
+      padding-left: 9%;
+    }
+    .side-block{
+      margin-left: 118% !important;
+    }
+  }
+
+  /* Longer Phones */
+  @media (min-height:844px) and (max-height:915px){
+    /* background section */
+    #background{
+      height:50vh;
+      padding: 5% 5% 0 5%;
+    }
+    #inner-content h1{
+      font-size: 2em !important;
+    }
+    #inner-content p{
+      font-size: 1em !important;
+    }
+
+    /* OUTFRNT history */
+    .story-content h1{
+      font-size: 2.5em !important;
+    }
+    .story-content p{
+      font-size: 1em !important;
+    }
+    .image-content{
+      margin-top:-130% !important;
+    }
+
+    /* business info */
+    .row-content h1{
+      font-size: 1.75em !important;
+    }
+    .row-content p{
+      font-size: 0.95em !important;
+    }
+
+    /* client quotes */
+    .quotes{
+      height:350% !important;
+    }
+    .side-block, .side-col{
+      padding-left:6% !important;
+    }
+    
+  }
+
+}
+
+/* 480 -- > 768 */
+@media (min-width: 480px) and (max-width: 768px) {
+  .logo{
+    padding-left:10% !important; 
+  }
+  #inner-content h1{
+    font-size: 3em !important;
+  }
+  #inner-content p {
+    font-size: 2em !important;
+    max-width: 80%;
+  }
+  .button-link{
+    font-size: 2em !important;
+  }
+  .story img{
+    image-rendering:optimizeQuality !important;
+    border:6px solid #56a3ba !important;
+    max-height:360px !important;
+    max-width:360px !important;
+  }
+  .round-img-1, .round-img-2{
+    height:auto;
+    width: 50%;
+    float: left;
+    margin:0 !important;
+  }
+  .image-content{
+    margin: 0 !important;
+    padding:0 !important;
+  }
+  .story-content {
+    float:center;
+    max-width: 100% !important;
+    margin-top: 20% !important;
+    margin-left: 0% !important;
+    padding-left:5% !important;
+    color: #56a3ba;
+  }
+  .story-content p{
+    font-size: 1.24em;
+    width:110% !important;
+  }
+  .back-splash{
+    max-width:100% !important;
+  }
+  .round-img-1{
+    margin-left: -50% !important;
+  }
+  .round-img-2{
+    margin-top:100% !important;
+    padding-top: 50% !important;
+    margin-left: -30% !important;
+  }
+  /* business info */
+  .info{
+    height:148vh;
+  }
+  .info-header{
+    margin-top:0;
+    height:0;
+    width:0;
+  }
+  .side-header{
+    margin-bottom: 0 !important;
+    margin-left:0 !important;
+    width:100% !important;
+  }
+  .right-content{
+    margin-right: 35%;
+    flex-direction: column;
+  }
+  .row-1, .row-2 ,.row-3{
+    width: 100vw !important;
+    height:30vh !important;
+  }
+  .row-content h1{
+    font-size: 2em;
+  }
+  .row-content p{
+    font-size: 1.2em;
+    padding-top:4px;
+    max-width: 98vw;
+  }
+  .row-1-img , .row-2-img , .row-3-img {
+    margin-left:0;
+  }
+  .modal-pop{
+    width:30%;
+    margin-left:35%;
+  }
+
+  .quotes-container{
+    padding-left: 13vw;
+  }
+  .quotes{
+    height:140vh;
+  }
+  .company-container{
+    padding-top:10%;
+  }
+  
+  .side-block, .side-col{
+    padding-left:6% !important;
+  }
+  /* Connect form */
+  .side-col{
+    padding-top: 3%;
+    justify-content:center !important;
+    margin-left:10% !important;
+    margin-bottom:0 !important;
+    margin-top: 0 !important;
+    height:20% !important;
+    width:100vw !important;
+    padding-left: 18% !important;
+  }
+  .side-block {
+    text-align: center !important;
+    border: none !important;
+    width: 500%;
+    font-size: 3em !important;
+    margin-left: 29% !important;
+  }
+  .para-top ,.para-bottom{
+    text-align: center !important;
+    margin-left:-30% !important;
+    width: 500%;
+    font-size: 1em;
+  }
+  .para-2{
+    text-align: center !important;
+  }
+  .para-3{
+    text-align: center !important; 
+  }
+  .para-4{
+    text-align: center !important;  
+  }
+  .para-5{
+    text-align: center !important;
+  }
+  /* connection form */ 
+  .connect-form {
+    margin-left: -38%;
+    max-width: 100%;
+    margin-top: 35%;
+  } 
+  .connect{
+    height:115vh;
+  }
+  .join-button{
+    width:30vw;
+  }
+} 
+
+
+/* 768 -- > 1024 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  nav .links{
+    width:80% !important;
+  }
+  nav .logo{
+    width:0% !important;
+  }
+  #background{
+    height:70vh;
+  }
+  #inner-content p{
+    max-width:85% ;
+  }
+  #inner-content h1{
+    font-size: 3em ;
+  }
+  .button-link{
+    font-size: 1.3em !important;
+  }
+  .story-content{
+    padding-top:20%;
+    margin-left: 0;
+    padding-left:4% !important;
+    max-width: 50%;
+  }
+  .story-content p{
+    font: 1.2em sans-serif;
+  }
+  .story-content h1{
+    font: 2.3em;
+  }
+  .info-header{
+    margin-left: -11%;
+  }
+  .right-content{
+    margin-right:-2% !important;
+  }
+  .row-2 p, .row-1 p, .row-3 p {
+    padding-top:2%;
+    font-size: 1em;
+    max-width: 60vw;
+  }
+
+  .company-container{
+    max-width:230px;
+    margin-right: 10%;
+    padding-top:5%;
+  }
+  .quotes-container{
+    margin-left:15%;
+  }
+  .quotes{
+    height:135vh;
+  }
+  .side-block{
+    width:100%;
+    padding-left: 0 !important;
+    margin-left: 5%;
+  }
+  .para-top, .para-bottom{
+    margin-left: -30%;
+  }
+  .connect-form {
+    margin-left: 10%;
+    max-width: 60%;
+  }
+  .form-container {
+    padding-top: 16vh;
+    padding-right: 2vw;
+    padding-left: 5vw;
+    height: 20vh;
+  }
+  .join-button {
+    width: 20vw;
+    font-size: 27px;
+    margin-top: 5%;
+  }
+  .top, .bottom{
+    padding-top:0;
+  }
+
+} 
+
+

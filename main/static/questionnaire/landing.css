@@ -15,23 +15,31 @@ body {
     font-size: 15px;
     font-family: 'Poppins', sans-serif;
     background-image: linear-gradient(#56a3ba,white);
+    overflow-x: hidden !important;
+    max-height: 140vh;
 }
 
 .attribution { 
     font-size: 11px; text-align: center; 
 }
 .attribution a { 
-    color: hsl(228, 45%, 44%); 
+    color:black;
 }
 
 h1:first-of-type {
     font-weight: var(--weight1);
-    color: var(--varyDarkBlue);
+    color: black;
 
 }
 
+a:hover{
+    color:black;
+    text-decoration: none;
+}
 h1:last-of-type {
-    color: var(--varyDarkBlue);
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    color: white;
 }
 
 @media (max-width: 400px) {
@@ -47,7 +55,7 @@ h1:last-of-type {
     text-align: center;
     line-height: 0.8;
     margin-bottom: 50px;
-    margin-top: 100px;
+    margin-top: 9%;
 }
 
 .header p {
@@ -67,6 +75,7 @@ h1:last-of-type {
     box-shadow: 0px 30px 40px -20px var(--grayishBlue);
     padding: 30px;
     margin: 20px;  
+    width:20% !important;
 }
 
 @media (max-width: 450px) {

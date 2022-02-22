@@ -34,6 +34,7 @@ class Response(models.Model):
 class Questionnaire(models.Model):
     question = models.ForeignKey(Question, on_delete = models.CASCADE, null = True , blank = True)
     provided_for = models.ForeignKey(User, on_delete = models.CASCADE)
+    category_of_questionnaire = models.CharField(max_length = 60, blank = True)
     answered = models.BooleanField(default = False)
 
 

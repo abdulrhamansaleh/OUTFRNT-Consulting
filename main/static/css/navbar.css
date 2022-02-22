@@ -34,7 +34,7 @@ nav .links li {
 nav .links a {
 	display: block;
 	padding: 1em;
-	font-size: 16px;
+	font-size: 20px;
 	color: black;
 	text-decoration: none;
 }
@@ -71,11 +71,20 @@ nav .icon-burger .line {
   height: auto;
 }
 
-.logo a{
-  pointer-events: none;
-  cursor: default;
-  text-decoration: none;
-  color: white;
+.logo{
+	pointer-events: none;
+	cursor: default;
+	text-decoration: none;
+	color: white;
+}
+
+
+.sole-button{
+	width:auto !important;
+	color:white !important;
+	padding:10px 30px 10px 30px !important;
+	background-image:linear-gradient(#56a3ba,#a1dcee);
+	border-radius: 15px;
 }
 
 @media screen and (max-width: 1013px) {
@@ -178,4 +187,14 @@ footer p{
 .socials{
 	margin-top:3%;
 	padding-top:1%;
+}
+
+
+@media screen and (max-width:415px){
+	.logo img{
+		margin-left:50px;
+	}
+	.footer{
+		height:50vh !important;
+	}
 }
