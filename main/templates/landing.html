@@ -11,19 +11,21 @@
 <body>
     <!-- Background -->
     <div id = "background" style = "background-image: url({% static 'images/YukonRiver.png' %});" >
-       <div id = "inner-content"> 
-            <h1 style = "color:white"> personal guidance </h1>
-            <h1 style = "color:white"> forward together. </h1>
-            <p style = "color:white"> We believe in a collaborative and intuitive approach to business expertise. Experience a more human side to business with us</p>
-            <div class = "start-button">
-                <a style = "color:white" class = "button-link" href = "{% url 'accounts:signup'%}">Get Started</a>
-            </div>
-        </div>
+      <div id = "inner-content"> 
+          <h1 style = "color:white"> 
+            personal guidance
+            forward together.  
+          </h1>
+          <p style = "color:white"> We believe in a collaborative and intuitive approach to business expertise. Experience a more human side to business with us</p>
+          <div class = "start-button">
+            <a style = "color:white" class = "button-link" href = "{% url 'accounts:signup'%}">Get Started</a>
+          </div>
+      </div>
     </div> 
     <!-- Story-->
     <div id = "story" class = "back-splash">
       <div class = "row story">
-          <div class = "col-sm-8 story-content">
+          <div class = "col-sm-6 story-content">
             <h1> Meet Outfrnt </h1>
             <p> 
                 Established in Whitehorse Yukon in January 2020, 
@@ -207,7 +209,7 @@
               </div>
               <div class = "main-quote">
                 <div class = "overlay-quote">
-                  <img class = "company-image" src = "{% static 'images/lumel.render.png'%}">
+                  <img style class = "company-image" src = "{% static 'images/lumel.render.png'%}">
                 </div>
                 <div class = "company-quote">
                   <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
@@ -225,17 +227,13 @@
         <div class = "inner-div">
           <div class="row row-cols-2">
             <div class="col side-col">
-              <p class = "side-block">
-                Let's Connect !
-              </p>
-              <div class = "para-top"> 
-                <p class = "para-1">Dont see what you are looking for ?</p>
-                <p class = "para-2">Have questions ?</p>
-                <p class = "para-3">Looking to connect ?</p>
-              </div>
-              <div class = "para-bottom"> 
-                <p class = "para-4"> Drop us a line! </p>
-                <p class = "para-5"> We'd love to head from you </p>
+              <div class = "connect-text">
+                <h1 class = "connect-header">Let's Connect !</h1>
+                <p>Dont see what you are looking for ?</p>
+                <p>Have questions ?</p>
+                <p>Looking to connect ?</p>
+                <p style = "color:56a3ba;font-weight:bold">Drop us a line! </p>
+                <p style = "color:56a3ba;font-weight:bold">We'd love to head from you</p>
               </div>
             </div>
             <div class="col connect-form">
@@ -263,10 +261,8 @@
                 <div class = "text-body"> 
                     {{ form.help_body }}
                 </div>
-                 <!-- fourth row -->
-                <div class = "btn-container">
-                  <button name = "join" type = "sumbit" class = "join-button">Join Us</button>
-                </div>
+                <!-- fourth row -->
+                <button name = "join" type = "sumbit" class = "join-button">Join Us</button>
               </form>
             </div>
             </div>
