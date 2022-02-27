@@ -2,15 +2,11 @@
 from django.views.generic import View
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login,logout
-from django.contrib import messages 
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
-# python imports 
-import datetime 
 # app imports 
 from accounts.forms import SignInForm,SignUpForm,JoinUs
 from accounts.models import User
-from questionnaire.models import Question
 
 # landing page with connection form 
 def home(request):
@@ -27,7 +23,7 @@ def home(request):
             help_body = form.cleaned_data["help_body"]
             send_mail(
                 'OUTFRNT CONTACT FORM: Verify For Possible Spam',
-                f'Name:{first} {last}\nPhone:{phone}\nInquiry:{help_body}',
+                f'Name:{first} {last}\nPhone:{phone}\nEmail:{email}\nInquiry:{help_body}',
                 'noreply@outfrnt.com',
                 ['noreply@outfrnt.com'],
                 fail_silently = False
@@ -81,14 +77,6 @@ def signout(request):
     logout(request)
     return redirect('accounts:home')
 
-@login_required(login_url = '/signin/')
-def remove_user(request,client):
-    if request.user.is_coach:
-        User.objects.filter(username = client).delete()
-        return redirect('accounts:manage')
-    else:
-        return home(request)
-    
 # Management Panel for authorized coaches 
 @login_required(login_url = '/signin/')
 def manage_clients_status(request):
@@ -102,6 +90,7 @@ def manage_clients_status(request):
     else:
         return home(request)
 
+#Managment Functionalities 
 @login_required(login_url = '/signin/')
 def update_status_to_client(request,user):
     if request.user.is_coach:
@@ -165,4 +154,12 @@ def update_status_to_prospect(request,client):
     else:
         return home(request)
 
+@login_required(login_url = '/signin/')
+def remove_user(request,client):
+    if request.user.is_coach:
+        User.objects.filter(username = client).delete()
+        return redirect('accounts:manage')
+    else:
+        return home(request)
+    
         

@@ -12,4 +12,5 @@ urlpatterns = [
     path('view-details-task/<int:event_id>/', views.detail_task_view , name = "task-details"),
     path('delete-task/<str:event_id>/', views.delete_client_task, name = "delete_task_client"),
     path('delete-task-outfrnt/<str:event_id>/', views.delete_outfrnt_task, name = "delete_task_outfrnt"),
+    path('dashboard/', views.DashBoardView , name='dashboard'),
 ]

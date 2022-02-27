@@ -1,4 +1,3 @@
-
 # view imports 
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
@@ -39,6 +38,23 @@ def next_month(d):
 
 # VIEW FUNCTIONS FOR CALENDAR APP 
 # THE FOLLOWING VIEWS ARE SPECIFIC TO CALENDAR APP MODELS 
+@login_required(login_url = '/signin/')
+def DashBoardView(request):
+    user = request.user 
+    if user.is_client:
+        events = Event.objects.get_all_events(user=request.user)
+        running_events = Event.objects.get_running_events(user=request.user)
+        latest_events = Event.objects.filter(
+            user=request.user
+        ).order_by('-id')[:10]
+        variables = {
+                'total_event': events.count(),
+                'running_events': running_events,
+                'latest_events': latest_events
+            }
+        return render(request, 'calendarapp/dashboard.html', variables)
+    else:
+        return redirect('accounts:home')
 
 @login_required(login_url = '/signin/')
 def all_events_view(request):
@@ -179,7 +195,7 @@ def delete_client_task(request,event_id):
                 end_time = event_to_archive.end_time
         )
         event_to_archive.delete()
-        return redirect('dashboard')
+        return redirect('calendarapp:dashboard')
     else:
         return home(request)
 
@@ -199,6 +215,7 @@ def detail_task_view(request,event_id):
         return render(request,'calendarapp/clienttaskdetails.html',variables) 
     else:
         return home(request)
+
 
 
         
