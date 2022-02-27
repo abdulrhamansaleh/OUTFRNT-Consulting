@@ -5,8 +5,6 @@ from django.contrib.auth.forms import UserCreationForm
 from accounts.models import User
 from django.forms import ModelForm, DateInput
 
-from phonenumber_field.modelfields import PhoneNumberField
-
 
 class SignInForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={

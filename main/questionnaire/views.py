@@ -183,7 +183,6 @@ def answer_question(request, category):
     client = request.user
     if client.is_newclient:
         questions = Question.objects.filter(category = category)
-        print(questions)
         for index in range(questions.count()):
             Questionnaire.objects.get_or_create(
                 provided_for = client, 
