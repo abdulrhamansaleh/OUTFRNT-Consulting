@@ -1,1 +1,1 @@
-web: gunicorn outfrnt.wsgi -- log-file - 
+web: gunicorn outfrnt.wsgi 
