@@ -193,10 +193,6 @@ footer p{
 	padding-top:1%;
 }
 
-a:hover{
-	color:#56a3ba;
-}
-
 @media screen and (max-width:415px){
 	.logo img{
 		margin-left:50px;
@@ -205,7 +201,6 @@ a:hover{
 		height:50vh !important;
 	}
 }
-
 @media (max-width:335px) {
 	.socials {
 		padding-right: 0 !important;
