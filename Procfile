@@ -1,1 +1,1 @@
-web: gunicorn outfrnt.wsgi 
+web: gunicorn outfrnt.wsgi:application
