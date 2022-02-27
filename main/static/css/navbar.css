@@ -88,8 +88,9 @@ nav .icon-burger .line {
 }
 
 @media screen and (max-width: 1013px) {
+
   .logo{
-    padding-left: 20px;
+    padding-left: 10%;
     width:0 !important;
   }
 	nav .logo {
@@ -192,6 +193,9 @@ footer p{
 	padding-top:1%;
 }
 
+a:hover{
+	color:#56a3ba;
+}
 
 @media screen and (max-width:415px){
 	.logo img{
@@ -213,3 +217,5 @@ footer p{
 		padding:0 !important;
 	}
 }
+
+

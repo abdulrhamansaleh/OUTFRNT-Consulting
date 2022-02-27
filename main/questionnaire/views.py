@@ -12,7 +12,7 @@ from django.http import FileResponse
 import io 
 from reportlab.pdfgen import canvas 
 from reportlab.lib.units import inch 
-from reportlab.lib.pagesizes import letter 
+from reportlab.lib.pagesizes import * 
 
 @login_required(login_url = '/signin/')
 def add_questions(request):
@@ -44,22 +44,123 @@ def questionnaire_responses_to_pdf(request, client_id ):
     if request.user.is_coach:
             
         buff = io.BytesIO()
-        text_container = canvas.Canvas(buff, pagesize = letter , bottomup = 0)
-        text_obj = text_container.beginText()
-        text_obj.setTextOrigin(inch,inch)
-        text_obj.setFont("Helvetica" , 14)
+        text_container = canvas.Canvas(buff, pagesize = LEDGER , bottomup = 0)
         
+        sales_page = text_container.beginText()
+        sales_page.setTextOrigin(inch,inch)
+        sales_page.setFont("Helvetica" , 15)
+        
+        peoples_page = text_container.beginText()
+        peoples_page.setTextOrigin(inch,inch)
+        peoples_page.setFont("Helvetica" , 15)
+        
+        accounting_page = text_container.beginText()
+        accounting_page.setTextOrigin(inch,inch)
+        accounting_page.setFont("Helvetica" , 15)
+        
+        business_page = text_container.beginText()
+        business_page.setTextOrigin(inch,inch)
+        business_page.setFont("Helvetica" , 15)
+        
+        legal_page = text_container.beginText()
+        legal_page.setTextOrigin(inch,inch)
+        legal_page.setFont("Helvetica" , 15)
+        
+        tech_page = text_container.beginText()
+        tech_page.setTextOrigin(inch,inch)
+        tech_page.setFont("Helvetica" , 15)
+        
+        
+        # query client responses 
+        client_responses = Response.objects.filter(responder = client)
         # list to hold all content for pdf display 
         pdf_content = []
         
+        # sales 
+        sales_page.textLine("Sales and Marketing Responses")
+        sales_page.textLine("====================================================")
+        for index in range (client_responses.count()):
+            current = client_responses[index]
+            question = current.question
+            answer = current.answer
+            if question.category == "sales":
+                sales_page.textLine(f'Q){question}')
+                sales_page.textLine(f'ans:{answer}')
+        text_container.drawText(sales_page)
+        text_container.showPage()
+        
+        # people 
+        peoples_page.textLine("People and Culture")
+        peoples_page.textLine("====================================================")
+        for index in range (client_responses.count()):
+            current = client_responses[index]
+            question = current.question
+            answer = current.answer
+            if question.category == "sales":
+                peoples_page.textLine(f'Q){question}')
+                peoples_page.textLine(f'ans:{answer}')
+        text_container.drawText(peoples_page)
+        text_container.showPage()
+
+        #accounting 
+        accounting_page.textLine("Accounting and Finance")
+        accounting_page.textLine("====================================================")
+        for index in range (client_responses.count()):
+            current = client_responses[index]
+            question = current.question
+            answer = current.answer
+            if question.category == "accounting":
+                accounting_page.textLine(f'Q){question}')
+                accounting_page.textLine(f'ans:{answer}')
+        text_container.drawText(accounting_page)
+        text_container.showPage()
+        
+        #business 
+        business_page.textLine("Business and Operations")
+        business_page.textLine("====================================================")
+        for index in range (client_responses.count()):
+            current = client_responses[index]
+            question = current.question
+            answer = current.answer
+            if question.category == "business":
+                business_page.textLine(f'Q){question}')
+                business_page.textLine(f'ans:{answer}')
+        text_container.drawText(business_page)
+        text_container.showPage()
+        
+        #legal 
+        legal_page.textLine("Legal and Governance")
+        legal_page.textLine("====================================================")
+        for index in range (client_responses.count()):
+            current = client_responses[index]
+            question = current.question
+            answer = current.answer
+            if question.category == "legal":
+                legal_page.textLine(f'Q){question}')
+                legal_page.textLine(f'ans:{answer}')
+        text_container.drawText(legal_page)
+        text_container.showPage()
+        
+        #tech 
+        tech_page.textLine("Technology")
+        tech_page.textLine("====================================================")
+        for index in range (client_responses.count()):
+            current = client_responses[index]
+            question = current.question
+            answer = current.answer
+            if question.category == "tech":
+                tech_page.textLine(f'Q){question}')
+                tech_page.textLine(f'ans:{answer}')
+        text_container.drawText(tech_page)
+        text_container.showPage()
+                
+    
         # convert all forms into a uniform data type for ease of display 
         for content in pdf_content: 
             content = str(content)
             text_obj.textLine(content)
         
         # populate the pdf container 
-        text_container.drawText(text_obj)
-        text_container.showPage()
         text_container.save()
         buff.seek(0)
         

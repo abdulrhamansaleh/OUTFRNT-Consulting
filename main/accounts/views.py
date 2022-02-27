@@ -19,23 +19,20 @@ def home(request):
         "form":form
     }
     if 'join' in request.POST:
-        print("posting data")
         if form.is_valid():
-            print("form is valid")
             first = form.cleaned_data["first_name"]
             last = form.cleaned_data["last_name"]
             email = form.cleaned_data["email"]
             phone = form.cleaned_data["phone_num"]
             help_body = form.cleaned_data["help_body"]
-            variables = {
-                "first":first,
-                "last":last,
-                "email":email,
-                "phone":phone,
-                "body":help_body,
-            }
-            return redirect('accounts:home')
-    form = JoinUs
+            send_mail(
+                'OUTFRNT CONTACT FORM: Verify For Possible Spam',
+                f'Name:{first} {last}\nPhone:{phone}\nInquiry:{help_body}',
+                'noreply@outfrnt.com',
+                ['noreply@outfrnt.com'],
+                fail_silently = False
+            )
+        return redirect('accounts:home')
     return render(request,'landing.html',variables)
     
 class SignInView(View):
@@ -122,17 +119,17 @@ def update_status_to_newclient(request,client):
     client = User.objects.filter(username = client)
     if request.user.is_coach:
         subject_of_email = "Welcome to OUTFRNT"
-        email_body = "Thank you for choosing OUTFRNT. Knowing you and your business is quintessential to how we can help you. Your online access to OUTFRNT.com gives you the option to complete our client survey at your convenience. Alternatively, one of our business advisors can complete this with you."
-        email_sender = "pureexec@gmail.com"
+        email_body = "Thank you for choosing OUTFRNT.\n\tKnowing you and your business is quintessential to how we can help you. Your online access to OUTFRNT.com gives you the option to complete our client survey at your convenience. Alternatively, one of our business advisors can complete this with you."
+        email_sender = "noreply@outfrnt.com"
         clients_of_interest = [f'{client[0].email}']
 
-        #send_mail(
-            #subject_of_email,
-            #email_body,
-            #email_sender,
-            #clients_of_interest,
-            #fail_silently = False
-        #)
+        send_mail(
+            subject_of_email,
+            email_body,
+            email_sender,
+            clients_of_interest,
+            fail_silently = False
+        )
         
         client.update(
             is_newclient = True,
@@ -145,6 +142,7 @@ def update_status_to_newclient(request,client):
             completed_P5 = False,
             completed_P6 = False,
         )
+        
         return redirect('accounts:manage')
     else:
         return home(request)

@@ -22,10 +22,11 @@
           </div>
       </div>
     </div> 
+    <div id = "story" ></div>
     <!-- Story-->
-    <div id = "story" class = "back-splash">
+    <div class = "back-splash">
       <div class = "row story">
-          <div class = "col-sm-6 story-content">
+          <div class = "col story-content">
             <h1> Meet Outfrnt </h1>
             <p> 
                 Established in Whitehorse Yukon in January 2020, 
@@ -34,34 +35,43 @@
                 Connect with us and see how we can help.
             </p>
           </div>
-          <div class = "col-sm-4 image-content">
+          <div class = "col image-content">
             <div class="col round-img-1">
-              <img src = "{% static 'images/Josh.jpg' %}">
+              <img src = "{% static 'images/Josh.jpeg' %}">
             </div>
-            <div class="col-sm round-img-2">
-              <img src = "{% static 'images/Andy.jpg' %}">
+            <div class="col round-img-2">
+              <img src = "{% static 'images/Andy.jpeg' %}">
             </div>
           </div>
       </div>
     </div>
+    <div id = "services"></div>
     <!-- Personalized -->
-    <div id = "services" class="row info">
+    <div class="row info">
           <div class="col info-header">
             <p class = "side-header">
               personalized business solutions
             </p>
           </div>
           <div class="col right-content">
+
             <div class = "row-1">
               <div class = "row-content">
                 <div class = "row-1-img"><img  src = "{% static 'images/outfrnt_logo_icon.png' %}"></div>
                 <h1>grant writing, business funding, and financing</h1>
-                <p> Whether you're looking to hire,train, or grow your 
+                <p> 
+                    Whether you're looking to hire,train, or grow your 
                     business through market expansion, grants are a great resource that is often
-                    overlooked.Let our experienced team help you develop your funding strategy,prepare for investors,and get ready to 
-                    engage with the banks.
+                    overlooked. Let our experienced team help you develop your funding strategy,prepare for investors,and get ready to 
+                    engage with the banks.<span id = "more-content"> ... </span>
+                    <p id = "more">
+                      We provide the guidance and expertise you'll need 
+                      from grant writing & financial planning, to risk management 
+                      and disbursement of funds so you can focus on your business 
+                      goals with confidence and peace of mind.
+                    </p>
                 </p>
-                <button class = "modal-pop">Learn More</button>
+                <button id = "btn-1" class = "modal-pop">Learn More</button>
               </div>
             </div>
             <div class = "row-2">
@@ -70,9 +80,17 @@
                 <h1>entrepreneurial business support programming</h1>
                 <p>
                   Looking at starting an incubator,accelerator, maybe something in between? We provide expertise in entrepreneurial program design for organizations
-                  such as Governments and post secondary institutions
+                  such as Governments and post secondary institutions<span id = "more-content-2"> ... </span>
+                    <p id = "more-2">
+                      Our stakeholder centric programming design guides our approach to implementation, 
+                      allows for continous improvements, 
+                      and creates a framework that is flexible alloqing your program to grow alongside the entrepreneurs you serve
+                      Our expertise has contributed to highly robust and engaging business growth, professional development, and graduate with further 
+                      business validation and tangible results.
+
+                    </p>
                 </p>
-                <button class = "modal-pop">Learn More</button>
+                <button id = "btn-2" class = "modal-pop">Learn More</button>
               </div>
             </div>
             <div class = "row-3">
@@ -83,16 +101,58 @@
                   Navigating the business world is complicated and sometimes all you need is some guidance 
                   with simplifying your business challenges. Our team supports founders, senior leaders, and 
                   other key personnel in your company through the unknowns and the ups and downs with help of our 
-                  extensive network of subject matter experts.
+                  extensive network of subject matter experts.<span id = "more-content-3"> ... </span>
+                    <p id = "more-3">
+                     Our collaborative approach with experts, ensures that whatever we work on together is a ligned to teh vision and strategic goals of your company.
+                     Whether it be developing human resource policies & procedures, management training, leadership development, financial modeling, branding, digital marketing, procurement, business planning, 
+                     sales process , budgeting , or even market validation, we are here for you.
+                     Together, we can help guide you through your challenges in a way that is easy to understand, aactionable, and effective.
+                    </p>
                 </p>
-                <button class = "modal-pop">Learn More</button>
+                <button id = "btn-3" class = "modal-pop">Learn More</button>
               </div>
             </div>
+            <script>
+              let btn = document.getElementById('btn-1');
+              btn.addEventListener('click',showMore);
+              btn.textToShow = document.getElementById('more')
+              btn.toggleShow = document.getElementById('more-content');
+    
+              let btn2 = document.getElementById('btn-2');
+              btn2.addEventListener('click',showMore);
+              btn2.textToShow = document.getElementById('more-2');
+              btn2.toggleShow = document.getElementById('more-content-2');
+    
+              let btn3 = document.getElementById('btn-3');
+              btn3.addEventListener('click',showMore);
+              btn3.textToShow = document.getElementById('more-3');
+              btn3.toggleShow = document.getElementById('more-content-3');
+    
+              function showMore(event){
+                var moreContent = event.currentTarget.toggleShow;
+                var more = event.currentTarget.textToShow;
+                var btnToggle = event.currentTarget;
+    
+                // if dots have disapread more content is being showed 
+                if (moreContent.style.display == "none"){
+                  moreContent.style.display = "inline";
+                  btnToggle.innerHTML = "Learn More";
+                  more.style.display = "none";
+                }
+                else{
+                  moreContent.style.display = "none";
+                  more.style.display = "block";
+                  btnToggle.innerHTML = "Show Less";
+                }
+              }
+          </script>
           </div>
         </div>
     </div>
+    
+    <div id = "clients"></div>
     <!-- client reviews -->
-      <div id = "clients" class = "quotes">
+      <div  class = "quotes">
         <div class = "quotes-header"> See What Our Clients Have To Say </div>
         <div class = "quotes-container">
           <div class="row rows-cols-4 rows-cols-4 top">
