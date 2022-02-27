@@ -1,0 +1,30 @@
+{% load static %}
+{% block extracss %}
+<head>  
+  <link rel="stylesheet" href="{% static 'questionnaire/questions.css' %}">
+  <!-- Script for octicons-->
+  <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+</head>
+{% endblock%}
+{% block content%}
+<title> Questions | Technology </title>
+<div class = "block">
+  <div class = "header-top">
+    <span class="iconify" data-width = "100" data-icon="grommet-icons:technology"></span>
+    <h1> Technology </h1>
+  </div>
+  <div class = "body-content">
+    <form method="post" action = "{% url 'questionnaire:answer' 'tech' %}" >
+      {% csrf_token %}
+      <h2> Q) {{ question.question_text }} </h2> 
+      <div class = "text-body"> 
+        {{ form.answer }} 
+      </div>
+      <div class = "button" >
+        <button type="submit" name = "save" style="background:#56a3ba" class="btn btn-info right">Save & Exit<span class="iconify" data-icon="pepicons:leave" style="color: white;" data-width="38" data-height="24"></span></a></button>
+        <button type="submit" name = "continue" style="background:#56a3ba" class="btn btn-info right">Continue<span data-width = "25" class="iconify" data-icon="ic:round-navigate-next" style="color: white;"></span></a></button>
+      </div>  
+    </form>
+  </div>
+</div>
+{% endblock %}

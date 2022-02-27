@@ -1,0 +1,125 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Tasks{% endblock title %}
+
+{% block extracss %}
+  <link href="{% static 'calendar/main.css' %}" rel="stylesheet" />
+{% endblock extracss %}
+
+{% block breadcrumb %}
+  <div>
+      <h1 style="color:#56a3ba"><i class="fa fa-calendar"></i> Welcome, {{request.user.username}} </h1>
+  </div>
+{% endblock breadcrumb %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="tile row">
+            <div class="col-md-3">
+                <div id="external-events">
+                    <h4 style="color:#3d3d3d" class="mb-4"> OUTFRNT Tasks</h4>
+                    {% for event in events_month %}
+                    {% if event.outfrnt_task %}
+                    <div style="background:#56a3ba" class="fc-event">
+                      <h2>{{event.title}}</h2>
+                      <p>From: {{event.start_time}}</p>
+                      <p>Due: {{event.end_time}}</p>
+                    </div>
+                    {% endif %}
+                    {% empty %}
+                    <p> No Tasks For You </p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-9">
+              <!-- Container for the Calendar-->
+                <div id="calendar"></div>
+            </div>
+            <!-- Form To Trigger a task addition -->
+            <div class="modal fade show" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+                <div class="modal-dialog modal-dialog-centered" role="document" >
+                    <div class="modal-content" >
+                      <!-- bg-primary class controls the color of the add task background-->
+                        <div class="modal-header bg-primary ">
+                            <h5 class="modal-title text-white" id="exampleModalLongTitle" >Add Task</h5>
+                            <button id="modalClose1" type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <!-- Form for creating a takeaway-->
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label style="color:#3d3d3d" for="recipient-name" class="col-form-label">Task:</label>
+                                    {{ form.title }}
+                                </div>
+                                <div class="form-group">
+                                    <label style="color:#3d3d3d" for="message-text" class="col-form-label">Description:</label>
+                                    {{ form.description }}
+                                </div>
+                                <div class="form-group">
+                                    <label style="color:#3d3d3d" for="message-text" class="col-form-label">Start Date:</label>
+                                    {{ form.start_time }}
+                                </div>
+                                <div class="form-group">
+                                    <label style="color:#3d3d3d" for="message-text" class="col-form-label">Due Date:</label>
+                                    {{ form.end_time }}
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button style="background:#56a3ba" type="submit" class="btn btn-primary"> Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extrascripts %}
+<!-- FullCalendar.io script implementation -->
+  <script src="{% static 'calendar/main.js' %}"></script>
+  <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // fetch calendar container 
+        var calendarEl = document.getElementById('calendar');
+        var today = new Date();
+        // calendar object to be rendered 
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          // the following property: etc.. are part of the event object 
+          headerToolbar: {
+            left: 'prev,next',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+          },
+          navLinks: true, 
+          selectable: true,
+          selectMirror: true,
+          // adding client task 
+          select: function(arg) {
+            var modal = document.getElementById('eventModal')
+            modal.style.display = 'block'
+            calendar.unselect()
+          },
+          dayMaxEvents: true, 
+          events: {{ events|safe }},
+          eventColor:'#56a3ba'
+        });
+        calendar.render();
+      });
+      const closeBtn1 = document.getElementById('modalClose1');
+      const closeBtn2 = document.getElementById('modalClose2');
+      closeBtn1.addEventListener('click',()=>{
+        const eventModal = document.getElementById('eventModal')
+        eventModal.style.display = 'none';
+      });
+      closeBtn2.addEventListener('click',()=>{
+        const eventModal = document.getElementById('eventModal')
+        eventModal.style.display = 'none';
+      });
+  </script>
+{% endblock extrascripts %}

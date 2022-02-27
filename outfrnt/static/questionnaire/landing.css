@@ -1,0 +1,128 @@
+:root {
+    --red: hsl(0, 78%, 62%);
+    --cyan: hsl(180, 62%, 55%);
+    --orange: hsl(34, 97%, 64%);
+    --blue: hsl(212, 86%, 64%);
+    --varyDarkBlue: hsl(234, 12%, 34%);
+    --grayishBlue: hsl(229, 6%, 66%);
+    --veryLightGray: hsl(0, 0%, 98%);
+    --weight1: 200;
+    --weight2: 400;
+    --weight3: 600;
+}
+
+body {
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    background-image: repeating-linear-gradient(to bottom, #56a3ba,white);
+    overflow-x: hidden !important;
+    min-height: 100vh;
+}
+
+.top, .bottom {
+    min-height:40vh;
+    max-width: auto;
+}
+.bottom{
+    margin-top:5%;
+}
+.left, .center, .right{
+    border-top:20px solid #3d3d3d;
+    border-top-left-radius:10px;
+    border-bottom-right-radius:10px;
+    background:white;
+    min-height:40vh;
+    max-width: 100%;
+}
+.left, .right{
+    margin-inline:5%;
+}
+
+a{
+    color:black;
+}
+
+h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align:left;
+    margin-top:3%;
+    padding:3%;
+    font-size: 1.3 rem;
+    font-weight: bold;
+    color:#56a3ba;
+}
+
+p{
+    
+    padding:3%;
+}
+
+h1{
+    color:white;
+}
+
+a:hover{
+    text-decoration:none;
+    font-style:unset;
+    cursor:pointer;
+    color:#56a3ba;
+
+}
+
+.header {
+    display:flex;
+    justify-content: center;
+    float:center;
+    text-align: center;
+    line-height: 0.8;
+    margin-bottom: 50px;
+    margin-top: 15%;
+}
+.iconify{
+    color:#56a3ba;
+    float:right;
+}
+footer {
+    display: none;
+}
+
+
+@media screen and (max-width: 1015px) {
+    .top, .bottom {
+        justify-content: center;
+        margin:0;
+        margin-inline: 5%;
+        display:flex;
+        flex-direction: column;
+    }
+    .left, .right, .center {
+        min-height: 30vh;
+    }
+    .left, .right{
+        margin:0;
+    }
+    .center{
+        margin-top: 3%;
+        margin-bottom:3%;
+    }
+    .bottom{
+        margin-top: 3%;
+    }
+    .iconify{
+        display: flex;
+        height: 40%;
+        margin-top:-10%;
+        width:auto;
+    }
+
+    h1, h2{
+        text-align: center;
+    }
+
+    h2{
+        font-size: 3em;
+    }
+    p{
+        max-width: 70%;
+    }
+}
