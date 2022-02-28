@@ -77,8 +77,6 @@ nav .icon-burger .line {
 	text-decoration: none;
 	color: white;
 }
-
-
 .sole-button{
 	width:auto !important;
 	color:white !important;
@@ -192,6 +190,11 @@ footer p{
 	margin-top: 7%;
 	padding-top:1%;
 }
+
+.socials svg{
+	color:#56a3ba !important;
+}
+
 
 @media screen and (max-width:415px){
 	.logo img{
