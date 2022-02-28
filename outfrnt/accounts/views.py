@@ -24,8 +24,8 @@ def home(request):
             send_mail(
                 'OUTFRNT CONTACT FORM: Verify For Possible Spam',
                 f'Name:{first} {last}\nPhone:{phone}\nEmail:{email}\nInquiry:{help_body}',
-                'noreply@outfrnt.com',
-                ['noreply@outfrnt.com'],
+                'pureexec@gmail.com',# Deployment 'noreply@outfrnt.com'
+                ['pureexec@gmail.com'],# Deployment 'noreply@outfrnt.com'
                 fail_silently = False
             )
         return redirect('accounts:home')
@@ -109,8 +109,8 @@ def update_status_to_newclient(request,client):
     if request.user.is_coach:
         subject_of_email = "Welcome to OUTFRNT"
         email_body = "Thank you for choosing OUTFRNT.\n\tKnowing you and your business is quintessential to how we can help you. Your online access to OUTFRNT.com gives you the option to complete our client survey at your convenience. Alternatively, one of our business advisors can complete this with you."
-        email_sender = "noreply@outfrnt.com"
-        clients_of_interest = [f'{client[0].email}']
+        email_sender = "noreply@outfrnt.com"# deployment noreply@outfrnt.com
+        clients_of_interest = ['pureexec@gmail.com']# deployment f'{client[0].email}'
 
         send_mail(
             subject_of_email,
