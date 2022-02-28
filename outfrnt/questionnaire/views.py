@@ -96,7 +96,7 @@ def questionnaire_responses_to_pdf(request, client_id ):
             current = client_responses[index]
             question = current.question
             answer = current.answer
-            if question.category == "sales":
+            if question.category == "people":
                 peoples_page.textLine(f'Q){question}')
                 peoples_page.textLine(f'ans:{answer}')
         text_container.drawText(peoples_page)
