@@ -109,7 +109,7 @@ def update_status_to_newclient(request,client):
     if request.user.is_coach:
         subject_of_email = "Welcome to OUTFRNT"
         email_body = "Thank you for choosing OUTFRNT.\n\tKnowing you and your business is quintessential to how we can help you. Your online access to OUTFRNT.com gives you the option to complete our client survey at your convenience. Alternatively, one of our business advisors can complete this with you."
-        email_sender = "noreply@outfrnt.com"# deployment noreply@outfrnt.com
+        email_sender = "pureexec@gmail.com"# deployment noreply@outfrnt.com
         clients_of_interest = ['pureexec@gmail.com']# deployment f'{client[0].email}'
 
         send_mail(
