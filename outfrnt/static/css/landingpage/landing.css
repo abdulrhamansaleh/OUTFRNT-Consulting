@@ -378,6 +378,7 @@ a:hover{
   margin:1% 0 1% 0;
 }
 
+/* Mobile Adjustments */
 @media (min-width:320px) and (max-width:590px){
   .connect-form {
     margin-left: -100%;
@@ -441,7 +442,7 @@ a:hover{
     padding-left: 0 !important;
     margin-right: 100%;
     flex-direction: column;
-    margin-top: 0%;
+    margin-top: -10%;
   }
 
   .round-img-1, .round-img-2{
