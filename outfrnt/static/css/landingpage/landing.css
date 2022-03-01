@@ -36,15 +36,12 @@ h1{
 
 /* Larger Screens */
 #background{
-  image-rendering: crisp-edges;
-  image-rendering: -moz-crisp-edges;          
-  image-rendering: -o-crisp-edges;            
-  image-rendering: -webkit-optimize-contrast;
-  -ms-interpolation-mode: nearest-neighbor;
-  image-rendering: -webkit-optimize-contrast;
-  
+  background-size: cover;
+  background-position:50% 50%;  
   background-repeat: no-repeat;
   background-size:cover;
+  object-fit: cover;
+  object-position: center;
   min-height:100vh;
   z-index: 0;
   margin:0;
@@ -122,6 +119,8 @@ h1{
   height:600px;
   width:600px;
   border-radius: 70%;
+  object-fit: cover;
+  object-position: center;
 }
 .image-content{
   width:auto;
@@ -207,6 +206,7 @@ h1{
   color:#56a3ba;
 }
 img{
+  object-fit:fill;
   width:40px;
   height:40px;
 }
@@ -667,7 +667,7 @@ a:hover{
 
 @media (min-width: 1350px){
   .image-content{
-    margin-top: 10%;
+    margin-top: 0%;
     margin-left: -10%;
   }
   .story-content p {
@@ -807,3 +807,79 @@ a:hover{
   }
 }
 
+/* 4k displays */
+@media screen and (min-width:2560px){
+  h1{
+    font-size: 5.5rem;
+  }
+  #inner-content p {
+    font-size: 4em;
+  }
+  .button-link {
+    border-radius: 40em;
+    padding: 4% 8% 4% 8%;
+    font-size: 3rem;
+  }
+  .image-content{
+    min-height:60vh;
+    margin-top:10%;
+    margin-left:0;
+  }
+  .story img{
+    height:50rem;
+    width:50rem;
+  }
+  .round-img-2 img {
+    margin-left: -20%;
+    margin-top: 15%;
+  }
+  .round-img-1 {
+    margin-top: -15%;
+    margin-left: 25%;
+  }
+  .story-content h1{
+    font-size: 10em !important;
+  }
+  .story-content p{
+    font-size:2.5em;
+  }
+  .side-header{
+    font-size:6em !important;
+  }
+  .right-content h1{
+    font-size: 3rem;
+  }
+  .right-content p{
+    font-size: 2.5rem;
+  }
+  .modal-pop {
+    border: none;
+    border-radius: 5px;
+    width: 30%;
+    min-height: 5%;
+    margin-left: 37%;
+    border-color: white;
+    font-size: 2rem;
+  }
+  img {
+    object-fit: fill;
+    width: 10rem;
+    height: 10rem;
+  }
+  .quotes-header{
+    font-size:7em;
+  }
+  .overlay-quote , .company-image ,.company-quote{
+    width:30rem;
+    height:30rem;
+  }
+  .company-link{
+    font-size:2rem;
+  }
+  .link-align{
+    width:80%;
+  }
+  .quote-content , .quote-author{
+    font-size: 2.2em;
+  }
+}
