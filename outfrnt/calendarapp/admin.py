@@ -6,7 +6,7 @@ from calendarapp import models
 class EventAdmin(admin.ModelAdmin):
     model = models.Event
     list_display = [
-        'id', 'title', 'user', 'is_active', 'is_deleted', 'created_at',
+        'id', 'title', 'user', 'is_active','outfrnt_task', 'is_deleted', 'created_at',
         'updated_at'
     ]
     list_filter = ['is_active', 'is_deleted']

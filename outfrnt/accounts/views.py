@@ -23,7 +23,7 @@ def home(request):
             help_body = form.cleaned_data["help_body"]
             send_mail(
                 'OUTFRNT CONTACT FORM: Verify For Possible Spam',
-                f'Name:{first} {last}\nPhone:{phone}\nEmail:{email}\nInquiry:{help_body}',
+                f'Name: {first} {last}\nPhone: {phone}\nEmail: {email}\nInquiry: {help_body}',
                 'pureexec@gmail.com',# Deployment 'noreply@outfrnt.com'
                 ['pureexec@gmail.com'],# Deployment 'noreply@outfrnt.com'
                 fail_silently = False
