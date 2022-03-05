@@ -17,34 +17,23 @@
   <nav>
     <input id = "nav-toggle" type = "checkbox">
     <a class = "logo" href=""><img src = "{% static 'images/outfrnt_logo.png' %}"></a>
-    {% if request.user.is_newclient%}
     <ul class="links">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li><a href = "{% url 'questionnaire:main' %}" > Access Questionanire </a></li>
-      <li><a href="{% url 'accounts:signout' %}">Home</a></li>
-      <li><a class = "login-btn" href="{% url 'accounts:signout' %}">Log Out</a></li>
-    </ul>
-    {% else %}
-    <ul class="links">
+      {% if request.user.is_newclient%}
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li><a class = "login-btn" href="{% url 'accounts:signout' %}">Log Out</a></li> 
+      {% endif %}
         <li><a href="#story">Our Story</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#clients">Clients</a></li>
         <li><a href="#connect">Contact Us</a></li>
-        {% if request.user.is_coach %}
-        <li><a style = "float:right" class = "login-btn" href="{% url 'calendarapp:view-tasks' %}"> Coach Portal </a></li>
-        {% elif request.user.is_prospect%}
-        <li><a class = "login-btn" href="{% url 'accounts:signout' %}">Log Out</a></li>
-        {% elif request.user.is_client %}
-        <a class = "login-btn" href="{% url 'calendarapp:calendar' %}"> Client Portal </a>
-        {% else %}
         <li><a href="{% url 'accounts:signup' %}">Join Us</a></li>
         <li><a class = "login-btn" href="{% url 'accounts:signin' %}">Log In</a></li>
-        {% endif %}
     </ul>
-    {% endif %}
     <label for="nav-toggle" class="icon-burger">
       <div class="line"></div>
       <div class="line"></div>

@@ -10,25 +10,34 @@ from accounts.models import User
 
 # landing page with connection form 
 def home(request):
-    form = JoinUs(request.POST or None)
-    variables = {
-        "form":form
-    }
-    if 'join' in request.POST:
-        if form.is_valid():
-            first = form.cleaned_data["first_name"]
-            last = form.cleaned_data["last_name"]
-            email = form.cleaned_data["email"]
-            phone = form.cleaned_data["phone_num"]
-            help_body = form.cleaned_data["help_body"]
-            send_mail(
-                'OUTFRNT CONTACT FORM: Verify For Possible Spam',
-                f'Name: {first} {last}\nPhone: {phone}\nEmail: {email}\nInquiry: {help_body}',
-                'pureexec@gmail.com',# Deployment 'noreply@outfrnt.com'
-                ['pureexec@gmail.com'],# Deployment 'noreply@outfrnt.com'
-                fail_silently = False
-            )
-        return redirect('accounts:home')
+    user = request.user 
+    if not user.is_authenticated:
+        form = JoinUs(request.POST or None)
+        variables = {
+            "form":form
+        }
+        if 'join' in request.POST:
+            if form.is_valid():
+                first = form.cleaned_data["first_name"]
+                last = form.cleaned_data["last_name"]
+                email = form.cleaned_data["email"]
+                phone = form.cleaned_data["phone_num"]
+                help_body = form.cleaned_data["help_body"]
+                send_mail(
+                    'OUTFRNT CONTACT FORM: Verify For Possible Spam',
+                    f'Name: {first} {last}\nPhone: {phone}\nEmail: {email}\nInquiry: {help_body}',
+                    'pureexec@gmail.com',# Deployment 'noreply@outfrnt.com'
+                    ['pureexec@gmail.com'],# Deployment 'noreply@outfrnt.com'
+                    fail_silently = False
+                )
+            return redirect('accounts:home')
+    else:
+        if user.is_prospect:
+            return redirect ('accounts:home')
+        elif user.is_client:
+                return redirect ('calendarapp:dashboard')
+        elif user.is_coach:
+                return redirect ('calendarapp:view-tasks')
     return render(request,'landing.html',variables)
     
 class SignInView(View):

@@ -5,6 +5,7 @@
   Home | OUTFRNT
 </title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,bold|M Plus Rounded 1c">
 {% endblock %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/landingpage/landing.css' %}">
@@ -13,12 +14,12 @@
     <div id = "background" style = "background-image: url({% static 'images/YukonRiver.png' %});" >
       <div id = "inner-content"> 
           <h1 style = "color:white"> 
-            personal guidance
-            forward together.  
+            Personal guidance
+            Forward together.  
           </h1>
           <p style = "color:white"> We believe in a collaborative and intuitive approach to business expertise. Experience a more human side to business with us</p>
           <div class = "start-button">
-            <a style = "color:white" class = "button-link" href = "{% url 'accounts:signup'%}">Get Started</a>
+            <a class = "button-link" href = "{% url 'accounts:signup'%}"> Let's Get Started</a>
           </div>
       </div>
     </div> 
@@ -26,14 +27,16 @@
     <!-- Story-->
     <div class = "back-splash">
       <div class = "row story">
-          <div class = "col story-content">
-            <h1> Meet Outfrnt </h1>
-            <p> 
-                Established in Whitehorse Yukon in January 2020, 
-                OUTFRNT was built through resilience,trust and collaboration as we worked with businessess to navigate the uncertainty and adverse impact of the pandemic.
-                we pride ourselves with bringing a comprehensive and human approach to how we work with our clients. 
-                Connect with us and see how we can help.
-            </p>
+          <div style = "background-image: url({% static 'images/outfrntbg.png'%})" class = "col story-content">
+            <div class = "story-text">
+              <h1> Meet Outfrnt </h1>
+              <p> 
+                  Established in Whitehorse Yukon in January 2020, 
+                  OUTFRNT was built through resilience,trust and collaboration as we worked with businessess to navigate the uncertainty and adverse impact of the pandemic.
+                  we pride ourselves with bringing a comprehensive and human approach to how we work with our clients. 
+                  Connect with us and see how we can help.
+              </p>
+            </div>
           </div>
           <div class = "col image-content">
             <div class="col round-img-1">
@@ -50,15 +53,15 @@
     <div class="row info">
           <div class="col info-header">
             <p class = "side-header">
-              personalized business solutions
+              Personalized business solutions
             </p>
           </div>
           <div class="col right-content">
 
             <div class = "row-1">
               <div class = "row-content">
-                <div class = "row-1-img"><img  src = "{% static 'images/outfrnt_logo_icon.png' %}"></div>
-                <h1>grant writing, business funding, and financing</h1>
+                <div class = "row-1-img"><img  src = "{% static 'images/outfrntarrow.png' %}"></div>
+                <h1>Grant writing, business funding, and financing</h1>
                 <p> 
                     Whether you're looking to hire,train, or grow your 
                     business through market expansion, grants are a great resource that is often
@@ -71,13 +74,13 @@
                       goals with confidence and peace of mind.
                     </p>
                 </p>
-                <button id = "btn-1" class = "modal-pop">Learn More</button>
+                <div class = "btn-align"><button id = "btn-1" class = "modal-pop">Learn More</button></div>
               </div>
             </div>
             <div class = "row-2">
               <div class = "row-content">
-                <div class = "row-2-img"><img  src = "{% static 'images/outfrnt_logo_icon.png' %}"></div>
-                <h1>entrepreneurial business support programming</h1>
+                <div class = "row-2-img"><img  src = "{% static 'images/outfrntarrow.png' %}"></div>
+                <h1>Entrepreneurial business support programming</h1>
                 <p>
                   Looking at starting an incubator,accelerator, maybe something in between? We provide expertise in entrepreneurial program design for organizations
                   such as Governments and post secondary institutions<span id = "more-content-2"> ... </span>
@@ -90,13 +93,13 @@
 
                     </p>
                 </p>
-                <button id = "btn-2" class = "modal-pop">Learn More</button>
+                <div class = "btn-align"><button id = "btn-2" class = "modal-pop">Learn More</button></div>
               </div>
             </div>
             <div class = "row-3">
               <div class = "row-content">
-                <div class = "row-3-img"><img  src = "{% static 'images/outfrnt_logo_icon.png' %}"></div>
-                <h1>business advisory and coaching</h1>
+                <div class = "row-3-img"><img  src = "{% static 'images/outfrntarrow.png' %}"></div>
+                <h1>Business advisory and coaching</h1>
                 <p>
                   Navigating the business world is complicated and sometimes all you need is some guidance 
                   with simplifying your business challenges. Our team supports founders, senior leaders, and 
@@ -109,7 +112,7 @@
                      Together, we can help guide you through your challenges in a way that is easy to understand, aactionable, and effective.
                     </p>
                 </p>
-                <button id = "btn-3" class = "modal-pop">Learn More</button>
+                <div class = "btn-align"><button id = "btn-3" class = "modal-pop">Learn More</button></div>
               </div>
             </div>
             <script>
@@ -154,11 +157,10 @@
     <!-- client reviews -->
       <div  class = "quotes">
         <div class = "quotes-header"> See What Our Clients Have To Say </div>
-        <div class = "quotes-container">
-          <div class="row rows-cols-4 rows-cols-4 top">
-            <div class="col company-container">
-              <div class = "link-align">
-                <a class = "company-link" href = "https://www.yukonu.ca/">Yukon University</a>
+        <div class = "row top">
+          <div class = "col left">
+              <div class = "name">
+                <a href = "https://www.yukonu.ca/">Yukon University</a>
               </div>
               <div class = "main-quote">
                 <div class = "overlay-quote">
@@ -170,10 +172,10 @@
                   <p class = "quote-author">-Lauren Manekin Beille, Dept.Head, Yukon University</p>
                 </div>
               </div>
-            </div>
-            <div class="col company-container">
-              <div class = "link-align">
-                <a class = "company-link" href = "https://freepourjennys.com/">Free Pour Jenny's</a>
+          </div>
+          <div class = "col left-center">
+              <div class = "name">
+                <a href = "https://freepourjennys.com/">Free Pour Jenny's</a>
               </div>
               <div class = "main-quote">
                 <div class = "overlay-quote">
@@ -185,10 +187,10 @@
                   <p class = "quote-author">-Jennifer Tyldesley, Owner & Operator</p>
                 </div>
               </div>
-            </div>
-            <div class="col company-container">
-              <div class = "link-align">
-                <a class = "company-link" href = "https://www.yukonbuilt.com/">Yukon Built</a>
+          </div>
+          <div class = "col right-center">
+              <div class = "name">
+                <a href = "https://www.yukonbuilt.com/">Yukon Built</a>
               </div>
               <div class = "main-quote">
                 <div class = "overlay-quote">
@@ -200,10 +202,10 @@
                   <p class = "quote-author">-Myles Hougen, Owner & Co-founder</p>
                 </div>
               </div>
-            </div>
-            <div class="col company-container">
-              <div class = "link-align">
-                <a class = "company-link" href = "https://www.klondiketravel.ca/">Klondik Travel & Yukon Tours</a>
+          </div>
+          <div class = " col right">
+              <div class = "name">
+                <a href = "https://www.klondiketravel.ca/">Klondike Travel & Yukon Tours</a>
               </div>
               <div class = "main-quote">
                 <div class = "overlay-quote">
@@ -215,12 +217,12 @@
                   <p class = "quote-author">-Carmen Magro, Owner & Operator</p>
                 </div>
               </div>
-            </div>
           </div>
-          <div class="row rows-cols-4 rows-cols-4 bottom">
-            <div class="col company-container">
-              <div class = "link-align">
-                <a class = "company-link" href = "https://www.solvest.ca/">Solvest</a>
+        </div>
+        <div class = "row bottom">
+          <div class = "col left">
+              <div class = "name">
+                <a href = "https://www.solvest.ca/">Solvest</a>
               </div>
               <div class = "main-quote">
                 <div class = "overlay-quote">
@@ -232,14 +234,14 @@
                   <p class = "quote-author">-Danny Guhl, Director of Sales & Marketing</p>
                 </div>
               </div>
-            </div>
-            <div class="col company-container">
-              <div class = "link-align">
-                <a class = "company-link" href = "https://neighbourlynorth.com/">Neighbourly North</a>
+          </div>
+          <div class = "col left-center">
+              <div class = "name">
+                <a href = "https://neighbourlynorth.com/">Neighbourly North</a>
               </div>
               <div class = "main-quote">
                 <div class = "overlay-quote">
-                  <img class = "company-image" src = "{% static 'images/north.jpg'%}">
+                  <img class = "company-image" src = "{% static 'images/north.png'%}">
                 </div>
                 <div class = "company-quote">
                   <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
@@ -247,10 +249,10 @@
                   <p class = "quote-author">-Ben Pereira, President</p>
                 </div>
               </div>
-            </div>
-            <div class="col company-container">
-              <div class = "link-align">
-                <a class = "company-link" href = "https://www.firebeancoffee.ca/">Firebean Coffee Roasters</a>
+          </div>
+          <div class = "col right-center">
+              <div class = "name">
+                <a href = "https://www.firebeancoffee.ca/">Firebean Coffee Roasters</a>
               </div>
               <div class = "main-quote">
                 <div class = "overlay-quote">
@@ -262,14 +264,14 @@
                   <p class = "quote-author">-Michael Russo, Owner</p>
                 </div>
               </div>
-            </div>
-            <div class="col company-container">
-              <div class = "link-align">
-                <a class = "company-link" href = "https://www.lumelstudios.com/">Lumel Studios</a>
+          </div>
+          <div class = "col right">
+              <div class = "name">
+                <a href = "https://www.lumelstudios.com/">Lumel Studios</a>
               </div>
               <div class = "main-quote">
                 <div class = "overlay-quote">
-                  <img style class = "company-image" src = "{% static 'images/lumel.render.png'%}">
+                  <img style class = "company-image" src = "{% static 'images/lumel.png'%}">
                 </div>
                 <div class = "company-quote">
                   <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
@@ -277,11 +279,8 @@
                   <p class = "quote-author">-Luann & Mel Johnson, Owners</p>
                 </div>
               </div>
-            </div>
           </div>
         </div>
-      </div>
-
       <!-- connect -->
       <div id = "connect" class = "connect">
         <div class = "inner-div">
@@ -322,7 +321,9 @@
                     {{ form.help_body }}
                 </div>
                 <!-- fourth row -->
-                <button name = "join" type = "sumbit" class = "join-button">Join Us</button>
+                <div class = "join-button">
+                  <button name = "join" type = "sumbit" class = "join-button">Join Us</button>
+                </div>
               </form>
             </div>
             </div>
