@@ -11,11 +11,11 @@ from accounts.models import User
 # landing page with connection form 
 def home(request):
     user = request.user 
-    if not user.is_authenticated:
-        form = JoinUs(request.POST or None)
-        variables = {
+    form = JoinUs(request.POST or None)
+    variables = {
             "form":form
-        }
+    }
+    if not user.is_authenticated:
         if 'join' in request.POST:
             if form.is_valid():
                 first = form.cleaned_data["first_name"]

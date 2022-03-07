@@ -26,13 +26,14 @@
         <li></li>
         <li></li>
         <li><a class = "login-btn" href="{% url 'accounts:signout' %}">Log Out</a></li> 
-      {% endif %}
+      {% elif not request.user.is_authenticated%}
         <li><a href="#story">Our Story</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#clients">Clients</a></li>
         <li><a href="#connect">Contact Us</a></li>
         <li><a href="{% url 'accounts:signup' %}">Join Us</a></li>
         <li><a class = "login-btn" href="{% url 'accounts:signin' %}">Log In</a></li>
+      {% endif %}
     </ul>
     <label for="nav-toggle" class="icon-burger">
       <div class="line"></div>
@@ -48,25 +49,26 @@
 <!-- footer -->
 <footer>
   <div class="container">
-    <div class="row">
-      <div class="col-sm-4 main-footer">
-        <div class = "address">
-          <p>378-108 Elliot St.</p>
-          <p>Whitehorse, YT</p>
-          <p>Y1A 6C4</p>
-        </div>
+    <div class="row footer-sec">
+      <div class = "col address">
+        <p>
+          378-108 Elliot St.
+          <br>Whitehorse, YT<br>
+          Y1A 6C4
+        </p>
       </div>
-      <div class="col-sm">
+      <div class = "col news">
+        <div style = "background-image:url({% static 'images/outfrnt_logo.png' %})" class = "image"></div>
+        <a href = "https://www.whitehorsechamber.ca/article/outfrnt-offers-insights-building-resilient-business-during-global-pandemic"> Press </a>
       </div>
-      <div class="col-sm-4 socials">
-        <a style = "color:#56a" href = "#"><span class="iconify" data-icon="lucide:instagram" data-width = "50px" data-height = "50px"></span></a>
+      <div class = "col socials">
+        <p> Follow Us<p>
+        <a><span class="iconify" data-icon="lucide:instagram" data-width = "50px" data-height = "50px"></a>
         <a href = "https://www.linkedin.com/company/outfrnt/"><span class="iconify" data-icon="icomoon-free:linkedin"  data-width = "50px" data-height = "50px"></span></a>
       </div>
     </div>
-  </div> 
-  <!-- Copyright -->
+  </div>   
   <div class="footer-bottom">
     Copyright &copy; Insert copyright here. All Rights Reserved
-  </div>
-</div>
+  </div>  
 </footer>

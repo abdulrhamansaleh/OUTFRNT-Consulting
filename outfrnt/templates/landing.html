@@ -17,7 +17,7 @@
             Personal guidance
             Forward together.  
           </h1>
-          <p style = "color:white"> We believe in a collaborative and intuitive approach to business expertise. Experience a more human side to business with us</p>
+          <p style = "color:white"> We believe in a collaborative and intuitive approach to business expertise. Experience a more human side to business with us.</p>
           <div class = "start-button">
             <a class = "button-link" href = "{% url 'accounts:signup'%}"> Let's Get Started</a>
           </div>
@@ -152,136 +152,137 @@
           </div>
         </div>
     </div>
-    
     <div id = "clients"></div>
     <!-- client reviews -->
-      <div  class = "quotes">
-        <div class = "quotes-header"> See What Our Clients Have To Say </div>
-        <div class = "row top">
-          <div class = "col left">
-              <div class = "name">
-                <a href = "https://www.yukonu.ca/">Yukon University</a>
+    <div  class = "quotes">
+      <div class = "quotes-header"> See What Our Clients Have To Say </div>
+      <div class = "quotes-container">
+        <div class="row rows-cols-4 rows-cols-4 top">
+          <div class="col company-container">
+            <div class = "link-align">
+              <a class = "company-link" href = "https://www.yukonu.ca/">Yukon University</a>
+            </div>
+            <div class = "main-quote">
+              <div class = "overlay-quote">
+                <img class = "company-image" src = "{% static 'images/yukonuni.jpg'%}">
               </div>
-              <div class = "main-quote">
-                <div class = "overlay-quote">
-                  <img class = "company-image" src = "{% static 'images/yukonuni.jpg'%}">
-                </div>
-                <div class = "company-quote">
-                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
-                  <p class = "quote-content">people-centered cultivated and innovative approach</p>
-                  <p class = "quote-author">-Lauren Manekin Beille, Dept.Head, Yukon University</p>
-                </div>
+              <div class = "company-quote">
+                <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                <p class = "quote-content">people-centered cultivated and innovative approach</p>
+                <p class = "quote-author">-Lauren Manekin Beille, Dept.Head, Yukon University</p>
               </div>
+            </div>
           </div>
-          <div class = "col left-center">
-              <div class = "name">
-                <a href = "https://freepourjennys.com/">Free Pour Jenny's</a>
+          <div class="col company-container">
+            <div class = "link-align">
+              <a class = "company-link" href = "https://freepourjennys.com/">Free Pour Jenny's</a>
+            </div>
+            <div class = "main-quote">
+              <div class = "overlay-quote">
+                <img class = "company-image" src = "{% static 'images/jenny.png'%}">
               </div>
-              <div class = "main-quote">
-                <div class = "overlay-quote">
-                  <img class = "company-image" src = "{% static 'images/jenny.png'%}">
-                </div>
-                <div class = "company-quote">
-                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
-                  <p class = "quote-content">...knowledgeable and approachable, and have provided my small business with invaluable insight and advice."</p>
-                  <p class = "quote-author">-Jennifer Tyldesley, Owner & Operator</p>
-                </div>
+              <div class = "company-quote">
+                <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                <p class = "quote-content">...knowledgeable and approachable, and have provided my small business with invaluable insight and advice."</p>
+                <p class = "quote-author">-Jennifer Tyldesley, Owner & Operator</p>
               </div>
+            </div>
           </div>
-          <div class = "col right-center">
-              <div class = "name">
-                <a href = "https://www.yukonbuilt.com/">Yukon Built</a>
+          <div class="col company-container">
+            <div class = "link-align">
+              <a class = "company-link" href = "https://www.yukonbuilt.com/">Yukon Built</a>
+            </div>
+            <div class = "main-quote">
+              <div class = "overlay-quote">
+                <img class = "company-image" src = "{% static 'images/yukonbuilt.png'%}">
               </div>
-              <div class = "main-quote">
-                <div class = "overlay-quote">
-                  <img class = "company-image" src = "{% static 'images/yukonbuilt.png'%}">
-                </div>
-                <div class = "company-quote">
-                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
-                  <p class = "quote-content">...the advice and solutions they're providing are truly catered to your unique business situation."</p>
-                  <p class = "quote-author">-Myles Hougen, Owner & Co-founder</p>
-                </div>
+              <div class = "company-quote">
+                <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                <p class = "quote-content">...the advice and solutions they're providing are truly catered to your unique business situation."</p>
+                <p class = "quote-author">-Myles Hougen, Owner & Co-founder</p>
               </div>
+            </div>
           </div>
-          <div class = " col right">
-              <div style = "margin-top:-8%;" class = "name">
-                <a href = "https://www.klondiketravel.ca/">Klondike Travel & Yukon Tours</a>
+          <div class="col company-container">
+            <div style = "margin-top:-5%;" class = "link-align">
+              <a class = "company-link" href = "https://www.klondiketravel.ca/">Klondike Travel & Yukon Tours</a>
+            </div>
+            <div class = "main-quote">
+              <div class = "overlay-quote">
+                <img class = "company-image" src = "{% static 'images/travel.png'%}">
               </div>
-              <div class = "main-quote">
-                <div class = "overlay-quote">
-                  <img class = "company-image" src = "{% static 'images/travel.png'%}">
-                </div>
-                <div class = "company-quote">
-                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
-                  <p class = "quote-content">I found Josh and Andy to be approachable,respectful, and honest."</p>
-                  <p class = "quote-author">-Carmen Magro, Owner & Operator</p>
-                </div>
+              <div class = "company-quote">
+                <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                <p class = "quote-content">I found Josh and Andy to be approachable,respectful, and honest."</p>
+                <p class = "quote-author">-Carmen Magro, Owner & Operator</p>
               </div>
+            </div>
           </div>
         </div>
-        <div class = "row bottom">
-          <div class = "col left">
-              <div class = "name">
-                <a href = "https://www.solvest.ca/">Solvest</a>
+        <div class="row rows-cols-4 rows-cols-4 bottom">
+          <div class="col company-container">
+            <div class = "link-align">
+              <a class = "company-link" href = "https://www.solvest.ca/">Solvest</a>
+            </div>
+            <div class = "main-quote">
+              <div style = "box-shadow:none !important;" class = "overlay-quote">
+                <img class = "company-image" src = "{% static 'images/solvest.png'%}">
               </div>
-              <div class = "main-quote">
-                <div class = "overlay-quote">
-                  <img class = "company-image" src = "{% static 'images/solvest.png'%}">
-                </div>
-                <div class = "company-quote">
-                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
-                  <p class = "quote-content">OUTFRNT'S professionalism and support were excellent and they were responsive throughout the entire process."</p>
-                  <p class = "quote-author">-Danny Guhl, Director of Sales & Marketing</p>
-                </div>
+              <div class = "company-quote">
+                <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                <p class = "quote-content">OUTFRNT'S professionalism and support were excellent and they were responsive throughout the entire process."</p>
+                <p class = "quote-author">-Danny Guhl, Director of Sales & Marketing</p>
               </div>
+            </div>
           </div>
-          <div class = "col left-center">
-              <div class = "name">
-                <a href = "https://neighbourlynorth.com/">Neighbourly North</a>
+          <div class="col company-container">
+            <div class = "link-align">
+              <a class = "company-link" href = "https://neighbourlynorth.com/">Neighbourly North</a>
+            </div>
+            <div class = "main-quote">
+              <div style = "box-shadow:none !important;" class = "overlay-quote">
+                <img class = "company-image" src = "{% static 'images/north.png'%}">
               </div>
-              <div class = "main-quote">
-                <div class = "overlay-quote">
-                  <img class = "company-image" src = "{% static 'images/north.png'%}">
-                </div>
-                <div class = "company-quote">
-                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
-                  <p class = "quote-content">...they took the time to know and understand us, and gave us a result that fits our culture."</p>
-                  <p class = "quote-author">-Ben Pereira, President</p>
-                </div>
+              <div class = "company-quote">
+                <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                <p class = "quote-content">...they took the time to know and understand us, and gave us a result that fits our culture."</p>
+                <p class = "quote-author">-Ben Pereira, President</p>
               </div>
+            </div>
           </div>
-          <div class = "col right-center">
-              <div class = "name">
-                <a href = "https://www.firebeancoffee.ca/">Firebean Coffee Roasters</a>
+          <div class="col company-container">
+            <div class = "link-align">
+              <a class = "company-link" href = "https://www.firebeancoffee.ca/">Firebean Coffee Roasters</a>
+            </div>
+            <div class = "main-quote">
+              <div class = "overlay-quote">
+                <img class = "company-image" src = "{% static 'images/firebean.png'%}">
               </div>
-              <div class = "main-quote">
-                <div class = "overlay-quote">
-                  <img class = "company-image" src = "{% static 'images/firebean.png'%}">
-                </div>
-                <div class = "company-quote">
-                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
-                  <p class = "quote-content">They are flexible,insightful and I truly fee like I can bring anything to the table."</p>
-                  <p class = "quote-author">-Michael Russo, Owner</p>
-                </div>
+              <div class = "company-quote">
+                <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                <p class = "quote-content">They are flexible,insightful and I truly fee like I can bring anything to the table."</p>
+                <p class = "quote-author">-Michael Russo, Owner</p>
               </div>
+            </div>
           </div>
-          <div class = "col right">
-              <div class = "name">
-                <a href = "https://www.lumelstudios.com/">Lumel Studios</a>
+          <div class="col company-container">
+            <div class = "link-align">
+              <a class = "company-link" href = "https://www.lumelstudios.com/">Lumel Studios</a>
+            </div>
+            <div class = "main-quote">
+              <div class = "overlay-quote">
+                <img style class = "company-image" src = "{% static 'images/lumel.png'%}">
               </div>
-              <div class = "main-quote">
-                <div class = "overlay-quote">
-                  <img style class = "company-image" src = "{% static 'images/lumel.png'%}">
-                </div>
-                <div class = "company-quote">
-                  <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
-                  <p class = "quote-content">...they truly listen and workout solutions relative to the things they hear."</p>
-                  <p class = "quote-author">-Luann & Mel Johnson, Owners</p>
-                </div>
+              <div class = "company-quote">
+                <span class="iconify" style = "color:#56a3ba" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
+                <p class = "quote-content">...they truly listen and workout solutions relative to the things they hear."</p>
+                <p class = "quote-author">-Luann & Mel Johnson, Owners</p>
               </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
       <!-- connect -->
       <div id = "connect" class = "connect">
         <div class = "inner-div">
@@ -292,8 +293,8 @@
                 <p>Dont see what you are looking for ?</p>
                 <p>Have questions ?</p>
                 <p>Looking to connect ?</p>
-                <p style = "color:56a3ba;font-weight:bold">Drop us a line! </p>
-                <p style = "color:56a3ba;font-weight:bold">We'd love to head from you</p>
+                <p style = "color:#34617c;font-weight:bold"><br>Drop us a line!</br></p>
+                <p style = "color:#34617c;font-weight:bold">We'd love to head from you</p>
               </div>
             </div>
             <div class="col connect-form">
