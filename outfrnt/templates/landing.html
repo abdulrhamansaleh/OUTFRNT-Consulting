@@ -11,20 +11,22 @@
 <link rel="stylesheet" href="{% static 'css/landingpage/landing.css' %}">
 <body>
   <div id = "home"></div>
-  <!-- Background -->
-  <div id = "background" style = "background-image: url({% static 'images/YukonRiver.png' %});" >
-    <div id = "inner-content"> 
-        <h1 style = "color:white"> 
-          Personal guidance
-          Forward together.  
-        </h1>
-        <p style = "color:white"> We believe in a collaborative and intuitive approach to business expertise. Experience a more human side to business with us.</p>
-        <div class = "start-button">
-          <a class = "button-link" href = "{% url 'accounts:signup'%}"> Let's Get Started</a>
-        </div>
-    </div>
+  <!-- SECTION 1 -->
+  <div style = "min-height:100vh">
+    <div id = "background" style = "background-image: url({% static 'images/YukonRiver.png' %});" >
+      <div id = "inner-content"> 
+          <h1 style = "color:white"> 
+            Personal guidance
+            Forward together.  
+          </h1>
+          <p style = "color:white"> We believe in a collaborative and intuitive approach to business expertise. Experience a more human side to business with us.</p>
+          <div class = "start-button">
+            <a class = "button-link" href = "{% url 'accounts:signup'%}"> Let's Get Started</a>
+          </div>
+      </div>
+  </div>
   </div> 
-  <!-- Story-->
+  <!-- SECTION 2-->
   <div class = "back-splash">
     <div class = "row story">
       <div id = "story" ></div>
@@ -46,7 +48,7 @@
     </div>
   </div>
   <div id = "services"></div>
-  <!-- Personalized -->
+  <!-- SECTION 3 -->
   <div class="row info">
     <div class="col info-header">
       <p class = "side-header">
@@ -113,8 +115,9 @@
       </div>
     </div>
   </div>
-  <!-- client reviews -->
-  <div  class = "quotes">
+  <!-- SECTION 4 -->
+  <div class = "quotes">
+    <div id = "clients"></div>
     <div class = "quotes-header"> See What Our Clients Have To Say </div>
     <div class = "quotes-container">
       <div class="row rows-cols-4 rows-cols-4 top-quotes">
@@ -129,7 +132,7 @@
             <div class = "company-quote">
               <span class="iconify" style = "color:#34617c" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
               <p class = "quote-content">people-centered cultivated and innovative approach</p>
-              <p class = "quote-author">-Lauren Manekin Beille, Dept.Head, Yukon University</p>
+              <p class = "quote-author">- Lauren Manekin Beille, Dept.Head, Yukon University</p>
             </div>
           </div>
         </div>
@@ -144,7 +147,7 @@
             <div class = "company-quote">
               <span class="iconify" style = "color:#34617c" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
               <p class = "quote-content">...knowledgeable and approachable, and have provided my small business with invaluable insight and advice."</p>
-              <p class = "quote-author">-Jennifer Tyldesley, Owner & Operator</p>
+              <p class = "quote-author">- Jennifer Tyldesley, Owner & Operator</p>
             </div>
           </div>
         </div>
@@ -159,7 +162,7 @@
             <div class = "company-quote">
               <span class="iconify" style = "color:#34617c" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
               <p class = "quote-content">...the advice and solutions they're providing are truly catered to your unique business situation."</p>
-              <p class = "quote-author">-Myles Hougen, Owner & Co-founder</p>
+              <p class = "quote-author">- Myles Hougen, Owner & Co-founder</p>
             </div>
           </div>
         </div>
@@ -174,7 +177,7 @@
             <div class = "company-quote">
               <span class="iconify" style = "color:#34617c" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
               <p class = "quote-content">I found Josh and Andy to be approachable,respectful, and honest."</p>
-              <p class = "quote-author">-Carmen Magro, Owner & Operator</p>
+              <p class = "quote-author">- Carmen Magro, Owner & Operator</p>
             </div>
           </div>
         </div>
@@ -191,7 +194,7 @@
             <div class = "company-quote">
               <span class="iconify" style = "color:#34617c" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
               <p class = "quote-content">OUTFRNT'S professionalism and support were excellent and they were responsive throughout the entire process."</p>
-              <p class = "quote-author">-Danny Guhl, Director of Sales & Marketing</p>
+              <p class = "quote-author">- Danny Guhl, Director of Sales & Marketing</p>
             </div>
           </div>
         </div>
@@ -206,7 +209,7 @@
             <div class = "company-quote">
               <span class="iconify" style = "color:#34617c" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
               <p class = "quote-content">...they took the time to know and understand us, and gave us a result that fits our culture."</p>
-              <p class = "quote-author">-Ben Pereira, President</p>
+              <p class = "quote-author">- Ben Pereira, President</p>
             </div>
           </div>
         </div>
@@ -221,7 +224,7 @@
             <div class = "company-quote">
               <span class="iconify" style = "color:#34617c" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
               <p class = "quote-content">They are flexible,insightful and I truly fee like I can bring anything to the table."</p>
-              <p class = "quote-author">-Michael Russo, Owner</p>
+              <p class = "quote-author">- Michael Russo, Owner</p>
             </div>
           </div>
         </div>
@@ -236,26 +239,25 @@
             <div class = "company-quote">
               <span class="iconify" style = "color:#34617c" data-icon="ri:double-quotes-l" data-width="45" data-height="45"></span>
               <p class = "quote-content">...they truly listen and workout solutions relative to the things they hear."</p>
-              <p class = "quote-author">-Luann & Mel Johnson, Owners</p>
+              <p class = "quote-author">- Luann & Mel Johnson, Owners</p>
             </div>
           </div>
         </div>
+      </div><div id = "connect"></div>
       </div>
-    <div id = "connect"></div>
-    </div>
   </div>
-  <!-- connect -->
+  <!-- SECTION 5 -->
   <div class = "connect">
     <div class = "inner-div">
       <div class="row row-cols-2">
         <div class="col side-col">
           <div class = "connect-text">
-            <h1 class = "connect-header">Let's Connect !</h1>
-            <p>Dont see what you are looking for ?</p>
-            <p>Have questions ?</p>
-            <p>Looking to connect ?</p>
+            <h1 class = "connect-header">Let's Connect!</h1>
+            <p>Dont see what you are looking for?</p>
+            <p>Have questions?</p>
+            <p>Looking to connect?</p>
             <p style = "color:#34617c;font-weight:bold"><br>Drop us a line!</br></p>
-            <p style = "color:#34617c;font-weight:bold">We'd love to head from you</p>
+            <p style = "color:#34617c;font-weight:bold">We'd love to hear from you</p>
           </div>
         </div>
         <div class="col connect-form">
@@ -285,7 +287,7 @@
             </div>
             <!-- fourth row -->
             <div class = "align-btn">
-              <button name = "join-button" type = "sumbit" class = "join-button">Join Us</button>
+              <button name = "join-button" type = "sumbit" class = "join-button">Let's Get Started</button>
             </div>
           </form>
         </div>
@@ -295,54 +297,72 @@
   </div>
 </body>
 <script>
+  // first row button and data values 
   let btn = document.getElementById('btn-1');
+  // assign event listner 
   btn.addEventListener('click',showMore);
   btn.textToShow = document.getElementById('more')
   btn.toggleShow = document.getElementById('more-content');
   btn.image = document.getElementById('image-1');
-
+  // second row button and data values 
   let btn2 = document.getElementById('btn-2');
+  // assign event listner 
   btn2.addEventListener('click',showMore);
   btn2.textToShow = document.getElementById('more-2');
   btn2.toggleShow = document.getElementById('more-content-2');
   btn2.image = document.getElementById('image-2');
-
+  // third row button and data values 
   let btn3 = document.getElementById('btn-3');
+  // assign event listner 
   btn3.addEventListener('click',showMore);
   btn3.textToShow = document.getElementById('more-3');
   btn3.toggleShow = document.getElementById('more-content-3');
   btn3.image = document.getElementById('image-3');
 
+  // function onclick for row buttons 
   function showMore(event){
+    // retreive all values for given button that is passed through 
     var moreContent = event.currentTarget.toggleShow;
     var more = event.currentTarget.textToShow;
     var btnToggle = event.currentTarget;
     var image = event.currentTarget.image;
 
-    var x = window.matchMedia("(max-width:1252px)");
-    if (x){
+    // dont show icons in smaller screens 
+    var maxScreenSize = window.matchMedia("(max-width:1252px)");
+    if (!maxScreenSize){
+      // if three dots are present allow the trigger for expansion
       if (moreContent.style.display == "none"){
         moreContent.style.display = "inline";
         btnToggle.innerHTML = "Learn More";
         more.style.display = "none";
       }
+      // if not it means the state is triggered so provide the trigger for shrinking
       else{
+        // remove dots 
         moreContent.style.display = "none";
+        // show extra content
         more.style.display = "block";
+        // change text to trigger show less 
         btnToggle.innerHTML = "Show Less";
       }
     }
     else{
+      // if three dots are present allow the trigger for expansion
       if (moreContent.style.display == "none"){
         moreContent.style.display = "inline";
         btnToggle.innerHTML = "Learn More";
         more.style.display = "none";
         image.style.display = "block";
       }
+      // if not it means the state is triggered so provide the trigger for shrinking
       else{
+        // remove dots 
         moreContent.style.display = "none";
+        // show extra content
         more.style.display = "block";
+        // change button text trigger show less 
         btnToggle.innerHTML = "Show Less";
+        // for smaller devices keep logo hidden
         image.style.display = "none";
       }
     }
