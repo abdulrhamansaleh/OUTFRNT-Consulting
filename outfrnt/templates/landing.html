@@ -32,11 +32,7 @@
           <div class = "story-text">
             <h1> Meet Outfrnt </h1>
             <p> 
-                Established in Whitehorse Yukon in January 2020, 
-                OUTFRNT was built through resilience,trust and collaboration as we worked with businessess to navigate the uncertainty and adverse impact of the pandemic.
-                we pride ourselves with bringing a comprehensive and human approach to how we work with our clients. 
-                Connect with us and see how we can help.
-            </p>
+              Established in Whitehorse Yukon in January 2020, OUTFRNT was built through resilience, trust and collaboration as we worked with businesses to navigate the uncertainty and adverse impact of the pandemic. We pride ourselves on bringing a comprehensive and human approach to how we work with our clients. Connect with us and see how we can help.            </p>
           </div>
         </div>
         <div class = "col image-content">
@@ -64,13 +60,11 @@
           <div class = "col">
             <h1>Grant writing, business funding, and financing</h1>
             <p> 
-              Whether you're looking to hire,train, or grow your 
-              business through market expansion, grants are a great resource that is often
-              overlooked. Let our experienced team help you develop your funding strategy,prepare for investors,and get ready to 
-              engage with the banks.<span id = "more-content"> ... </span>
+              Whether you're looking to hire, train, or grow your business through market expansion, grants are a great resource that is often overlooked. Let our experienced team help you develop your funding strategy, prepare for investors, and get ready to engage with the banks.
+              <span id = "more-content"> ... </span>
               <p id = "more">
                 We provide the guidance and expertise you'll need 
-                from grant writing & financial planning, to risk management 
+                from grant writing & financial planning to risk management 
                 and disbursement of funds so you can focus on your business 
                 goals with confidence and peace of mind.
               </p>
@@ -85,12 +79,12 @@
           <div class = "col">
             <h1>Entrepreneurial business support programming</h1>
             <p>
-              Looking at starting an incubator,accelerator, maybe something in between? We provide expertise in entrepreneurial program design for organizations
-              such as Governments and post secondary institutions<span id = "more-content-2"> ... </span>
+              Looking at starting an incubator, accelerator, maybe something in between? We provide expertise in entrepreneurial program design for organizations such as Governments and post-secondary institutions
+              <span id = "more-content-2"> ... </span>
                 <p id = "more-2">
                   Our stakeholder centric programming design guides our approach to implementation, 
-                  allows for continous improvements, 
-                  and creates a framework that is flexible alloqing your program to grow alongside the entrepreneurs you serve
+                  allows for continuous improvements, 
+                  and creates a framework that is flexible allowing your program to grow alongside the entrepreneurs you serve
                   Our expertise has contributed to highly robust and engaging business growth, professional development, and graduate with further 
                   business validation and tangible results.
                 </p>
@@ -110,10 +104,7 @@
               other key personnel in your company through the unknowns and the ups and downs with help of our 
               extensive network of subject matter experts.<span id = "more-content-3"> ... </span>
                 <p id = "more-3">
-                Our collaborative approach with experts, ensures that whatever we work on together is a ligned to teh vision and strategic goals of your company.
-                Whether it be developing human resource policies & procedures, management training, leadership development, financial modeling, branding, digital marketing, procurement, business planning, 
-                sales process , budgeting , or even market validation, we are here for you.
-                Together, we can help guide you through your challenges in a way that is easy to understand, aactionable, and effective.
+                  Our collaborative approach with experts ensures that whatever we work on together is aligned to the vision and strategic goals of your company. Whether it be developing human resource policies & procedures, management training, leadership development, financial modelling, branding, digital marketing, procurement, business planning, sales process, budgeting, or even market validation, we are here for you. Together, we can help guide you through your challenges in a way that is easy to understand, actionable, and effective.
                 </p>
             </p>
           </div>
@@ -328,17 +319,32 @@
     var btnToggle = event.currentTarget;
     var image = event.currentTarget.image;
 
-    if (moreContent.style.display == "none"){
-      moreContent.style.display = "inline";
-      btnToggle.innerHTML = "Learn More";
-      more.style.display = "none";
-      image.style.display = "block";
+    var x = window.matchMedia("(max-width:1252px)");
+    if (x){
+      if (moreContent.style.display == "none"){
+        moreContent.style.display = "inline";
+        btnToggle.innerHTML = "Learn More";
+        more.style.display = "none";
+      }
+      else{
+        moreContent.style.display = "none";
+        more.style.display = "block";
+        btnToggle.innerHTML = "Show Less";
+      }
     }
     else{
-      moreContent.style.display = "none";
-      more.style.display = "block";
-      btnToggle.innerHTML = "Show Less";
-      image.style.display = "none";
+      if (moreContent.style.display == "none"){
+        moreContent.style.display = "inline";
+        btnToggle.innerHTML = "Learn More";
+        more.style.display = "none";
+        image.style.display = "block";
+      }
+      else{
+        moreContent.style.display = "none";
+        more.style.display = "block";
+        btnToggle.innerHTML = "Show Less";
+        image.style.display = "none";
+      }
     }
   }
 </script>

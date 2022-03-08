@@ -951,7 +951,7 @@ p{
 
 @media screen and (max-width:1252px){
   .row-1-img, .row-2-img , .row-3-img{
-    display: none;
+    display: none !important;
   }
 }
 
