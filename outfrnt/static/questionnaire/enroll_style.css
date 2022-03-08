@@ -4,7 +4,7 @@
     position: relative;
     background-size: cover;
     background-position: 50% 50%;
-    background-image: linear-gradient(#56a3ba,white);
+    background-image: #dbdedf;
     image-rendering: crisp-edges;
     image-rendering: -moz-crisp-edges;          
     image-rendering: -o-crisp-edges;            

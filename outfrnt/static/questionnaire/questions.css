@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+:root {
+    --accent:#34617c;
+    --header-font:'M PLUS Rounded 1c', sans-serif;
+    --paragraph-font:'Roboto',sans-serif;
+}
+
 .button { 
     display : flex;
     justify-content: center;
@@ -21,11 +29,11 @@ button {
   display: flex;
   float:center;
   justify-content: center;
-  border-top: 3rem solid #56a3ba ;
+  border-top: 3rem solid  ;
 }
 
 .header-top h1{
-  font-family: 'Courier New', Courier, monospace !important;
+  font-family: var(--header-font);
   font-size: 3em !important;
 }
 
@@ -40,7 +48,6 @@ button {
   color:white;
 }
 
-
 .text-body{
   width:100% !important;
   display: flex !important;
@@ -51,10 +58,11 @@ button {
   font-size: 1rem;
   margin-inline: 3%;
   text-align: left !important;
+  font-family: var(--paragraph-font);
 }
 
 body{
-  background-image: linear-gradient(#56a3ba,white);
+  background-image: #dbdedf;
   padding:0;
   margin:0;
 }

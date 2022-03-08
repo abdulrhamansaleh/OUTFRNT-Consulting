@@ -40,7 +40,7 @@ p{
   object-fit: cover !important;
  }
  #inner-content{
-  padding-top:max(10%,25vh);
+  padding-top:15%;
   max-width:80%;
   min-height:100%;
  }
@@ -59,7 +59,6 @@ p{
   font-family: var(--paragraph-font);
   font-size:24px;
   max-width: 55%;
-  padding-bottom: 5%;
  }
  .button-link{
   color: var(--accent);
@@ -88,7 +87,7 @@ p{
 }
 .story-text{
   width:70%;
-  margin-block:25%;
+  margin-block:40%;
   margin-inline:10%;
 }
 .story-text h1{
@@ -132,7 +131,7 @@ p{
   max-width: 35vw;
   padding-left:max(3%, 5vw);
   min-height:20vh;
-  margin-top:33vh;
+  margin-top:40vh;
  }
  .side-header{
   max-width: 30px;
@@ -204,6 +203,7 @@ p{
   font-weight: bold;
   padding-block:0.5em;
   padding-inline:2em;
+  margin-block:4%;
   box-shadow: 1px 3px #cacaca;
   border:none;
   border-radius: 2rem;
@@ -232,10 +232,27 @@ p{
   width:60px;
   height:60px;
  }
+ .row-1-img img,.row-2-img img{
+  padding-top:10vh !important;
+  height:50v;
+  width:auto;
+}
+.row-3-img  img{
+  padding-top:15vh !important;
+  height:50v;
+  width:auto;
+}
+.row-1-img,.row-2-img, .row-3-img{
+  margin-left: -4%;
+}
+.right-content h1{
+  padding-top:5%;
+}
 
  /* SECTION 5*/
  .quotes{
   min-height:100vh;
+  margin-top:10%;
  }
  .main-quote{
   width:230px;
@@ -396,7 +413,7 @@ p{
  .connect-header{
   margin-block:4%;
   font-family: var(--header-font);
-  font-size: 2.5em;
+  font-size: 2.3em;
   font-weight: bold;
   color:var(--accent);
  }
@@ -666,14 +683,14 @@ p{
   }
  }
   
- @media (min-width: 1350px){
+ @media (max-width: 1350px){
   .image-content{
     margin-top: 0%;
     margin-left: -10%;
   }
   .story-content p {
-    font-size: 1.5em;
-    width: 85%;
+    font-size: 1.3em;
+    width: 95%;
   }
   .right-content p{
     width: 95%;
@@ -683,10 +700,7 @@ p{
     font-size: 1.2em;
   }
   .quotes-container {
-    min-height: 95vh;
-    padding-top: 2vw;
-    padding-left: 5%;
-    background-color: white;
+    padding-left: 5% !important;
   }
  }
   
@@ -764,9 +778,6 @@ p{
   }
   nav .links{
     width:80% !important;
-  }
-  .connect-form{
-    margin-top:35%;
   }
   @media (max-width:1014px){
   nav .links {
@@ -911,6 +922,7 @@ p{
   }
   .story-text {
     width: 100%;
+    padding-top:10%;
     margin-block: 10%;
     margin-inline: 0%;
   }
@@ -929,9 +941,6 @@ p{
     margin-left:0 !important;
     width: 80% !important;
   }
-  /*.info p ,h1{
-    width:85% !important;
-  }*/
   .row-1, .row-3{
     min-height:60vh;
   }
@@ -939,3 +948,10 @@ p{
     min-height:55vh;
   }
 }
+
+@media screen and (max-width:1252px){
+  .row-1-img, .row-2-img , .row-3-img{
+    display: none;
+  }
+}
+

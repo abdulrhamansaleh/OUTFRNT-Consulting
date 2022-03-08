@@ -16,7 +16,7 @@
   <!-- navbar for all users -->
   <nav>
     <input id = "nav-toggle" type = "checkbox">
-    <a class = "logo" href=""><img src = "{% static 'images/outfrnt_logo.png' %}"></a>
+    <a class = "logo" href="#home"><img src = "{% static 'images/outfrnt_logo.png' %}"></a>
     <ul class="links">
       {% if request.user.is_newclient%}
         <li></li>
