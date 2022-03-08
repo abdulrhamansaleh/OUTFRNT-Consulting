@@ -33,7 +33,7 @@ p{
   min-height:100vh;
  }
  #inner-content{
-  padding-top:15%;
+  padding-top:12%;
   max-width:80%;
   min-height:100%;
  }
@@ -251,11 +251,11 @@ p{
   width:230px;
  }
  .quotes-container{
-  min-height:95vh;
+  min-height:110vh;
   padding-top:2vw;
   padding-left:10%;
   background-color: white;
- }
+}
  .quotes-header{
   font-family:var(--header-font);
   font-size: 3em;
