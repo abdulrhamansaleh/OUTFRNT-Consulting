@@ -33,9 +33,10 @@ def home(request):
         else:
             return redirect('accounts:home')
     # for users interested in OUTFRNT services 
-    if not user.is_authenticated:
+    else:
         # if join form is populated with values 
         if 'join' in request.POST:
+            print("sending email")
             if form.is_valid():
                 # retrieve values from form 
                 first = form.cleaned_data["first_name"]
@@ -51,6 +52,7 @@ def home(request):
                     ['pureexec@gmail.com'],# Deployment 'noreply@outfrnt.com'
                     fail_silently = False
                 )
+                form = JoinUs()
             # return users back to home page after sumbitting the form 
             return redirect('accounts:home')
     # initial render of home page 
@@ -164,7 +166,7 @@ def update_status_to_newclient(request,client):
     # check if user has authentication to access this managerial based endpoint
     if request.user.is_coach:
         # check if new client was a prospect to provide an email notifying them  
-        if client.is_prospect:     
+        if client[0].is_prospect:     
             # content for email 
             subject_of_email = "Welcome to OUTFRNT"
             email_body = "Thank you for choosing OUTFRNT.\n\tKnowing you and your business is quintessential to how we can help you. Your online access to OUTFRNT.com gives you the option to complete our client survey at your convenience. Alternatively, one of our business advisors can complete this with you."
