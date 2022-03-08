@@ -1007,3 +1007,14 @@ p{
   }
 }
 
+@media (min-width:1254px) and (max-width:1350px) {
+  .row-3-img img {
+    padding-top:16vh !important;
+  }
+  .row-2-img img{
+    padding-top:12vh !important;
+  }
+  .row-1-img img{
+    padding-top:14vh !important;
+  }
+}
