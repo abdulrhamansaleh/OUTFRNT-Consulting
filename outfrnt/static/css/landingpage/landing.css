@@ -231,7 +231,7 @@ p{
   width:auto;
 }
 .row-3-img  img{
-  padding-top:15vh !important;
+  padding-top:12vh !important;
   height:50v;
   width:auto;
 }
@@ -752,6 +752,7 @@ p{
   }
   /* connection form */
   .connect-form{
+    min-height: 110vh;
     margin-left:-100%;
     max-width: 100% !important;
     margin-top:20%;
@@ -772,7 +773,7 @@ p{
     max-width: 100%;
   }
   .connect-form{
-    margin-top:35%;
+    margin-top:45%;
   }
  }
  @media screen and (max-width:1305px) {
@@ -803,7 +804,7 @@ p{
  }
  @media screen and (max-width:720px){
   .connect-form{
-    margin-top:40%;
+    margin-top:50%;
   }
   .quotes-container{
     padding-left: 20%;
