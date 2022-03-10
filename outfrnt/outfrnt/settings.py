@@ -112,7 +112,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'pureexec@gmail.com'
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_HOST_PASSWORD = 'boudisaleh2018' #os.environ.get('EMAIL_PASSWORD')
 EMAIL_USE_TLS = True 
 
 # EMAIL_HOST_USER = 'noreply@outfrnt.com'

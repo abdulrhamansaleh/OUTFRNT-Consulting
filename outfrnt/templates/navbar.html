@@ -26,6 +26,12 @@
         <li></li>
         <li></li>
         <li><a class = "login-btn" href="{% url 'accounts:signout' %}">Log Out</a></li> 
+      {% elif request.user.is_prospect%}
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#clients">Clients</a></li>
+        <li><a href="#connect">Contact Us</a></li>
+        <li><a class = "login-btn" href="{% url 'accounts:signout' %}">Log Out</a></li> 
       {% elif not request.user.is_authenticated%}
         <li><a href="#story">Our Story</a></li>
         <li><a href="#services">Services</a></li>
@@ -58,12 +64,14 @@
         </p>
       </div>
       <div class = "col news">
-        <div style = "background-image:url({% static 'images/outfrnt_logo.png' %})" class = "image"></div>
+        <div class = "image">
+          <img src = "{% static 'images/outfrnt_logo.png' %}"></img>
+        </div>
         <a href = "https://www.whitehorsechamber.ca/article/outfrnt-offers-insights-building-resilient-business-during-global-pandemic"> Press </a>
       </div>
       <div class = "col socials">
         <p> Follow Us<p>
-        <a><span class="iconify" data-icon="lucide:instagram" data-width = "50px" data-height = "50px"></a>
+        <a href = "https://www.instagram.com/0utfrnt/"><span class="iconify" data-icon="lucide:instagram" data-width = "50px" data-height = "50px"></a>
         <a href = "https://www.linkedin.com/company/outfrnt/"><span class="iconify" data-icon="icomoon-free:linkedin"  data-width = "50px" data-height = "50px"></span></a>
       </div>
     </div>

@@ -163,12 +163,13 @@ footer{
 	margin-block:10%;
 }
 
-.image{
+.image img{
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
 	min-height:70%;
 	margin-bottom: 10%;
+	width:200px;
 }
 .address p{
 	text-align: center;
@@ -210,8 +211,8 @@ footer p{
 	.footer-sec{
 		flex-direction: column;
 	}
-	.image{
-		margin-bottom: 5%;
+	.image img{
+		width:150px;
 	}
 }
 

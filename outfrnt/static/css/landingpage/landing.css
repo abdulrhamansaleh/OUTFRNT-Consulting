@@ -1018,3 +1018,9 @@ p{
     padding-top:14vh !important;
   }
 }
+
+@media (min-width:1253px) and (max-width:1440px){
+  #inner-content h1{
+    max-width: 45% !important;
+  }
+}

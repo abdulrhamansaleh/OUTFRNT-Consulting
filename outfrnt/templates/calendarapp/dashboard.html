@@ -47,12 +47,10 @@
                                                 </td>
                                                 <td style="color:black">{{ event.title }}</td>
                                                 <td style="color:black">
-                                                {% if not event.outfrnt_task %}
                                                     <div class = "status">
                                                         <a class = "fcc-btn" href = "{% url 'calendarapp:task-details' event.id %}"> View </td>
                                                     </div>
                                                 </td>
-                                                {% endif %}
                                                 <td style="color:black">{{ event.end_time }}</td>
                                                 <td>
                                                 {% if not event.outfrnt_task %}
