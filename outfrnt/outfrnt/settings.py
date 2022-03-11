@@ -13,7 +13,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = ['*'] #DEPLOYMENT HOST
+#DEPLOYMENT HOST
+ALLOWED_HOSTS = ['*'] 
 
 # Application definition
 INSTALLED_APPS = [
@@ -109,14 +110,13 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # DEPLOYEMENT FOR SENDING AN EMAIL
 # set https://myaccount.google.com/lesssecureapps 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'pureexec@gmail.com'
-EMAIL_HOST_PASSWORD = 'boudisaleh2018' #os.environ.get('EMAIL_PASSWORD')
-EMAIL_USE_TLS = True 
+# https://accounts.google.com/b/0/DisplayUnlockCaptcha
 
 # EMAIL_HOST_USER = 'noreply@outfrnt.com'
 # EMAIL_HOST_PASSWORD = '3&J&ag3u' 'password for that email [use an environemental variable for these (security wise)]'
-
-django_on_heroku.settings(locals())
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'pureexec@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_USE_TLS = True 
 
