@@ -1,11 +1,7 @@
 import os
-import django_on_heroku
-import dj_database_url 
-from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -105,17 +101,19 @@ USE_TZ = False
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
 
 # DEPLOYEMENT FOR SENDING AN EMAIL
 # set https://myaccount.google.com/lesssecureapps 
 # https://accounts.google.com/b/0/DisplayUnlockCaptcha
 
-# EMAIL_HOST_USER = 'noreply@outfrnt.com'
-# EMAIL_HOST_PASSWORD = '3&J&ag3u' 'password for that email [use an environemental variable for these (security wise)]'
+
+
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
+# EMAIL_HOST_USER = 'noreply@outfrnt.com'
+# EMAIL_HOST_PASSWORD = '3&J&ag3u' 'password for that email [use an environemental variable for these (security wise)]'
 EMAIL_HOST_USER = 'pureexec@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 EMAIL_USE_TLS = True 
