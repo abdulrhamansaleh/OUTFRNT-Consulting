@@ -3,11 +3,11 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG')
+# deployment os.environ.get('SECRET_KEY')
+SECRET_KEY = 'i8e1s3!_(fjsiv%1pn3sb3o=s)!p*nzwh1$gp5-l&%nb!d=y_s'
+# deployment SHOULD BE OFF: False
+DEBUG = True 
 
 #DEPLOYMENT HOST
 ALLOWED_HOSTS = ['*'] 
@@ -107,8 +107,6 @@ STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage'
 # DEPLOYEMENT FOR SENDING AN EMAIL
 # set https://myaccount.google.com/lesssecureapps 
 # https://accounts.google.com/b/0/DisplayUnlockCaptcha
-
-
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
